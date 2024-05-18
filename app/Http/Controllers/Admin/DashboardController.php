@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller {
     public function index() {
-        $title = 'Dashboard';
+        $title = 'Dashboards';
         return view( 'admin.dashboard.dashboard', compact( 'title' ) );
     }
 }
