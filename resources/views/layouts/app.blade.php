@@ -287,6 +287,7 @@
         </div>
         <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
         <script src="/admin/assets/js/scripts.bundle.js"></script>
+        @yield('script')
 </body>
 <!--end::Body-->
 

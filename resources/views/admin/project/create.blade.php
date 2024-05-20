@@ -24,7 +24,7 @@
                     <label class="fs-6 fw-semibold mb-2">Category Name</label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <select class="form-select" name="project_category">
+                    <select class="form-select" name="project_category" data-control="select2">
                         @foreach($categorys as $category)
                         <option value="{{ $category->id }}">{{$category->categorie_name}}</option>
                         @endforeach
@@ -36,7 +36,7 @@
                     <label class="fs-6 fw-semibold mb-2">Status</label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <select class="form-select" name="project_status">
+                    <select class="form-select" name="project_status" data-control="select2">
                         <option value="Pending">Pending</option>
                         <option value="In Progress">In Progress</option>
                         <option value="Completed">Completed</option>

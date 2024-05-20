@@ -9,81 +9,188 @@
             <!--begin::Form-->
             <form class="form p-10" action="{{route('project.store')}}" method="post">
                 @csrf
-                <div class="fv-row mb-9 col-12">
-                    <div class="row col-4">
+                <div class="row mb-9 col-14">
+                    <div class="row col-6">
                         <div class="form-group">
                             <label class="fs-6 fw-semibold required mb-2">Full Name</label>
-                            <input type="text" class="form-control" name="project_name" />
+                            <input type="text" class="form-control" name="full_name" />
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="fs-6 fw-semibold required mb-2">Full Name</label>
-                        <input type="text" class="form-control" name="project_name" />
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <!--begin::Row-->
-                    <div class="row">
-                        <!--begin::Col-->
-                        <div class="col-lg-6 fv-row">
-                            <input type="text" name="fname"
-                                class="form-control form-control-lg form-control-solid mb-3 mb-lg-0"
-                                placeholder="First name" value="Max" />
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Father Name</label>
+                            <input type="text" class="form-control" name="father_name" />
                         </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-lg-6 fv-row">
-                            <input type="text" name="lname" class="form-control form-control-lg form-control-solid"
-                                placeholder="Last name" value="Smith" />
-                        </div>
-                        <!--end::Col-->
                     </div>
-                    <!--end::Row-->
                 </div>
                 <!--end::Input group-->
-                <!--begin::Input group-->
-                <div class="fv-row mb-9">
-                    <!--begin::Label-->
-                    <label class="fs-6 fw-semibold mb-2">Language Name</label>
-                    <select class="form-select" data-control="select2" name="project_category">
-                        @foreach($languages as $language)
-                        <option value="{{ $language->id }}">{{$language->language_name}}</option>
-                        @endforeach
-                    </select>
-                    <!--end::Input-->
+                <div class="row mb-9 col-12">
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Mother Name</label>
+                            <input type="text" class="form-control" name="mother_name" />
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Birth Date</label>
+                            <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" />
+                        </div>
+                    </div>
                 </div>
-                <div class="fv-row mb-9">
+                <div class="row mb-9 col-12">
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Marital Status</label>
+                            <!-- <input type="text" class="form-control" name="mother_name" /> -->
+                            <select class="form-select" data-control="select2" name="marital_status">
+                                <option value="Single">Single</option>
+                                <option value="Married">Married</option>
+                                <option value="Divorce">Divorce</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Annivarsary Date</label>
+                            <input type="text" class="form-control" name="date_of_anniversary"
+                                id="date_of_anniversary" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-9 col-12">
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Salary</label>
+                            <input type="text" class="form-control" name="salary" id="salary" />
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Joining Date</label>
+                            <input type="text" class="form-control" name="date_of_joining" id="date_of_joining" />
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-9 col-12">
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Blood Group</label>
+                            <!-- <input type="text" class="form-control" name="salary" id="salary" /> -->
+                            <select class="form-select" data-control="select2" name="blood_group" id="blood_group">
+                                <option value="A">A</option>
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B">B</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O">O</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB">AB</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row col-6">
+                        <div class="form-group">
+                            <label class="fs-6 fw-semibold required mb-2">Status</label>
+                            <!-- <input type="text" class="form-control" name="date_of_joining" id="date_of_joining" /> -->
+                            <select class="form-select" data-control="select2" name="status" id="status">
+                                <option value="Active">Active</option>
+                                <option value="Deactive">Deactive</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--begin::Input group-->
+                <div class="fv-row mb-5">
                     <!--begin::Label-->
-                    <label class="fs-6 fw-semibold mb-2">Status</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <select class="form-select" data-control="select2" name="project_status">
-                        <option value="Pending">Pending</option>
-                        <option value="In Progress">In Progress</option>
-                        <option value="Completed">Completed</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <!--end::Input-->
+                    <label class="fs-1 fw-semibold mb-2">Previous Company History</label>
+                    <div class="row col-12 mb-5">
+                        <div class="fv-row col-6">
+                            <label class="fs-6 fw-semibold mb-2">Company Name</label>
+                            <input type="text" placeholder="Enter Company Name" class="form-control"
+                                name="history[0][name_of_company]" id="history[0][name_of_company]" />
+                        </div>
+                        <div class="fv-row col-6">
+                            <label class="fs-6 fw-semibold mb-2">Role</label>
+                            <select class="form-select" data-control="select2" name="history[0][role]">
+                                <option value="developer">Developer</option>
+                                <option value="team_lead">Team Lead</option>
+                                <option value="project manager">Project Manager</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row col-12 mb-5">
+                        <div class="fv-row col-3">
+                            <label class="fs-6 fw-semibold mb-2">Start Month</label>
+                            <select class="form-select" data-control="select2" name="history[0][start_month]">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">Auguast</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="fv-row col-3">
+                            <label class="fs-6 fw-semibold mb-2">Start Year</label>
+                            <select class="form-select" data-control="select2" name="history[0][start_year]">
+                                @for($i = date( 'Y' );$i >= date( 'Y' )-25;$i--) <option value="{{$i}}">{{$i}}
+                                </option>@endfor
+                            </select>
+                        </div>
+                        <!-- </div>
+                    <div class="row col-12"> -->
+                        <div class="fv-row col-3">
+                            <label class="fs-6 fw-semibold mb-2">End Month</label>
+                            <select class="form-select" data-control="select2" name="history[0][end_month]">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">Auguast</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="fv-row col-3">
+                            <label class="fs-6 fw-semibold mb-2">End Year</label>
+                            <select class="form-select" data-control="select2" name="history[0][end_year]">
+                                @for($i = date( 'Y' );$i >= date( 'Y' )-25;$i--) <option value="{{$i}}">{{$i}}
+                                </option>@endfor
+                            </select>
+                        </div>
+                    </div>
                 </div>
                 <div class="fv-row">
-                    <!--begin::Button-->
                     <button type="reset" id="kt_modal_add_event_cancel" class="btn btn-light me-3">Cancel</button>
-                    <!--end::Button-->
-                    <!--begin::Button-->
+                    <button type="button" id="addMore" class="btn btn-success me-3">Add more</button>
                     <button type="submit" class="btn btn-primary">
                         <span class="indicator-label">Submit</span>
                         <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                     </button>
-                    <!--end::Button-->
                 </div>
             </form>
             <!--end::Form-->
         </div>
         <!--end::Content-->
-        <!--begin::Sidebar-->
-
-        <!--end::Sidebar-->
     </div>
     <!--end::Layout-->
     <!--begin::Modals-->
@@ -789,4 +896,23 @@
     <!--end::Modal - New Card-->
     <!--end::Modals-->
 </div>
+@endsection
+
+@section('script')
+<script>
+$("#date_of_birth").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false,
+    maxDate: "today"
+});
+$("#date_of_anniversary").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false,
+    maxDate: "today"
+});
+$("#date_of_joining").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false
+});
+</script>
 @endsection
