@@ -32,8 +32,9 @@
                 </div>
                 <!--end:Menu sub-->
             </div>
+            @if(Auth::user()->role != 'Developer')
             <div data-kt-menu-trigger="click"
-                class="menu-item {{ Request::segment(2) =='projects' ? 'show': '' }}  menu-accordion">
+                class="menu-item {{ Request::segment(2) == 'projects' ? 'show': '' }}  menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -96,8 +97,9 @@
                 </div>
                 <!--end:Menu sub-->
             </div>
+
             <div data-kt-menu-trigger="click"
-                class="menu-item {{ Request::segment(2) == 'customer' ? 'show': '' }} menu-accordion">
+                class="menu-item {{ Request::segment(2) == 'employee' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
                 <span class="menu-link">
                     <span class="menu-icon">
@@ -147,11 +149,10 @@
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
             </div>
+            @endif
             <!--end:Menu item-->
             <!--begin:Menu item-->
             <div data-kt-menu-trigger="click"
@@ -189,7 +190,8 @@
                     <!--begin:Menu item-->
                     <div class="menu-item">
                         <!--begin:Menu link-->
-                        <a class="menu-link" href="{{route('task.create')}}">
+                        <a class="menu-link {{ Request::segment(2) == 'task' && Request::segment(3) == 'new' ? 'active': '' }}"
+                            href="{{route('task.create')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
@@ -202,11 +204,117 @@
                     <div class="menu-item">
                         <!--begin:Menu link-->
                         <a class="menu-link {{ Request::segment(2) == 'task' && Request::segment(3) == 'list' ? 'active': '' }}"
-                            href="">
+                            href="{{route('task.index')}}">
                             <span class="menu-bullet">
                                 <span class="bullet bullet-dot"></span>
                             </span>
                             <span class="menu-title">List</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
+                    <!--end:Menu item-->
+                </div>
+                <!--end:Menu sub-->
+            </div>
+            <div data-kt-menu-trigger="click"
+                class="menu-item menu-accordion {{ Request::segment(2) == 'roles' || Request::segment(2) == 'user' || Request::segment(2) == 'permission'  ? 'show': '' }}">
+                <!--begin:Menu link-->
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="ki-duotone ki-abstract-28 fs-2">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </span>
+                    <span class="menu-title">User Management</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <!--end:Menu link-->
+                <!--begin:Menu sub-->
+                <div class="menu-sub menu-sub-accordion">
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
+                        <!--begin:Menu link-->
+                        <span class="menu-link {{ Request::segment(2) == 'user'  ? 'active': '' }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Users</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion {{ Request::segment(2) == 'user' ? 'show': '' }}">
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link {{ Request::segment(2) == 'user' && Request::segment(3) == 'list'  ? 'active': '' }}"
+                                    href="{{route('user.index')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Users List</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link {{ Request::segment(2) == 'user' && Request::segment(3) == 'new'  ? 'active': '' }}"
+                                    href="{{route('user.create')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">New User</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div data-kt-menu-trigger="click"
+                        class="menu-item menu-accordion {{ Request::segment(2) == 'roles' ? 'show': '' }}">
+                        <!--begin:Menu link-->
+                        <span class="menu-link {{ Request::segment(2) == 'roles' ? 'active': '' }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Roles</span>
+                            <span class="menu-arrow"></span>
+                        </span>
+                        <!--end:Menu link-->
+                        <!--begin:Menu sub-->
+                        <div class="menu-sub menu-sub-accordion {{ Request::segment(2) == 'roles' ? 'show': '' }}">
+                            <!--begin:Menu item-->
+                            <div class="menu-item">
+                                <!--begin:Menu link-->
+                                <a class="menu-link {{ Request::segment(2) == 'roles' && Request::segment(3) == 'list' ? 'active': '' }}"
+                                    href="{{route('roles.index')}}">
+                                    <span class="menu-bullet">
+                                        <span class="bullet bullet-dot"></span>
+                                    </span>
+                                    <span class="menu-title">Roles List</span>
+                                </a>
+                                <!--end:Menu link-->
+                            </div>
+                            <!--end:Menu item-->
+                        </div>
+                        <!--end:Menu sub-->
+                    </div>
+                    <!--end:Menu item-->
+                    <!--begin:Menu item-->
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ Request::segment(2) == 'permission' && Request::segment(3) == 'list' ? 'active' : '' }}"
+                            href="{{route('permission.index')}}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Permissions</span>
                         </a>
                         <!--end:Menu link-->
                     </div>
@@ -240,7 +348,7 @@
                         </span>
                         <!--end::Svg Icon-->
                     </span>
-                    <span class="menu-title">Task</span>
+                    <span class="menu-title">Users</span>
                     <span class="menu-arrow"></span>
                 </span>
                 <!--end:Menu link-->

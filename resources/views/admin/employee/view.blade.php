@@ -18,11 +18,11 @@
             <!--begin::Row-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-semibold text-muted">Project Name</label>
+                <label class="col-lg-4 fw-semibold text-muted">Full Name</label>
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{ $projectDetail->project_name }}</span>
+                    <span class="fw-bold fs-6 text-gray-800">{{ $employeeDetail->full_name }}</span>
                 </div>
                 <!--end::Col-->
             </div>
@@ -30,43 +30,93 @@
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-semibold text-muted">Project Type</label>
+                <label class="col-lg-4 fw-semibold text-muted">Father Name</label>
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8 fv-row">
-                    <span class="fw-semibold text-gray-800 fs-6">Online</span>
+                    <span class="fw-semibold text-gray-800 fs-6">{{ $employeeDetail->father_name }}</span>
                 </div>
                 <!--end::Col-->
             </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-
-            <!--end::Input group-->
-            <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-semibold text-muted">Project Budget</label>
+                <label class="col-lg-4 fw-semibold text-muted">Mother Name</label>
                 <!--end::Label-->
                 <!--begin::Col-->
-                <div class="col-lg-8">
-                    <a href="#" class="fw-semibold fs-6 text-gray-800 text-hover-primary">50000</a>
+                <div class="col-lg-8 fv-row">
+                    <span class="fw-semibold text-gray-800 fs-6">{{ $employeeDetail->mother_name }}</span>
                 </div>
                 <!--end::Col-->
             </div>
-            <!--end::Input group-->
-            <!--begin::Input group-->
-
-            <!--end::Input group-->
-            <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-semibold text-muted">Communication</label>
+                <label class="col-lg-4 fw-semibold text-muted">Younger Brother</label>
                 <!--end::Label-->
                 <!--begin::Col-->
-                <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">Email, Phone</span>
+                <div class="col-lg-8 fv-row">
+                    <span class="fw-semibold text-gray-800 fs-6">{{ $employeeDetail->isBrotherOrSister }}</span>
                 </div>
                 <!--end::Col-->
+            </div>
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Date of birth</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 fv-row">
+                    <span
+                        class="fw-semibold text-gray-800 fs-6">{{ date('Y-m-d',strtotime($employeeDetail->date_of_birth)) }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Annivarsary Date</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 fv-row">
+                    <span
+                        class="fw-semibold text-gray-800 fs-6">{{ date('Y-m-d',strtotime($employeeDetail->date_of_anniversary)) }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Date of joining</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 fv-row">
+                    <span
+                        class="fw-semibold text-gray-800 fs-6">{{ date('Y-m-d',strtotime($employeeDetail->date_of_joining)) }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Father Name</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 fv-row">
+                    <span class="fw-semibold text-gray-800 fs-6">{{ $employeeDetail->blood_group }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-semibold text-muted">Status</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 fv-row">
+                    @if($employeeDetail->status == 'Active')
+                    <span class="badge py-3 px-4 fs-7 badge-light-success">{{ $employeeDetail->status }}</span>
+                    @else
+                    <span class="badge py-3 px-4 fs-7 badge-light-danger">{{ $employeeDetail->status }}</span>
+                    @endif
+                </div>
+                <!--end::Col-->
+            </div>
+            <div class="card-px text-center">
+                <a href="{{route('employee.index')}}" class="right btn btn-primary">Back to list</a>
             </div>
         </div>
         <!--end::Card body-->

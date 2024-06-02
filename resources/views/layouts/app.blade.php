@@ -6,6 +6,7 @@
     <base href="">
     <title>{{ env('APP_NAME','Project Management System')}}</title>
     <meta charset="utf-8" />
+    <meta name="csrf_token" content="{{ csrf_token() }}" />
     <meta name="description"
         content="The most advanced Bootstrap Admin Theme on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Blazor, Django, Flask &amp; Laravel versions. Grab your copy now and get life-time updates for free." />
     <meta name="keywords"
@@ -44,35 +45,44 @@
         <!--begin::Page-->
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <!--begin::Header-->
-            <div id="kt_app_header" class="app-header">
+            <div id="kt_app_header" class="app-header" data-kt-sticky="true"
+                data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize"
+                data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
                 <!--begin::Header container-->
-                <div class="app-container container-fluid d-flex align-items-stretch justify-content-between">
-                    <!--begin::sidebar mobile toggle-->
-                    <div class="d-flex align-items-center d-lg-none ms-n2 me-2" title="Show sidebar menu">
+                <div class="app-container container-fluid d-flex align-items-stretch justify-content-between"
+                    id="kt_app_header_container">
+                    <!--begin::Sidebar mobile toggle-->
+                    <div class="d-flex align-items-center d-lg-none ms-n3 me-1 me-md-2" title="Show sidebar menu">
                         <div class="btn btn-icon btn-active-color-primary w-35px h-35px"
                             id="kt_app_sidebar_mobile_toggle">
-                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs015.svg-->
-                            <span class="svg-icon svg-icon-1">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M21 7H3C2.4 7 2 6.6 2 6V4C2 3.4 2.4 3 3 3H21C21.6 3 22 3.4 22 4V6C22 6.6 21.6 7 21 7Z"
-                                        fill="currentColor" />
-                                    <path opacity="0.3"
-                                        d="M21 14H3C2.4 14 2 13.6 2 13V11C2 10.4 2.4 10 3 10H21C21.6 10 22 10.4 22 11V13C22 13.6 21.6 14 21 14ZM22 20V18C22 17.4 21.6 17 21 17H3C2.4 17 2 17.4 2 18V20C2 20.6 2.4 21 3 21H21C21.6 21 22 20.6 22 20Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
+                            <i class="ki-duotone ki-abstract-14 fs-2 fs-md-1">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
                         </div>
                     </div>
-                    <!--end::sidebar mobile toggle-->
+                    <!--end::Sidebar mobile toggle-->
                     <!--begin::Mobile logo-->
+                    @if(Auth::user()->role == 'Developer')
                     <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-                        <a href="{{ url('/') }}" class="d-lg-none">
+                        <a href="{{url('/')}}" class="d-lg-none">
                             <img alt="Logo" src="/admin/assets/media/logos/default-small.svg" class="h-30px" />
                         </a>
+                        <label class="fs-5 fw-semibold w-250px mb-2">Select Project</label>
+                        <div class="fv-row">
+                            @php
+                            $projectList = \App\Models\Projects::getProjectListByAssigned();
+                            @endphp
+                            <select class="form-select w-500px" onchange="SelectProject(this.value)"
+                                data-placeholder="Select Project" data-control="select2">
+                                @foreach($projectList as $project)
+                                <option value="{{$project->id}}">{{$project->project_name}}</option>
+                                @endforeach
+                            </select>
+                            <!--end::Input-->
+                        </div>
                     </div>
+                    @endif
                     <!--end::Mobile logo-->
                     <!--begin::Header wrapper-->
                     <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1"
@@ -80,14 +90,12 @@
                         <!--begin::Menu wrapper-->
                         <div class="app-header-menu app-header-mobile-drawer align-items-stretch" data-kt-drawer="true"
                             data-kt-drawer-name="app-header-menu" data-kt-drawer-activate="{default: true, lg: false}"
-                            data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="end"
+                            data-kt-drawer-overlay="true" data-kt-drawer-width="250px" data-kt-drawer-direction="end"
                             data-kt-drawer-toggle="#kt_app_header_menu_toggle" data-kt-swapper="true"
                             data-kt-swapper-mode="{default: 'append', lg: 'prepend'}"
                             data-kt-swapper-parent="{default: '#kt_app_body', lg: '#kt_app_header_wrapper'}">
                             <!--begin::Menu-->
-                            <div class="menu menu-rounded menu-column menu-lg-row my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
-                                id="kt_app_header_menu" data-kt-menu="true">
-                            </div>
+
                             <!--end::Menu-->
                         </div>
                         <!--end::Menu wrapper-->
@@ -101,27 +109,29 @@
                                 <div class="cursor-pointer symbol symbol-35px symbol-md-40px"
                                     data-kt-menu-trigger="click" data-kt-menu-attach="parent"
                                     data-kt-menu-placement="bottom-end">
-                                    <img src="/admin/assets/media/avatars/300-1.jpg" alt="user" />
+                                    <img src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" alt="user" />
                                 </div>
                                 <!--begin::User account menu-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
+                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-350px"
                                     data-kt-menu="true">
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-3">
                                         <div class="menu-content d-flex align-items-center px-3">
                                             <!--begin::Avatar-->
                                             <div class="symbol symbol-50px me-5">
-                                                <img alt="Logo" src="/admin/assets/media/avatars/300-1.jpg" />
+                                                <img alt="Logo"
+                                                    src="{{ Avatar::create(Auth::user()->name)->toBase64() }}" />
                                             </div>
                                             <!--end::Avatar-->
                                             <!--begin::Username-->
                                             <div class="d-flex flex-column">
-                                                <div class="fw-bold d-flex align-items-center fs-5">Max Smith
+                                                <div class="fw-bold d-flex align-items-center fs-5">
+                                                    {{Auth::user()->name}}
                                                     <span
-                                                        class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Pro</span>
+                                                        class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->role }}</span>
                                                 </div>
                                                 <a href="#"
-                                                    class="fw-semibold text-muted text-hover-primary fs-7">max@kt.com</a>
+                                                    class="fw-semibold text-muted text-hover-primary fs-7">{{ Auth::user()->email }}</a>
                                             </div>
                                             <!--end::Username-->
                                         </div>
@@ -132,13 +142,16 @@
                                     <!--end::Menu separator-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-5">
-                                        <a href="admin/../demo1/dist/account/overview.html" class="menu-link px-5">My
+                                        <a href="{{route('user.profile', ['id' => Auth::user()->id ])}}"
+                                            class="menu-link px-5">My
                                             Profile</a>
                                     </div>
+                                    @if(Auth::user()->role != 'Developer')
                                     <div class="menu-item px-5 my-1">
                                         <a href="" class="menu-link px-5">Account
                                             Settings</a>
                                     </div>
+                                    @endif
                                     <!--end::Menu item-->
                                     <!--begin::Menu item-->
                                     <div class="menu-item px-5">
@@ -188,7 +201,7 @@
             <!--end::Header-->
             <!--begin::Wrapper-->
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-                <!--begin::sidebar-->
+                <!--begin::Sidebar-->
                 <div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true"
                     data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}"
                     data-kt-drawer-overlay="true" data-kt-drawer-width="225px" data-kt-drawer-direction="start"
@@ -196,31 +209,21 @@
                     <!--begin::Logo-->
                     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
                         <!--begin::Logo image-->
-                        <a href="/admin/../demo1/dist/index.html">
+                        <a href="../../demo1/dist/index.html">
                             <img alt="Logo" src="/admin/assets/media/logos/default-dark.svg"
                                 class="h-25px app-sidebar-logo-default" />
                             <img alt="Logo" src="/admin/assets/media/logos/default-small.svg"
                                 class="h-20px app-sidebar-logo-minimize" />
                         </a>
-                        <!--end::Logo image-->
-                        <!--begin::Sidebar toggle-->
+
                         <div id="kt_app_sidebar_toggle"
-                            class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
+                            class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
                             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
                             data-kt-toggle-name="app-sidebar-minimize">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr079.svg-->
-                            <span class="svg-icon svg-icon-2 rotate-180">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path opacity="0.5"
-                                        d="M14.2657 11.4343L18.45 7.25C18.8642 6.83579 18.8642 6.16421 18.45 5.75C18.0358 5.33579 17.3642 5.33579 16.95 5.75L11.4071 11.2929C11.0166 11.6834 11.0166 12.3166 11.4071 12.7071L16.95 18.25C17.3642 18.6642 18.0358 18.6642 18.45 18.25C18.8642 17.8358 18.8642 17.1642 18.45 16.75L14.2657 12.5657C13.9533 12.2533 13.9533 11.7467 14.2657 11.4343Z"
-                                        fill="currentColor" />
-                                    <path
-                                        d="M8.2657 11.4343L12.45 7.25C12.8642 6.83579 12.8642 6.16421 12.45 5.75C12.0358 5.33579 11.3642 5.33579 10.95 5.75L5.40712 11.2929C5.01659 11.6834 5.01659 12.3166 5.40712 12.7071L10.95 18.25C11.3642 18.6642 12.0358 18.6642 12.45 18.25C12.8642 17.8358 12.8642 17.1642 12.45 16.75L8.2657 12.5657C7.95328 12.2533 7.95328 11.7467 8.2657 11.4343Z"
-                                        fill="currentColor" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
+                            <i class="ki-duotone ki-black-left-line fs-3 rotate-180">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
                         </div>
                         <!--end::Sidebar toggle-->
                     </div>
@@ -233,7 +236,7 @@
                     </div>
                     <!--end::sidebar menu-->
                 </div>
-                <!--end::sidebar-->
+                <!--end::Sidebar-->
                 <!--begin::Main-->
                 <div class="app-main flex-column flex-row-fluid">
                     <div class="d-flex flex-column flex-column-fluid">
@@ -281,13 +284,24 @@
                     </div>
                     <!--end:::Main-->
                 </div>
-                <!--end::Wrapper-->
+                <!--end:::Main-->
             </div>
-            <!--end::Page-->
+            <!--end::Wrapper-->
         </div>
-        <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
-        <script src="/admin/assets/js/scripts.bundle.js"></script>
-        @yield('script')
+        <!--end::Page-->
+    </div>
+    <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/admin/assets/js/scripts.bundle.js"></script>
+    <script>
+    $(document).ready(function() {
+
+    });
+
+    function SelectProject(projectId) {
+        alert(projectId);
+    }
+    </script>
+    @yield('script')
 </body>
 <!--end::Body-->
 

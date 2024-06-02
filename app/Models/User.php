@@ -18,6 +18,7 @@ class User extends Authenticatable {
     * @var array<int, string>
     */
     protected $fillable = [
+        'member_id',
         'name',
         'email',
         'password',
@@ -48,5 +49,21 @@ class User extends Authenticatable {
 
     public function permissions() {
         return $this->belongsToMany( Permission::class );
+    }
+
+    public static function getRecordListByRole( $role ) {
+        return self::where( 'role', $role )->orderBy( 'created_at', 'DESC' )->get();
+    }
+
+    public static function getRecordList() {
+        return self::orderBy( 'created_at', 'DESC' )->get();
+    }
+
+    public static function getCountListByRole( $role ) {
+        return self::where( 'role', $role )->count();
+    }
+
+    public static function getRecordById( $id ) {
+        return self::where( 'id', $id )->first();
     }
 }

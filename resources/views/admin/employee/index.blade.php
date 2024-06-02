@@ -16,25 +16,37 @@
                                     data-kt-check-target="#kt_table_users .form-check-input" value="1" />
                             </div>
                         </th>
-                        <th class="min-w-125px">Project Name</th>
+                        <th class="min-w-125px">Full Name</th>
+                        <th class="min-w-125px">Father Name</th>
+                        <th class="min-w-125px">Mother Name</th>
+                        <th class="min-w-125px">Birth date</th>
+                        <th class="min-w-125px">Blood Group</th>
                         <th class="min-w-125px">Status</th>
                         <th class="min-w-125px">Date</th>
-                        <th class="text-end min-w-100px">Actions</th>
+                        <th class="min-w-125px">Actions</th>
                     </tr>
                 </thead>
                 <tbody class="text-gray-600 fw-semibold">
-                    @foreach($projects as $project)
+                    @foreach($employees as $employee)
                     <tr>
                         <td>
                             <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                <input class="form-check-input" type="checkbox" value="1" />
+                                <input class="form-check-input" type="checkbox" value="{{$employee->id}}" />
                             </div>
                         </td>
-                        <td>{{ $project->project_name }}</td>
+                        <td>{{ $employee->full_name }}</td>
+                        <td>{{ $employee->father_name }}</td>
+                        <td>{{ $employee->mother_name }}</td>
+                        <td>{{ date('d-m-Y',strtotime($employee->date_of_birth)) }}</td>
+                        <td>{{ $employee->blood_group }}</td>
                         <td>
-                            <div class="badge badge-light fw-bold">{{ $project->project_status }}</div>
+                            @if($employee->status == 'Active')
+                            <span class="badge py-3 px-4 fs-7 badge-light-success">{{ $employee->status }}</span>
+                            @else
+                            <span class="badge py-3 px-4 fs-7 badge-light-danger">{{ $employee->status }}</span>
+                            @endif
                         </td>
-                        <td>{{ $project->created_at }}</td>
+                        <td>{{ $employee->created_at }}</td>
                         <td class="text-end">
                             <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
@@ -44,7 +56,7 @@
                                 data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{route('project.edit',['id'=>$project->id])}}"
+                                    <a href="{{route('employee.edit',['id'=>$employee->id])}}"
                                         class="menu-link px-3">Edit</a>
                                 </div>
                                 <!--end::Menu item-->
@@ -54,8 +66,16 @@
                                         data-kt-users-table-filter="delete_row">Delete</a>
                                 </div>
                                 <div class="menu-item px-3">
-                                    <a href="{{route('project.view',['id'=>$project->id])}}"
+                                    <a href="{{route('employee.view',['id'=>$employee->id])}}"
                                         class="menu-link px-3">View</a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a href="{{route('employee.education.details',['id'=>$employee->id])}}"
+                                        class="menu-link px-3">Educational</a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a href="{{route('employee.company.details',['id'=>$employee->id])}}"
+                                        class="menu-link px-3">Company</a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>

@@ -14,4 +14,8 @@ class Projects extends Model {
     public static function getRecordList() {
         return self::orderBy( 'id', 'desc' )->get();
     }
+
+    public static function getProjectListByAssigned() {
+        return self::orderBy( 'id', 'desc' )->get();
+    }
 }

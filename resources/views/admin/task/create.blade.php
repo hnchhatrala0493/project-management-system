@@ -19,18 +19,7 @@
                 </div>
                 <!--end::Input group-->
                 <!--begin::Input group-->
-                <div class="fv-row mb-9">
-                    <!--begin::Label-->
-                    <label class="fs-6 fw-semibold mb-2">Project Name</label>
-                    <!--end::Label-->
-                    <!--begin::Input-->
-                    <select class="form-select" name="project_category">
-                        @foreach($categorys as $category)
-                        <option value="{{ $category->id }}">{{$category->categorie_name}}</option>
-                        @endforeach
-                    </select>
-                    <!--end::Input-->
-                </div>
+
                 <div class="fv-row mb-9">
                     <!--begin::Label-->
                     <label class="fs-6 fw-semibold mb-2">Status</label>
