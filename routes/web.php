@@ -27,7 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
     Route::group(['prefix'=> 'projects'], function(){
@@ -86,6 +86,8 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/profile/{id}', [UserController::class,'getProfile'])->name("user.profile");
         Route::post('/change/password', [UserController::class,'changePasswordOrEmail'])->name("user.changePassword");
         Route::get('/send/{email}/{name}/password', [UserController::class,'sendEmailForChangePassword'])->name("user.sendemail.password");
+        Route::get('/new/password', [UserController::class,'ChangePassword'])->name("user.new.password");
+        Route::post('/new/password/change', [UserController::class,'UpdatePassword'])->name("user.update.password");
     });
     Route::group(['prefix'=>'roles'], function(){
         Route::get('/list', [RolesController::class,'index'])->name("roles.index");
@@ -111,5 +113,5 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::post('/update', [ModulesController::class,'update'])->name("module.update");
         Route::get('/show/{id}', [ModulesController::class,'show'])->name("module.view");
     });
-    Route::get( 'dashboard', [DashboardController::class, 'index' ] )->name( 'home' );
+    //Route::get( 'dashboard', [DashboardController::class, 'index' ] )->name( 'home' );
 });

@@ -23,25 +23,13 @@ body {
                         style="text-align:left; margin: 0 20px; padding: 40px; background-color:#ffffff; border-radius: 6px">
                         <!--begin:Email content-->
                         <div style="padding-bottom: 30px; font-size: 17px;">
-                            <strong>Hello!</strong>
+                            <strong>Hello {{$name}}!</strong>
                         </div>
-                        <div style="padding-bottom: 30px">You are receiving this email because we received a password
-                            reset request for your account. To proceed with the password reset please click on the
-                            button below:</div>
-                        <div style="padding-bottom: 40px; text-align:center;">
-                            <a href="" rel="noopener"
-                                style="text-decoration:none;display:inline-block;text-align:center;padding:0.75575rem 1.3rem;font-size:0.925rem;line-height:1.5;border-radius:0.35rem;color:#ffffff;background-color:#009ef7;border:0px;margin-right:0.75rem!important;font-weight:600!important;outline:none!important;vertical-align:middle"
-                                target="_blank">Reset Password</a>
-                        </div>
-                        <div style="padding-bottom: 30px">This password reset link will expire in 60 minutes. If you did
-                            not request a password reset, no further action is required.</div>
-                        <div style="border-bottom: 1px solid #eeeeee; margin: 15px 0"></div>
-                        <div style="padding-bottom: 50px; word-wrap: break-all;">
-                            <p style="margin-bottom: 10px;">Button not working? Try pasting this URL into your browser:
-                            </p>
-                            <a href="https://keenthemes.com/password/reset/07579ae29b6?email=max%40kt.com"
-                                rel="noopener" target="_blank"
-                                style="text-decoration:none;color: #009ef7">https://keenthemes.com/account/password/reset/07579ae29b6?email=max%40kt.com</a>
+                        <div style="padding-bottom: 20px">Your Keenthemes password was just changed.</div>
+                        <div style="padding-bottom: 40px">If you didn't change your password, please contact our
+                            <a href="#" rel="noopener" target="_blank"
+                                style="text-decoration:none;color: #009ef7; font-weight: bold">support team</a>. Your
+                            security is very important to us!
                         </div>
                         <!--end:Email content-->
                         <div style="padding-bottom: 10px">Kind regards,

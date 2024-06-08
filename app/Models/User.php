@@ -56,7 +56,7 @@ class User extends Authenticatable {
     }
 
     public static function getRecordList() {
-        return self::orderBy( 'created_at', 'DESC' )->get();
+        return self::orderBy( 'created_at', 'DESC' )->simplePaginate( 10 );
     }
 
     public static function getCountListByRole( $role ) {
@@ -65,5 +65,9 @@ class User extends Authenticatable {
 
     public static function getRecordById( $id ) {
         return self::where( 'id', $id )->first();
+    }
+
+    public static function UpdatePasswordByEmail( $email, $password ) {
+        return self::where( 'email', $email )->update( [ 'password'=>$password ] );
     }
 }

@@ -458,7 +458,7 @@
         <!--begin::Card body-->
         <div class="card-body py-4">
             <!--begin::Table-->
-            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
+            <table class="table align-middle table-row-dashed fs-6 gy-5" id="table_users">
                 <thead>
                     <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                         <th class="w-10px pe-2">
@@ -487,7 +487,7 @@
                             <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
                                 <a href="#">
                                     <div class="symbol-label">
-                                        <img src="{{ Avatar::create($user->name)->toBase64() }}" alt="Emma Smith"
+                                        <img src="{{ Avatar::create($user->name)->toBase64() }}" alt="{{$user->name}}"
                                             class="w-100" />
                                     </div>
                                 </a>
@@ -535,6 +535,9 @@
                     @endforeach
                 </tbody>
             </table>
+            <div class="pagination">
+                {{ $userList->render() }}
+            </div>
             <!--end::Table-->
         </div>
         <!--end::Card body-->

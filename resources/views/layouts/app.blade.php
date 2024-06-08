@@ -292,9 +292,10 @@
     </div>
     <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/admin/assets/js/scripts.bundle.js"></script>
+    <script src="/admin/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <script>
     $(document).ready(function() {
-
+        $('#table_users').dataTables();
     });
 
     function SelectProject(projectId) {

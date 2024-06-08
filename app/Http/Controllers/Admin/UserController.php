@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SendEmail;
 use App\Models\EmailLog;
 use App\Models\Role;
 use App\Models\StaffMembers;
@@ -162,21 +163,50 @@ class UserController extends Controller {
         return view( 'admin.user.profile', compact( 'getProfileDetail', 'title' ) );
     }
 
-    public function sendEmailForChangePassword( $email,$name ) {
-        $data = [];
-        EmailLog::create([
-            'subject' => env('APP_NAME').' - '. " Change Password",
+    public function sendEmailForChangePassword( $email, $name ) {
+        $emailTemplate = 'admin.email_template.changePassword';
+        $subject = 'Change Your Password';
+        $data = [
+            'link' => route( 'user.new.password', [ 'email' => encrypt( $email ), 'name'=> encrypt( $name ) ] ),
+            'name' => $name
+        ];
+        EmailLog::create( [
+            'subject' => env( 'APP_NAME' ).' - '. $subject,
             'to' => $email,
-            'from'=>env('MAIL_FROM_ADDRESS'),
-            'date'=>date('Y-m-d',strtotime('now'))
-        ]);
-        
-        Mail::send('admin.email.changePassword',$data,function($message) use ( $email,$name) {
-            $message->to($email, $name)
-            ->subject(env('APP_NAME').' - '. " Change Password");
-            $message->from(env('MAIL_FROM_ADDRESS'),env('MAIL_FROM_NAME'));
-        });      
-        
+            'from'=>env( 'MAIL_FROM_ADDRESS' ),
+            'date'=>date( 'Y-m-d', strtotime( 'now' ) )
+        ] );
+
+        SendEmail::sendEmail( $emailTemplate, $data, $email, $name, $subject );
         return redirect()->back();
     }
+
+    public function ChangePassword( Request $request ) {
+        $email = $request->get( 'email' );
+        $name = $request->get( 'name' );
+        return view( 'admin.user.newPassword', compact( 'email', 'name' ) );
+    }
+
+    public function UpdatePassword( Request $request ) {
+        $subject = 'Your password has been successfully updated';
+        $email = decrypt( $request->get( 'email' ) );
+        $name = decrypt( $request->get( 'name' ) ) ?? 'Admin';
+        $password = $request->get( 'password' );
+        $emailTemplate = 'admin.email_template.changedPassword';
+        $data = [
+            'name'=> $name
+        ];
+        $updatePassword = User::UpdatePasswordByEmail( $email, $password );
+        if ( $updatePassword ) {
+            EmailLog::create( [
+                'subject' => env( 'APP_NAME' ).' - '. $subject,
+                'to' => $request->get( 'email' ),
+                'from'=>env( 'MAIL_FROM_ADDRESS' ),
+                'date'=>date( 'Y-m-d', strtotime( 'now' ) )
+            ] );
+            SendEmail::sendEmail( $emailTemplate, $data, $email, $name, $subject );
+        }
+        return redirect()->route( 'logout' );
+    }
+
 }

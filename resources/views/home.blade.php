@@ -1,3911 +1,1979 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<!--
+Author: Keenthemes
+Product Name: Metronic
+Product Version: 8.1.9
+Purchase: https://1.envato.market/EA4JP
+Website: http://www.keenthemes.com
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
+-->
+<html lang="en">
+<!--begin::Head-->
 
-@section('content')
-<div id="kt_app_content_container" class="app-container container-xxl">
-    <!--begin::Row-->
-    <div class="row g-5 g-xl-10 mb-xl-10">
-        <!--begin::Col-->
-        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-            <!--begin::Card widget 16-->
-            <div class="card card-flush bgi-no-repeat bgi-size-contain bgi-position-x-center border-0 h-md-50 mb-5 mb-xl-10"
-                style="background-color: #080655">
+<head>
+    <base href="" />
+    <title>Metronic - The World's #1 Selling Bootstrap Admin Template by Keenthemes</title>
+    <meta charset="utf-8" />
+    <meta name="description"
+        content="The most advanced Bootstrap 5 Admin Theme with 40 unique prebuilt layouts on Themeforest trusted by 100,000 beginners and professionals. Multi-demo, Dark Mode, RTL support and complete React, Angular, Vue, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel versions. Grab your copy now and get life-time updates for free." />
+    <meta name="keywords"
+        content="metronic, bootstrap, bootstrap 5, angular, VueJs, React, Asp.Net Core, Rails, Spring, Blazor, Django, Express.js, Node.js, Flask, Symfony & Laravel starter kits, admin themes, web design, figma, web development, free templates, free admin themes, bootstrap theme, bootstrap template, bootstrap dashboard, bootstrap dak mode, bootstrap button, bootstrap datepicker, bootstrap timepicker, fullcalendar, datatables, flaticon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title"
+        content="Metronic - Bootstrap Admin Template, HTML, VueJS, React, Angular. Laravel, Asp.Net Core, Ruby on Rails, Spring Boot, Blazor, Django, Express.js, Node.js, Flask Admin Dashboard Theme & Template" />
+    <meta property="og:url" content="https://keenthemes.com/metronic" />
+    <meta property="og:site_name" content="Keenthemes | Metronic" />
+    <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
+    <link rel="shortcut icon" href="/admin/assets/media/logos/favicon.ico" />
+    <!--begin::Fonts(mandatory for all pages)-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
+    <!--end::Fonts-->
+    <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
+    <link href="/admin/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="/admin/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+    <script>
+    // Frame-busting to prevent site from being loaded within a frame without permission (click-jacking) if (window.top != window.self) { window.top.location.replace(window.self.location.href); }
+    </script>
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body id="kt_body" data-bs-spy="scroll" data-bs-target="#kt_landing_menu" class="bg-body position-relative app-blank">
+    <!--begin::Theme mode setup on page load-->
+    <script>
+    var defaultThemeMode = "light";
+    var themeMode;
+    if (document.documentElement) {
+        if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
+            themeMode = document.documentElement.getAttribute("data-bs-theme-mode");
+        } else {
+            if (localStorage.getItem("data-bs-theme") !== null) {
+                themeMode = localStorage.getItem("data-bs-theme");
+            } else {
+                themeMode = defaultThemeMode;
+            }
+        }
+        if (themeMode === "system") {
+            themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-bs-theme", themeMode);
+    }
+    </script>
+    <!--end::Theme mode setup on page load-->
+    <!--begin::Root-->
+    <div class="d-flex flex-column flex-root" id="kt_app_root">
+        <!--begin::Header Section-->
+        <div class="mb-0" id="home">
+            <!--begin::Wrapper-->
+            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-center bgi-position-y-bottom landing-dark-bg"
+                style="background-image: url(/admin/assets/media/svg/illustrations/landing.svg)">
                 <!--begin::Header-->
-                <div class="card-header pt-5">
-                    <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
-                        <!--begin::Amount-->
-                        <span class="fs-2hx fw-bold text-white me-2 lh-1 ls-n2">69</span>
-                        <!--end::Amount-->
-                        <!--begin::Subtitle-->
-                        <span class="text-white opacity-50 pt-1 fw-semibold fs-6">Active Projects</span>
-                        <!--end::Subtitle-->
+                <div class="landing-header" data-kt-sticky="true" data-kt-sticky-name="landing-header"
+                    data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+                    <!--begin::Container-->
+                    <div class="container">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex align-items-center justify-content-between">
+                            <!--begin::Logo-->
+                            <div class="d-flex align-items-center flex-equal">
+                                <!--begin::Mobile menu toggle-->
+                                <button class="btn btn-icon btn-active-color-primary me-3 d-flex d-lg-none"
+                                    id="kt_landing_menu_toggle">
+                                    <i class="ki-duotone ki-abstract-14 fs-2hx">
+                                        <span class="path1"></span>
+                                        <span class="path2"></span>
+                                    </i>
+                                </button>
+                                <!--end::Mobile menu toggle-->
+                                <!--begin::Logo image-->
+                                <a href="../../demo1/dist/landing.html">
+                                    <img alt="Logo" src="/admin/assets/media/logos/landing.svg"
+                                        class="logo-default h-25px h-lg-30px" />
+                                    <img alt="Logo" src="/admin/assets/media/logos/landing-dark.svg"
+                                        class="logo-sticky h-20px h-lg-25px" />
+                                </a>
+                                <!--end::Logo image-->
+                            </div>
+                            <!--end::Logo-->
+                            <!--begin::Menu wrapper-->
+                            <div class="d-lg-block" id="kt_header_nav_wrapper">
+                                <div class="d-lg-block p-5 p-lg-0" data-kt-drawer="true"
+                                    data-kt-drawer-name="landing-menu"
+                                    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
+                                    data-kt-drawer-width="200px" data-kt-drawer-direction="start"
+                                    data-kt-drawer-toggle="#kt_landing_menu_toggle" data-kt-swapper="true"
+                                    data-kt-swapper-mode="prepend"
+                                    data-kt-swapper-parent="{default: '#kt_body', lg: '#kt_header_nav_wrapper'}">
+                                    <!--begin::Menu-->
+                                    <div class="menu menu-column flex-nowrap menu-rounded menu-lg-row menu-title-gray-600 menu-state-title-primary nav nav-flush fs-5 fw-semibold"
+                                        id="kt_landing_menu">
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link active py-3 px-4 px-xxl-6" href="#kt_body"
+                                                data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Home</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#how-it-works"
+                                                data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">How it
+                                                Works</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#achievements"
+                                                data-kt-scroll-toggle="true"
+                                                data-kt-drawer-dismiss="true">Achievements</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#team"
+                                                data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Team</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#portfolio"
+                                                data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Portfolio</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                        <!--begin::Menu item-->
+                                        <div class="menu-item">
+                                            <!--begin::Menu link-->
+                                            <a class="menu-link nav-link py-3 px-4 px-xxl-6" href="#pricing"
+                                                data-kt-scroll-toggle="true" data-kt-drawer-dismiss="true">Pricing</a>
+                                            <!--end::Menu link-->
+                                        </div>
+                                        <!--end::Menu item-->
+                                    </div>
+                                    <!--end::Menu-->
+                                </div>
+                            </div>
+                            <!--end::Menu wrapper-->
+                            <!--begin::Toolbar-->
+                            <div class="flex-equal text-end ms-1">
+                                <a href="{{route('login')}}" class="btn btn-success">Sign In</a>
+                            </div>
+                            <!--end::Toolbar-->
+                        </div>
+                        <!--end::Wrapper-->
                     </div>
-                    <!--end::Title-->
+                    <!--end::Container-->
                 </div>
                 <!--end::Header-->
-                <!--begin::Card body-->
-                <div class="card-body d-flex align-items-end pt-0">
-                    <!--begin::Progress-->
-                    <div class="d-flex align-items-center flex-column mt-3 w-100">
-                        <div
-                            class="d-flex justify-content-between fw-bold fs-6 text-white opacity-50 w-100 mt-auto mb-2">
-                            <span>43 Pending</span>
-                            <span>72%</span>
-                        </div>
-                        <div class="h-8px mx-3 w-100 bg-light-danger rounded">
-                            <div class="bg-danger rounded h-8px" role="progressbar" style="width: 72%;"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
+                <!--begin::Landing hero-->
+                <div class="d-flex flex-column flex-center w-100 min-h-350px min-h-lg-500px px-9">
+                    <!--begin::Heading-->
+                    <div class="text-center mb-5 mb-lg-10 py-10 py-lg-20">
+                        <!--begin::Title-->
+                        <h1 class="text-white lh-base fw-bold fs-2x fs-lg-3x mb-15">Build An Outstanding Solutions
+                            <br />with
+                            <span
+                                style="background: linear-gradient(to right, #12CE5D 0%, #FFD80C 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
+                                <span id="kt_landing_hero_text">The Best Theme Ever</span>
+                            </span>
+                        </h1>
+                        <!--end::Title-->
+                        <!--begin::Action-->
+                        <a href="../../demo1/dist/index.html" class="btn btn-primary">Try Metronic</a>
+                        <!--end::Action-->
                     </div>
-                    <!--end::Progress-->
+                    <!--end::Heading-->
+                    <!--begin::Clients-->
+                    <div class="d-flex flex-center flex-wrap position-relative px-5">
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Fujifilm">
+                            <img src="/admin/assets/media/svg/brand-logos/fujifilm.svg" class="mh-30px mh-lg-40px"
+                                alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Vodafone">
+                            <img src="/admin/assets/media/svg/brand-logos/vodafone.svg" class="mh-30px mh-lg-40px"
+                                alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="KPMG International">
+                            <img src="/admin/assets/media/svg/brand-logos/kpmg.svg" class="mh-30px mh-lg-40px" alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Nasa">
+                            <img src="/admin/assets/media/svg/brand-logos/nasa.svg" class="mh-30px mh-lg-40px" alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Aspnetzero">
+                            <img src="/admin/assets/media/svg/brand-logos/aspnetzero.svg" class="mh-30px mh-lg-40px"
+                                alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip"
+                            title="AON - Empower Results">
+                            <img src="/admin/assets/media/svg/brand-logos/aon.svg" class="mh-30px mh-lg-40px" alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Hewlett-Packard">
+                            <img src="/admin/assets/media/svg/brand-logos/hp-3.svg" class="mh-30px mh-lg-40px" alt="" />
+                        </div>
+                        <!--end::Client-->
+                        <!--begin::Client-->
+                        <div class="d-flex flex-center m-3 m-md-6" data-bs-toggle="tooltip" title="Truman">
+                            <img src="/admin/assets/media/svg/brand-logos/truman.svg" class="mh-30px mh-lg-40px"
+                                alt="" />
+                        </div>
+                        <!--end::Client-->
+                    </div>
+                    <!--end::Clients-->
                 </div>
-                <!--end::Card body-->
+                <!--end::Landing hero-->
             </div>
-            <!--end::Card widget 16-->
-            <!--begin::Card widget 7-->
-            <div class="card card-flush h-md-50 mb-5 mb-xl-10">
-                <!--begin::Header-->
-                <div class="card-header pt-5">
-                    <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
-                        <!--begin::Amount-->
-                        <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">357</span>
-                        <!--end::Amount-->
-                        <!--begin::Subtitle-->
-                        <span class="text-gray-400 pt-1 fw-semibold fs-6">Professionals</span>
-                        <!--end::Subtitle-->
-                    </div>
-                    <!--end::Title-->
-                </div>
-                <!--end::Header-->
-                <!--begin::Card body-->
-                <div class="card-body d-flex flex-column justify-content-end pe-0">
-                    <!--begin::Title-->
-                    <span class="fs-6 fw-bolder text-gray-800 d-block mb-2">Today’s Heroes</span>
-                    <!--end::Title-->
-                    <!--begin::Users group-->
-                    <div class="symbol-group symbol-hover flex-nowrap">
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Alan Warden">
-                            <span class="symbol-label bg-warning text-inverse-warning fw-bold">A</span>
-                        </div>
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Michael Eberon">
-                            <img alt="Pic" src="assets/media/avatars/300-11.jpg" />
-                        </div>
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Susan Redwood">
-                            <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
-                        </div>
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Melody Macy">
-                            <img alt="Pic" src="assets/media/avatars/300-2.jpg" />
-                        </div>
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Perry Matthew">
-                            <span class="symbol-label bg-danger text-inverse-danger fw-bold">P</span>
-                        </div>
-                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Barry Walter">
-                            <img alt="Pic" src="assets/media/avatars/300-12.jpg" />
-                        </div>
-                        <a href="#" class="symbol symbol-35px symbol-circle" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_view_users">
-                            <span class="symbol-label bg-dark text-gray-300 fs-8 fw-bold">+42</span>
-                        </a>
-                    </div>
-                    <!--end::Users group-->
-                </div>
-                <!--end::Card body-->
+            <!--end::Wrapper-->
+            <!--begin::Curve bottom-->
+            <div class="landing-curve landing-dark-color mb-10 mb-lg-20">
+                <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
+                        fill="currentColor"></path>
+                </svg>
             </div>
-            <!--end::Card widget 7-->
+            <!--end::Curve bottom-->
         </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-md-6 col-lg-6 col-xl-6 col-xxl-3 mb-md-5 mb-xl-10">
-            <!--begin::Card widget 17-->
-            <div class="card card-flush h-md-50 mb-5 mb-xl-10">
-                <!--begin::Header-->
-                <div class="card-header pt-5">
+        <!--end::Header Section-->
+        <!--begin::How It Works Section-->
+        <div class="mb-n10 mb-lg-n20 z-index-2">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Heading-->
+                <div class="text-center mb-17">
                     <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
-                        <!--begin::Info-->
-                        <div class="d-flex align-items-center">
-                            <!--begin::Currency-->
-                            <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">$</span>
-                            <!--end::Currency-->
-                            <!--begin::Amount-->
-                            <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">69,700</span>
-                            <!--end::Amount-->
-                            <!--begin::Badge-->
-                            <span class="badge badge-light-success fs-base">
-                                <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
+                    <h3 class="fs-2hx text-dark mb-5" id="how-it-works" data-kt-scroll-offset="{default: 100, lg: 150}">
+                        How it Works</h3>
+                    <!--end::Title-->
+                    <!--begin::Text-->
+                    <div class="fs-5 text-muted fw-bold">Save thousands to millions of bucks by using single tool
+                        <br />for different amazing and great useful admin
+                    </div>
+                    <!--end::Text-->
+                </div>
+                <!--end::Heading-->
+                <!--begin::Row-->
+                <div class="row w-100 gy-10 mb-md-20">
+                    <!--begin::Col-->
+                    <div class="col-md-4 px-5">
+                        <!--begin::Story-->
+                        <div class="text-center mb-10 mb-md-0">
+                            <!--begin::Illustration-->
+                            <img src="/admin/assets/media/illustrations/sketchy-1/2.png" class="mh-125px mb-9" alt="" />
+                            <!--end::Illustration-->
+                            <!--begin::Heading-->
+                            <div class="d-flex flex-center mb-5">
+                                <!--begin::Badge-->
+                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">1</span>
+                                <!--end::Badge-->
+                                <!--begin::Title-->
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Jane Miller</div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Heading-->
+                            <!--begin::Description-->
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
+                                <br />by using single tool for different
+                                <br />amazing and great
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Story-->
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-4 px-5">
+                        <!--begin::Story-->
+                        <div class="text-center mb-10 mb-md-0">
+                            <!--begin::Illustration-->
+                            <img src="/admin/assets/media/illustrations/sketchy-1/8.png" class="mh-125px mb-9" alt="" />
+                            <!--end::Illustration-->
+                            <!--begin::Heading-->
+                            <div class="d-flex flex-center mb-5">
+                                <!--begin::Badge-->
+                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">2</span>
+                                <!--end::Badge-->
+                                <!--begin::Title-->
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Setup Your App</div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Heading-->
+                            <!--begin::Description-->
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
+                                <br />by using single tool for different
+                                <br />amazing and great
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Story-->
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-md-4 px-5">
+                        <!--begin::Story-->
+                        <div class="text-center mb-10 mb-md-0">
+                            <!--begin::Illustration-->
+                            <img src="/admin/assets/media/illustrations/sketchy-1/12.png" class="mh-125px mb-9"
+                                alt="" />
+                            <!--end::Illustration-->
+                            <!--begin::Heading-->
+                            <div class="d-flex flex-center mb-5">
+                                <!--begin::Badge-->
+                                <span class="badge badge-circle badge-light-success fw-bold p-5 me-3 fs-3">3</span>
+                                <!--end::Badge-->
+                                <!--begin::Title-->
+                                <div class="fs-5 fs-lg-3 fw-bold text-dark">Enjoy Nautica App</div>
+                                <!--end::Title-->
+                            </div>
+                            <!--end::Heading-->
+                            <!--begin::Description-->
+                            <div class="fw-semibold fs-6 fs-lg-4 text-muted">Save thousands to millions of bucks
+                                <br />by using single tool for different
+                                <br />amazing and great
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Story-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
+                <!--begin::Product slider-->
+                <div class="tns tns-default">
+                    <!--begin::Slider-->
+                    <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000"
+                        data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true"
+                        data-tns-nav="false" data-tns-items="1" data-tns-center="false" data-tns-dots="false"
+                        data-tns-prev-button="#kt_team_slider_prev1" data-tns-next-button="#kt_team_slider_next1">
+                        <!--begin::Item-->
+                        <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                            <img src="/admin/assets/media/preview/demos/demo1/light-ltr.png"
+                                class="card-rounded shadow mh-lg-650px mw-100" alt="" />
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                            <img src="/admin/assets/media/preview/demos/demo2/light-ltr.png"
+                                class="card-rounded shadow mh-lg-650px mw-100" alt="" />
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                            <img src="/admin/assets/media/preview/demos/demo4/light-ltr.png"
+                                class="card-rounded shadow mh-lg-650px mw-100" alt="" />
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center px-5 pt-5 pt-lg-10 px-lg-10">
+                            <img src="/admin/assets/media/preview/demos/demo5/light-ltr.png"
+                                class="card-rounded shadow mh-lg-650px mw-100" alt="" />
+                        </div>
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Slider-->
+                    <!--begin::Slider button-->
+                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev1">
+                        <i class="ki-duotone ki-left fs-2x"></i>
+                    </button>
+                    <!--end::Slider button-->
+                    <!--begin::Slider button-->
+                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next1">
+                        <i class="ki-duotone ki-right fs-2x"></i>
+                    </button>
+                    <!--end::Slider button-->
+                </div>
+                <!--end::Product slider-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::How It Works Section-->
+        <!--begin::Statistics Section-->
+        <div class="mt-sm-n10">
+            <!--begin::Curve top-->
+            <div class="landing-curve landing-dark-color">
+                <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 48C4.93573 47.6644 8.85984 47.3311 12.7725 47H1489.16C1493.1 47.3311 1497.04 47.6644 1501 48V47H1489.16C914.668 -1.34764 587.282 -1.61174 12.7725 47H1V48Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <!--end::Curve top-->
+            <!--begin::Wrapper-->
+            <div class="pb-15 pt-18 landing-dark-bg">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Heading-->
+                    <div class="text-center mt-15 mb-18" id="achievements"
+                        data-kt-scroll-offset="{default: 100, lg: 150}">
+                        <!--begin::Title-->
+                        <h3 class="fs-2hx text-white fw-bold mb-5">We Make Things Better</h3>
+                        <!--end::Title-->
+                        <!--begin::Description-->
+                        <div class="fs-5 text-gray-700 fw-bold">Save thousands to millions of bucks by using single tool
+                            <br />for different amazing and great useful admin
+                        </div>
+                        <!--end::Description-->
+                    </div>
+                    <!--end::Heading-->
+                    <!--begin::Statistics-->
+                    <div class="d-flex flex-center">
+                        <!--begin::Items-->
+                        <div class="d-flex flex-wrap flex-center justify-content-lg-between mb-15 mx-auto w-xl-900px">
+                            <!--begin::Item-->
+                            <div class="d-flex flex-column flex-center h-200px w-200px h-lg-250px w-lg-250px m-3 bgi-no-repeat bgi-position-center bgi-size-contain"
+                                style="background-image: url('/admin/assets/media/svg/misc/octagon.svg')">
+                                <!--begin::Symbol-->
+                                <i class="ki-duotone ki-element-11 fs-2tx text-white mb-3">
                                     <span class="path1"></span>
                                     <span class="path2"></span>
-                                </i>2.2%</span>
-                            <!--end::Badge-->
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                                <!--end::Symbol-->
+                                <!--begin::Info-->
+                                <div class="mb-0">
+                                    <!--begin::Value-->
+                                    <div class="fs-lg-2hx fs-2x fw-bold text-white d-flex flex-center">
+                                        <div class="min-w-70px" data-kt-countup="true" data-kt-countup-value="700"
+                                            data-kt-countup-suffix="+">0</div>
+                                    </div>
+                                    <!--end::Value-->
+                                    <!--begin::Label-->
+                                    <span class="text-gray-600 fw-semibold fs-5 lh-0">Known Companies</span>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="d-flex flex-column flex-center h-200px w-200px h-lg-250px w-lg-250px m-3 bgi-no-repeat bgi-position-center bgi-size-contain"
+                                style="background-image: url('/admin/assets/media/svg/misc/octagon.svg')">
+                                <!--begin::Symbol-->
+                                <i class="ki-duotone ki-chart-pie-4 fs-2tx text-white mb-3">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                </i>
+                                <!--end::Symbol-->
+                                <!--begin::Info-->
+                                <div class="mb-0">
+                                    <!--begin::Value-->
+                                    <div class="fs-lg-2hx fs-2x fw-bold text-white d-flex flex-center">
+                                        <div class="min-w-70px" data-kt-countup="true" data-kt-countup-value="80"
+                                            data-kt-countup-suffix="K+">0</div>
+                                    </div>
+                                    <!--end::Value-->
+                                    <!--begin::Label-->
+                                    <span class="text-gray-600 fw-semibold fs-5 lh-0">Statistic Reports</span>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Item-->
+                            <!--begin::Item-->
+                            <div class="d-flex flex-column flex-center h-200px w-200px h-lg-250px w-lg-250px m-3 bgi-no-repeat bgi-position-center bgi-size-contain"
+                                style="background-image: url('/admin/assets/media/svg/misc/octagon.svg')">
+                                <!--begin::Symbol-->
+                                <i class="ki-duotone ki-basket fs-2tx text-white mb-3">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                    <span class="path3"></span>
+                                    <span class="path4"></span>
+                                </i>
+                                <!--end::Symbol-->
+                                <!--begin::Info-->
+                                <div class="mb-0">
+                                    <!--begin::Value-->
+                                    <div class="fs-lg-2hx fs-2x fw-bold text-white d-flex flex-center">
+                                        <div class="min-w-70px" data-kt-countup="true" data-kt-countup-value="35"
+                                            data-kt-countup-suffix="M+">0</div>
+                                    </div>
+                                    <!--end::Value-->
+                                    <!--begin::Label-->
+                                    <span class="text-gray-600 fw-semibold fs-5 lh-0">Secure Payments</span>
+                                    <!--end::Label-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Item-->
                         </div>
-                        <!--end::Info-->
-                        <!--begin::Subtitle-->
-                        <span class="text-gray-400 pt-1 fw-semibold fs-6">Projects Earnings in April</span>
-                        <!--end::Subtitle-->
+                        <!--end::Items-->
                     </div>
-                    <!--end::Title-->
+                    <!--end::Statistics-->
+                    <!--begin::Testimonial-->
+                    <div class="fs-2 fw-semibold text-muted text-center mb-3">
+                        <span class="fs-1 lh-1 text-gray-700">“</span>When you care about your topic, you’ll write about
+                        it in a
+                        <br />
+                        <span class="text-gray-700 me-1">more powerful</span>, emotionally expressive way
+                        <span class="fs-1 lh-1 text-gray-700">“</span>
+                    </div>
+                    <!--end::Testimonial-->
+                    <!--begin::Author-->
+                    <div class="fs-2 fw-semibold text-muted text-center">
+                        <a href="../../demo1/dist/account/security.html" class="link-primary fs-4 fw-bold">Marcus
+                            Levy,</a>
+                        <span class="fs-4 fw-bold text-gray-600">KeenThemes CEO</span>
+                    </div>
+                    <!--end::Author-->
                 </div>
-                <!--end::Header-->
-                <!--begin::Card body-->
-                <div class="card-body pt-2 pb-4 d-flex flex-wrap align-items-center">
-                    <!--begin::Chart-->
-                    <div class="d-flex flex-center me-5 pt-2">
-                        <div id="kt_card_widget_17_chart" style="min-width: 70px; min-height: 70px" data-kt-size="70"
-                            data-kt-line="11"></div>
-                    </div>
-                    <!--end::Chart-->
-                    <!--begin::Labels-->
-                    <div class="d-flex flex-column content-justify-center flex-row-fluid">
-                        <!--begin::Label-->
-                        <div class="d-flex fw-semibold align-items-center">
-                            <!--begin::Bullet-->
-                            <div class="bullet w-8px h-3px rounded-2 bg-success me-3"></div>
-                            <!--end::Bullet-->
-                            <!--begin::Label-->
-                            <div class="text-gray-500 flex-grow-1 me-4">Leaf CRM</div>
-                            <!--end::Label-->
-                            <!--begin::Stats-->
-                            <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
-                            <!--end::Stats-->
-                        </div>
-                        <!--end::Label-->
-                        <!--begin::Label-->
-                        <div class="d-flex fw-semibold align-items-center my-3">
-                            <!--begin::Bullet-->
-                            <div class="bullet w-8px h-3px rounded-2 bg-primary me-3"></div>
-                            <!--end::Bullet-->
-                            <!--begin::Label-->
-                            <div class="text-gray-500 flex-grow-1 me-4">Mivy App</div>
-                            <!--end::Label-->
-                            <!--begin::Stats-->
-                            <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
-                            <!--end::Stats-->
-                        </div>
-                        <!--end::Label-->
-                        <!--begin::Label-->
-                        <div class="d-flex fw-semibold align-items-center">
-                            <!--begin::Bullet-->
-                            <div class="bullet w-8px h-3px rounded-2 me-3" style="background-color: #E4E6EF"></div>
-                            <!--end::Bullet-->
-                            <!--begin::Label-->
-                            <div class="text-gray-500 flex-grow-1 me-4">Others</div>
-                            <!--end::Label-->
-                            <!--begin::Stats-->
-                            <div class="fw-bolder text-gray-700 text-xxl-end">$45,257</div>
-                            <!--end::Stats-->
-                        </div>
-                        <!--end::Label-->
-                    </div>
-                    <!--end::Labels-->
-                </div>
-                <!--end::Card body-->
+                <!--end::Container-->
             </div>
-            <!--end::Card widget 17-->
-            <!--begin::List widget 25-->
-            <div class="card card-flush h-lg-50">
-                <!--begin::Header-->
-                <div class="card-header pt-5">
+            <!--end::Wrapper-->
+            <!--begin::Curve bottom-->
+            <div class="landing-curve landing-dark-color">
+                <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <!--end::Curve bottom-->
+        </div>
+        <!--end::Statistics Section-->
+        <!--begin::Team Section-->
+        <div class="py-10 py-lg-20">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Heading-->
+                <div class="text-center mb-12">
                     <!--begin::Title-->
-                    <h3 class="card-title text-gray-800">Highlights</h3>
+                    <h3 class="fs-2hx text-dark mb-5" id="team" data-kt-scroll-offset="{default: 100, lg: 150}">Our
+                        Great Team</h3>
                     <!--end::Title-->
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar d-none">
-                        <!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
-                        <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left"
-                            class="btn btn-sm btn-light d-flex align-items-center px-4">
-                            <!--begin::Display range-->
-                            <div class="text-gray-600 fw-bold">Loading date range...</div>
-                            <!--end::Display range-->
-                            <i class="ki-duotone ki-calendar-8 fs-1 ms-2 me-0">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                                <span class="path5"></span>
-                                <span class="path6"></span>
-                            </i>
-                        </div>
-                        <!--end::Daterangepicker-->
+                    <!--begin::Sub-title-->
+                    <div class="fs-5 text-muted fw-bold">It’s no doubt that when a development takes longer to complete,
+                        additional costs to
+                        <br />integrate and test each extra feature creeps up and haunts most of us.
                     </div>
-                    <!--end::Toolbar-->
+                    <!--end::Sub-title=-->
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body pt-5">
-                    <!--begin::Item-->
-                    <div class="d-flex flex-stack">
-                        <!--begin::Section-->
-                        <div class="text-gray-700 fw-semibold fs-6 me-2">Avg. Client Rating</div>
-                        <!--end::Section-->
-                        <!--begin::Statistics-->
-                        <div class="d-flex align-items-senter">
-                            <i class="ki-duotone ki-arrow-up-right fs-2 text-success me-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <!--begin::Number-->
-                            <span class="text-gray-900 fw-bolder fs-6">7.8</span>
-                            <!--end::Number-->
-                            <span class="text-gray-400 fw-bold fs-6">/10</span>
+                <!--end::Heading-->
+                <!--begin::Slider-->
+                <div class="tns tns-default" style="direction: ltr">
+                    <!--begin::Wrapper-->
+                    <div data-tns="true" data-tns-loop="true" data-tns-swipe-angle="false" data-tns-speed="2000"
+                        data-tns-autoplay="true" data-tns-autoplay-timeout="18000" data-tns-controls="true"
+                        data-tns-nav="false" data-tns-items="1" data-tns-center="false" data-tns-dots="false"
+                        data-tns-prev-button="#kt_team_slider_prev" data-tns-next-button="#kt_team_slider_next"
+                        data-tns-responsive="{1200: {items: 3}, 992: {items: 2}}">
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-1.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Paul Miles</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Development Lead</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
                         </div>
-                        <!--end::Statistics-->
-                    </div>
-                    <!--end::Item-->
-                    <!--begin::Separator-->
-                    <div class="separator separator-dashed my-3"></div>
-                    <!--end::Separator-->
-                    <!--begin::Item-->
-                    <div class="d-flex flex-stack">
-                        <!--begin::Section-->
-                        <div class="text-gray-700 fw-semibold fs-6 me-2">Avg. Quotes</div>
-                        <!--end::Section-->
-                        <!--begin::Statistics-->
-                        <div class="d-flex align-items-senter">
-                            <i class="ki-duotone ki-arrow-down-right fs-2 text-danger me-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <!--begin::Number-->
-                            <span class="text-gray-900 fw-bolder fs-6">730</span>
-                            <!--end::Number-->
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-2.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Melisa Marcus</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Creative Director</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
                         </div>
-                        <!--end::Statistics-->
-                    </div>
-                    <!--end::Item-->
-                    <!--begin::Separator-->
-                    <div class="separator separator-dashed my-3"></div>
-                    <!--end::Separator-->
-                    <!--begin::Item-->
-                    <div class="d-flex flex-stack">
-                        <!--begin::Section-->
-                        <div class="text-gray-700 fw-semibold fs-6 me-2">Avg. Agent Earnings</div>
-                        <!--end::Section-->
-                        <!--begin::Statistics-->
-                        <div class="d-flex align-items-senter">
-                            <i class="ki-duotone ki-arrow-up-right fs-2 text-success me-2">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                            </i>
-                            <!--begin::Number-->
-                            <span class="text-gray-900 fw-bolder fs-6">$2,309</span>
-                            <!--end::Number-->
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-5.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">David Nilson</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Python Expert</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
                         </div>
-                        <!--end::Statistics-->
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-20.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Anne Clarc</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Project Manager</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-23.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Ricky Hunt</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Art Director</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-12.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Alice Wayde</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">Marketing Manager</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="text-center">
+                            <!--begin::Photo-->
+                            <div class="octagon mx-auto mb-5 d-flex w-200px h-200px bgi-no-repeat bgi-size-contain bgi-position-center"
+                                style="background-image:url('/admin/assets/media/avatars/300-9.jpg')"></div>
+                            <!--end::Photo-->
+                            <!--begin::Person-->
+                            <div class="mb-0">
+                                <!--begin::Name-->
+                                <a href="#" class="text-dark fw-bold text-hover-primary fs-3">Carles Puyol</a>
+                                <!--end::Name-->
+                                <!--begin::Position-->
+                                <div class="text-muted fs-6 fw-semibold mt-1">QA Managers</div>
+                                <!--begin::Position-->
+                            </div>
+                            <!--end::Person-->
+                        </div>
+                        <!--end::Item-->
                     </div>
-                    <!--end::Item-->
+                    <!--end::Wrapper-->
+                    <!--begin::Button-->
+                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_prev">
+                        <i class="ki-duotone ki-left fs-2x"></i>
+                    </button>
+                    <!--end::Button-->
+                    <!--begin::Button-->
+                    <button class="btn btn-icon btn-active-color-primary" id="kt_team_slider_next">
+                        <i class="ki-duotone ki-right fs-2x"></i>
+                    </button>
+                    <!--end::Button-->
                 </div>
-                <!--end::Body-->
+                <!--end::Slider-->
             </div>
-            <!--end::LIst widget 25-->
+            <!--end::Container-->
         </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-lg-12 col-xl-12 col-xxl-6 mb-5 mb-xl-0">
-            <!--begin::Timeline widget 3-->
-            <div class="card h-md-100">
-                <!--begin::Header-->
-                <div class="card-header border-0 pt-5">
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bold text-dark">What’s up Today</span>
-                        <span class="text-muted mt-1 fw-semibold fs-7">Total 424,567 deliveries</span>
-                    </h3>
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar">
-                        <a href="#" class="btn btn-sm btn-light">Report Cecnter</a>
-                    </div>
-                    <!--end::Toolbar-->
-                </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body pt-7 px-0">
-                    <!--begin::Nav-->
-                    <ul
-                        class="nav nav-stretch nav-pills nav-pills-custom nav-pills-active-custom d-flex justify-content-between mb-8 px-5">
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_1">
-                                <span class="fs-7 fw-semibold">Fr</span>
-                                <span class="fs-6 fw-bold">20</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_2">
-                                <span class="fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 fw-bold">21</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_3">
-                                <span class="fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 fw-bold">22</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger active"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_4">
-                                <span class="fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 fw-bold">23</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_5">
-                                <span class="fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 fw-bold">24</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_6">
-                                <span class="fs-7 fw-semibold">We</span>
-                                <span class="fs-6 fw-bold">25</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_7">
-                                <span class="fs-7 fw-semibold">Th</span>
-                                <span class="fs-6 fw-bold">26</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_8">
-                                <span class="fs-7 fw-semibold">Fri</span>
-                                <span class="fs-6 fw-bold">27</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_9">
-                                <span class="fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 fw-bold">28</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_10">
-                                <span class="fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 fw-bold">29</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <!--begin::Date-->
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px py-4 px-3 btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_3_tab_content_11">
-                                <span class="fs-7 fw-semibold">Mo</span>
-                                <span class="fs-6 fw-bold">30</span>
-                            </a>
-                            <!--end::Date-->
-                        </li>
-                        <!--end::Nav item-->
-                    </ul>
-                    <!--end::Nav-->
-                    <!--begin::Tab Content (ishlamayabdi)-->
-                    <div class="tab-content mb-2 px-9">
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_1">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
+        <!--end::Team Section-->
+        <!--begin::Projects Section-->
+        <div class="mb-lg-n15 position-relative z-index-2">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Card-->
+                <div class="card" style="filter: drop-shadow(0px 0px 40px rgba(68, 81, 96, 0.08))">
+                    <!--begin::Card body-->
+                    <div class="card-body p-lg-20">
+                        <!--begin::Heading-->
+                        <div class="text-center mb-5 mb-lg-10">
+                            <!--begin::Title-->
+                            <h3 class="fs-2hx text-dark mb-5" id="portfolio"
+                                data-kt-scroll-offset="{default: 100, lg: 250}">Our Projects</h3>
+                            <!--end::Title-->
                         </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_2">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
+                        <!--end::Heading-->
+                        <!--begin::Tabs wrapper-->
+                        <div class="d-flex flex-center mb-5 mb-lg-15">
+                            <!--begin::Tabs-->
+                            <ul class="nav border-transparent flex-center fs-5 fw-bold">
+                                <li class="nav-item">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6 active" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_latest">Latest</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_web_design">Web
+                                        Design</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab" data-bs-target="#kt_landing_projects_mobile_apps">Mobile
+                                        Apps</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-gray-500 text-active-primary px-3 px-lg-6" href="#"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#kt_landing_projects_development">Development</a>
+                                </li>
+                            </ul>
+                            <!--end::Tabs-->
                         </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_3">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-primary"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade show active" id="kt_timeline_widget_3_tab_content_4">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_5">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-danger"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-primary"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_7">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-danger"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_8">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-danger"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_9">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-primary"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-success"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_10">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-danger"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-warning"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_timeline_widget_3_tab_content_11">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-info"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">16:30 - 17:00
-                                        <span class="text-gray-400 fw-semibold fs-7">PM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Dashboard UI/UX Design Review</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Mark
-                                            Morris</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-danger"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">10:20 - 11:00
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">Marketing Campaign Discussion</div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Peter Marcus</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Wrapper-->
-                            <div class="d-flex align-items-center mb-6">
-                                <!--begin::Bullet-->
-                                <span data-kt-element="bullet"
-                                    class="bullet bullet-vertical d-flex align-items-center min-h-70px mh-100 me-4 bg-primary"></span>
-                                <!--end::Bullet-->
-                                <!--begin::Info-->
-                                <div class="flex-grow-1 me-5">
-                                    <!--begin::Time-->
-                                    <div class="text-gray-800 fw-semibold fs-2">12:00 - 13:40
-                                        <span class="text-gray-400 fw-semibold fs-7">AM</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Description-->
-                                    <div class="text-gray-700 fw-semibold fs-6">9 Degree Project Estimation Meeting
-                                    </div>
-                                    <!--end::Description-->
-                                    <!--begin::Link-->
-                                    <div class="text-gray-400 fw-semibold fs-7">Lead by
-                                        <!--begin::Name-->
-                                        <a href="#" class="text-primary opacity-75-hover fw-semibold">Lead by Bob</a>
-                                        <!--end::Name-->
-                                    </div>
-                                    <!--end::Link-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_project">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Wrapper-->
-                        </div>
-                        <!--end::Tap pane-->
-                    </div>
-                    <!--end::Tab Content-->
-                    <!--begin::Action-->
-                    <div class="float-end d-none">
-                        <a href="#" class="btn btn-sm btn-light me-2" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_create_project">Add Lesson</a>
-                        <a href="#" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#kt_modal_create_app">Call Sick for Today</a>
-                    </div>
-                    <!--end::Action-->
-                </div>
-                <!--end: Card Body-->
-            </div>
-            <!--end::Timeline widget 3-->
-            <!--begin::Timeline widget 3-->
-            <div class="card card-flush d-none h-md-100">
-                <!--begin::Card header-->
-                <div class="card-header mt-6">
-                    <!--begin::Card title-->
-                    <div class="card-title flex-column">
-                        <h3 class="fw-bold mb-1">What's on the road?</h3>
-                        <div class="fs-6 text-gray-400">Total 482 participants</div>
-                    </div>
-                    <!--end::Card title-->
-                    <!--begin::Card toolbar-->
-                    <div class="card-toolbar">
-                        <!--begin::Select-->
-                        <select name="status" data-control="select2" data-hide-search="true"
-                            class="form-select form-select-solid form-select-sm fw-bold w-100px">
-                            <option value="1" selected="selected">Options</option>
-                            <option value="2">Option 1</option>
-                            <option value="3">Option 2</option>
-                            <option value="4">Option 3</option>
-                        </select>
-                        <!--end::Select-->
-                    </div>
-                    <!--end::Card toolbar-->
-                </div>
-                <!--end::Card header-->
-                <!--begin::Card body-->
-                <div class="card-body p-0">
-                    <!--begin::Dates-->
-                    <ul class="nav nav-pills d-flex flex-nowrap hover-scroll-x py-2 ms-4">
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_0">
-                                <span class="text-gray-400 fs-7 fw-semibold">Fr</span>
-                                <span class="fs-6 text-gray-800 fw-bold">20</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_1">
-                                <span class="text-gray-400 fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 text-gray-800 fw-bold">21</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_2">
-                                <span class="text-gray-400 fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 text-gray-800 fw-bold">22</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger active"
-                                data-bs-toggle="tab" href="#kt_schedule_day_3">
-                                <span class="text-gray-400 fs-7 fw-semibold">Mo</span>
-                                <span class="fs-6 text-gray-800 fw-bold">23</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_4">
-                                <span class="text-gray-400 fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 text-gray-800 fw-bold">24</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_5">
-                                <span class="text-gray-400 fs-7 fw-semibold">We</span>
-                                <span class="fs-6 text-gray-800 fw-bold">25</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_6">
-                                <span class="text-gray-400 fs-7 fw-semibold">Th</span>
-                                <span class="fs-6 text-gray-800 fw-bold">26</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_7">
-                                <span class="text-gray-400 fs-7 fw-semibold">Fr</span>
-                                <span class="fs-6 text-gray-800 fw-bold">27</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_8">
-                                <span class="text-gray-400 fs-7 fw-semibold">Sa</span>
-                                <span class="fs-6 text-gray-800 fw-bold">28</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_9">
-                                <span class="text-gray-400 fs-7 fw-semibold">Su</span>
-                                <span class="fs-6 text-gray-800 fw-bold">29</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_10">
-                                <span class="text-gray-400 fs-7 fw-semibold">Mo</span>
-                                <span class="fs-6 text-gray-800 fw-bold">30</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                        <!--begin::Date-->
-                        <li class="nav-item me-1">
-                            <a class="nav-link btn d-flex flex-column flex-center rounded-pill min-w-45px me-2 py-4 px-3 btn-color-active-white btn-active-danger"
-                                data-bs-toggle="tab" href="#kt_schedule_day_11">
-                                <span class="text-gray-400 fs-7 fw-semibold">Tu</span>
-                                <span class="fs-6 text-gray-800 fw-bold">31</span>
-                            </a>
-                        </li>
-                        <!--end::Date-->
-                    </ul>
-                    <!--end::Dates-->
-                    <!--begin::Tab Content-->
-                    <div class="tab-content px-9">
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_0" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">14:30 - 15:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Lunch & Learn
-                                        Catch Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Mark Randall</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Team Backlog
-                                        Grooming Session</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Karina Clarke</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">14:30 - 15:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Weekly Team
-                                        Stand-Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Walter White</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_1" class="tab-pane fade show active">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Marketing
-                                        Campaign Discussion</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Walter White</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">10:00 - 11:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Marketing
-                                        Campaign Discussion</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Kendell Trevor</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">9 Degree
-                                        Project Estimation Meeting</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Naomi Hayabusa</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_2" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Team Backlog
-                                        Grooming Session</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Terry Robins</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Development
-                                        Team Capacity Review</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Naomi Hayabusa</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Weekly Team
-                                        Stand-Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">David Stevenson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_3" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Lunch & Learn
-                                        Catch Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">David Stevenson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">16:30 - 17:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Weekly Team
-                                        Stand-Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Michael Walters</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Sales Pitch
-                                        Proposal</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">David Stevenson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_4" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Sales Pitch
-                                        Proposal</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Sean Bean</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Lunch & Learn
-                                        Catch Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Yannis Gloverson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">10:00 - 11:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Lunch & Learn
-                                        Catch Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Michael Walters</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_5" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Sales Pitch
-                                        Proposal</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Sean Bean</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">16:30 - 17:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Committee
-                                        Review Approvals</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Caleb Donaldson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">9:00 - 10:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Team Backlog
-                                        Grooming Session</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Walter White</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_6" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Committee
-                                        Review Approvals</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Sean Bean</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Project
-                                        Review & Testing</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Yannis Gloverson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Project
-                                        Review & Testing</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Karina Clarke</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_7" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Lunch & Learn
-                                        Catch Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Michael Walters</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">9:00 - 10:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Marketing
-                                        Campaign Discussion</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Karina Clarke</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Team Backlog
-                                        Grooming Session</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Kendell Trevor</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_8" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">9:00 - 10:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Project
-                                        Review & Testing</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Walter White</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">10:00 - 11:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Dashboard
-                                        UI/UX Design Review</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Yannis Gloverson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">14:30 - 15:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Creative
-                                        Content Initiative</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Karina Clarke</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_9" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">16:30 - 17:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Dashboard
-                                        UI/UX Design Review</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Bob Harris</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">9:00 - 10:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Marketing
-                                        Campaign Discussion</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Mark Randall</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Committee
-                                        Review Approvals</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Kendell Trevor</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_10" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">12:00 - 13:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Dashboard
-                                        UI/UX Design Review</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Karina Clarke</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">13:00 - 14:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Weekly Team
-                                        Stand-Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">David Stevenson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">10:00 - 11:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Weekly Team
-                                        Stand-Up</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Peter Marcus</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                        <!--begin::Day-->
-                        <div id="kt_schedule_day_11" class="tab-pane fade show">
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">11:00 - 11:45
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Creative
-                                        Content Initiative</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Naomi Hayabusa</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">14:30 - 15:30
-                                        <span class="fs-7 text-gray-400 text-uppercase">pm</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Dashboard
-                                        UI/UX Design Review</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Bob Harris</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                            <!--begin::Time-->
-                            <div class="d-flex flex-stack position-relative mt-8">
-                                <!--begin::Bar-->
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <!--end::Bar-->
-                                <!--begin::Info-->
-                                <div class="fw-semibold ms-5 text-gray-600">
-                                    <!--begin::Time-->
-                                    <div class="fs-5">9:00 - 10:00
-                                        <span class="fs-7 text-gray-400 text-uppercase">am</span>
-                                    </div>
-                                    <!--end::Time-->
-                                    <!--begin::Title-->
-                                    <a href="#" class="fs-5 fw-bold text-gray-800 text-hover-primary mb-2">Creative
-                                        Content Initiative</a>
-                                    <!--end::Title-->
-                                    <!--begin::User-->
-                                    <div class="text-gray-400">Lead by
-                                        <a href="#">Caleb Donaldson</a>
-                                    </div>
-                                    <!--end::User-->
-                                </div>
-                                <!--end::Info-->
-                                <!--begin::Action-->
-                                <a href="#" class="btn btn-bg-light btn-active-color-primary btn-sm">View</a>
-                                <!--end::Action-->
-                            </div>
-                            <!--end::Time-->
-                        </div>
-                        <!--end::Day-->
-                    </div>
-                    <!--end::Tab Content-->
-                </div>
-                <!--end::Card body-->
-            </div>
-            <!--end::Timeline widget-3-->
-        </div>
-        <!--end::Col-->
-    </div>
-    <!--end::Row-->
-    <!--begin::Row-->
-    <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-        <!--begin::Col-->
-        <div class="col-xxl-6">
-            <!--begin::Card widget 18-->
-            <div class="card card-flush h-md-100">
-                <!--begin::Body-->
-                <div class="card-body py-9">
-                    <!--begin::Row-->
-                    <div class="row gx-9 h-100">
-                        <!--begin::Col-->
-                        <div class="col-sm-6 mb-10 mb-sm-0">
-                            <!--begin::Image-->
-                            <div class="bgi-no-repeat bgi-position-center bgi-size-cover card-rounded min-h-400px min-h-sm-100 h-100"
-                                style="background-size: 100% 100%;background-image:url('assets/media/stock/600x600/img-33.jpg')">
-                            </div>
-                            <!--end::Image-->
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-sm-6">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column h-100">
-                                <!--begin::Header-->
-                                <div class="mb-7">
-                                    <!--begin::Headin-->
-                                    <div class="d-flex flex-stack mb-6">
-                                        <!--begin::Title-->
-                                        <div class="flex-shrink-0 me-5">
-                                            <span
-                                                class="text-gray-400 fs-7 fw-bold me-2 d-block lh-1 pb-1">Featured</span>
-                                            <span class="text-gray-800 fs-1 fw-bold">9 Degree</span>
-                                        </div>
-                                        <!--end::Title-->
-                                        <span
-                                            class="badge badge-light-primary flex-shrink-0 align-self-center py-3 px-4 fs-7">In
-                                            Process</span>
-                                    </div>
-                                    <!--end::Heading-->
-                                    <!--begin::Items-->
-                                    <div class="d-flex align-items-center flex-wrap d-grid gap-2">
+                        <!--end::Tabs wrapper-->
+                        <!--begin::Tabs content-->
+                        <div class="tab-content">
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade show active" id="kt_landing_projects_latest">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
                                         <!--begin::Item-->
-                                        <div class="d-flex align-items-center me-5 me-xl-13">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-30px symbol-circle me-3">
-                                                <img src="assets/media/avatars/300-3.jpg" class="" alt="" />
+                                        <a class="d-block card-rounded overlay h-lg-100"
+                                            data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x600/img-23.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-23.jpg')">
                                             </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Info-->
-                                            <div class="m-0">
-                                                <span class="fw-semibold text-gray-400 d-block fs-8">Manager</span>
-                                                <a href="../../demo1/dist/pages/user-profile/overview.html"
-                                                    class="fw-bold text-gray-800 text-hover-primary fs-7">Robert Fox</a>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
                                             </div>
-                                            <!--end::Info-->
-                                        </div>
+                                            <!--end::Action-->
+                                        </a>
                                         <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Row-->
+                                        <div class="row g-10 mb-10">
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-22.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-22.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-21.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-21.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--end::Row-->
                                         <!--begin::Item-->
-                                        <div class="d-flex align-items-center">
-                                            <!--begin::Symbol-->
-                                            <div class="symbol symbol-30px symbol-circle me-3">
-                                                <span class="symbol-label bg-success">
-                                                    <i class="ki-duotone ki-abstract-41 fs-5 text-white">
+                                        <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x400/img-20.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-20.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="kt_landing_projects_web_design">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-100"
+                                            data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x600/img-11.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-11.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Row-->
+                                        <div class="row g-10 mb-10">
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-12.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-12.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-21.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-21.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--end::Row-->
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x400/img-20.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-20.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="kt_landing_projects_mobile_apps">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Row-->
+                                        <div class="row g-10 mb-10">
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-16.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-16.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-12.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-12.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--end::Row-->
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x400/img-15.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-15.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-100"
+                                            data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x600/img-23.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-23.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Tab pane-->
+                            <!--begin::Tab pane-->
+                            <div class="tab-pane fade" id="kt_landing_projects_development">
+                                <!--begin::Row-->
+                                <div class="row g-10">
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay h-lg-100"
+                                            data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x600/img-15.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-lg-100 min-h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-15.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-lg-6">
+                                        <!--begin::Row-->
+                                        <div class="row g-10 mb-10">
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-22.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-22.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                            <!--begin::Col-->
+                                            <div class="col-lg-6">
+                                                <!--begin::Item-->
+                                                <a class="d-block card-rounded overlay"
+                                                    data-fslightbox="lightbox-projects"
+                                                    href="/admin/assets/media/stock/600x600/img-21.jpg">
+                                                    <!--begin::Image-->
+                                                    <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                        style="background-image:url('/admin/assets/media/stock/600x600/img-21.jpg')">
+                                                    </div>
+                                                    <!--end::Image-->
+                                                    <!--begin::Action-->
+                                                    <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                        <i class="ki-duotone ki-eye fs-3x text-white">
+                                                            <span class="path1"></span>
+                                                            <span class="path2"></span>
+                                                            <span class="path3"></span>
+                                                        </i>
+                                                    </div>
+                                                    <!--end::Action-->
+                                                </a>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Col-->
+                                        </div>
+                                        <!--end::Row-->
+                                        <!--begin::Item-->
+                                        <a class="d-block card-rounded overlay" data-fslightbox="lightbox-projects"
+                                            href="/admin/assets/media/stock/600x400/img-14.jpg">
+                                            <!--begin::Image-->
+                                            <div class="overlay-wrapper bgi-no-repeat bgi-position-center bgi-size-cover card-rounded h-250px"
+                                                style="background-image:url('/admin/assets/media/stock/600x600/img-14.jpg')">
+                                            </div>
+                                            <!--end::Image-->
+                                            <!--begin::Action-->
+                                            <div class="overlay-layer card-rounded bg-dark bg-opacity-25">
+                                                <i class="ki-duotone ki-eye fs-3x text-white">
+                                                    <span class="path1"></span>
+                                                    <span class="path2"></span>
+                                                    <span class="path3"></span>
+                                                </i>
+                                            </div>
+                                            <!--end::Action-->
+                                        </a>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Row-->
+                            </div>
+                            <!--end::Tab pane-->
+                        </div>
+                        <!--end::Tabs content-->
+                    </div>
+                    <!--end::Card body-->
+                </div>
+                <!--end::Card-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Projects Section-->
+        <!--begin::Pricing Section-->
+        <div class="mt-sm-n20">
+            <!--begin::Curve top-->
+            <div class="landing-curve landing-dark-color">
+                <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 48C4.93573 47.6644 8.85984 47.3311 12.7725 47H1489.16C1493.1 47.3311 1497.04 47.6644 1501 48V47H1489.16C914.668 -1.34764 587.282 -1.61174 12.7725 47H1V48Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <!--end::Curve top-->
+            <!--begin::Wrapper-->
+            <div class="py-20 landing-dark-bg">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Plans-->
+                    <div class="d-flex flex-column container pt-lg-20">
+                        <!--begin::Heading-->
+                        <div class="mb-13 text-center">
+                            <h1 class="fs-2hx fw-bold text-white mb-5" id="pricing"
+                                data-kt-scroll-offset="{default: 100, lg: 150}">Clear Pricing Makes it Easy</h1>
+                            <div class="text-gray-600 fw-semibold fs-5">Save thousands to millions of bucks by using
+                                single tool for different
+                                <br />amazing and outstanding cool and great useful admin
+                            </div>
+                        </div>
+                        <!--end::Heading-->
+                        <!--begin::Pricing-->
+                        <div class="text-center" id="kt_pricing">
+                            <!--begin::Nav group-->
+                            <div class="nav-group landing-dark-bg d-inline-flex mb-15" data-kt-buttons="true"
+                                style="border: 1px dashed #2B4666;">
+                                <a href="#"
+                                    class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3 me-2 active"
+                                    data-kt-plan="month">Monthly</a>
+                                <a href="#" class="btn btn-color-gray-600 btn-active btn-active-success px-6 py-3"
+                                    data-kt-plan="annual">Annual</a>
+                            </div>
+                            <!--end::Nav group-->
+                            <!--begin::Row-->
+                            <div class="row g-10">
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-dark mb-5 fw-boldest">Startup</h1>
+                                                <!--end::Title-->
+                                                <!--begin::Description-->
+                                                <div class="text-gray-400 fw-semibold mb-5">Best Settings for Startups
+                                                </div>
+                                                <!--end::Description-->
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-primary">$</span>
+                                                    <span class="fs-3x fw-bold text-primary"
+                                                        data-kt-plan-price-month="99"
+                                                        data-kt-plan-price-annual="999">99</span>
+                                                    <span class="fs-7 fw-semibold opacity-50"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">/ Mon</span>
+                                                </div>
+                                                <!--end::Price-->
+                                            </div>
+                                            <!--end::Heading-->
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Up to
+                                                        10 Active Users</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
                                                         <span class="path1"></span>
                                                         <span class="path2"></span>
                                                     </i>
-                                                </span>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Up to
+                                                        30 Project Integrations</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800">Keen Analytics
+                                                        Platform</span>
+                                                    <i class="ki-duotone ki-cross-circle fs-1">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800">Targets Timelines &
+                                                        Files</span>
+                                                    <i class="ki-duotone ki-cross-circle fs-1">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack">
+                                                    <span class="fw-semibold fs-6 text-gray-800">Unlimited
+                                                        Projects</span>
+                                                    <i class="ki-duotone ki-cross-circle fs-1">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
                                             </div>
-                                            <!--end::Symbol-->
-                                            <!--begin::Info-->
-                                            <div class="m-0">
-                                                <span class="fw-semibold text-gray-400 d-block fs-8">Budget</span>
-                                                <span class="fw-bold text-gray-800 fs-7">$64.800</span>
+                                            <!--end::Features-->
+                                            <!--begin::Select-->
+                                            <a href="#" class="btn btn-primary">Select</a>
+                                            <!--end::Select-->
+                                        </div>
+                                        <!--end::Option-->
+                                    </div>
+                                </div>
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div
+                                            class="w-100 d-flex flex-column flex-center rounded-3 bg-primary py-20 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-white mb-5 fw-boldest">Business</h1>
+                                                <!--end::Title-->
+                                                <!--begin::Description-->
+                                                <div class="text-white opacity-75 fw-semibold mb-5">Best Settings for
+                                                    Business</div>
+                                                <!--end::Description-->
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-white">$</span>
+                                                    <span class="fs-3x fw-bold text-white"
+                                                        data-kt-plan-price-month="199"
+                                                        data-kt-plan-price-annual="1999">199</span>
+                                                    <span class="fs-7 fw-semibold text-white opacity-75"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">/ Mon</span>
+                                                </div>
+                                                <!--end::Price-->
                                             </div>
-                                            <!--end::Info-->
+                                            <!--end::Heading-->
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">Up
+                                                        to 10 Active Users</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">Up
+                                                        to 30 Project Integrations</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">Keen
+                                                        Analytics Platform</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-white opacity-75 text-start pe-3">Targets
+                                                        Timelines & Files</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-white">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack">
+                                                    <span class="fw-semibold fs-6 text-white opacity-75">Unlimited
+                                                        Projects</span>
+                                                    <i class="ki-duotone ki-cross-circle fs-1 text-white">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Features-->
+                                            <!--begin::Select-->
+                                            <a href="#"
+                                                class="btn btn-color-primary btn-active-light-primary btn-light">Select</a>
+                                            <!--end::Select-->
                                         </div>
-                                        <!--end::Item-->
+                                        <!--end::Option-->
                                     </div>
-                                    <!--end::Items-->
                                 </div>
-                                <!--end::Header-->
-                                <!--begin::Body-->
-                                <div class="mb-6">
-                                    <!--begin::Text-->
-                                    <span class="fw-semibold text-gray-600 fs-6 mb-8 d-block">Flat cartoony
-                                        illustrations with vivid unblended colors and asymmetrical beautiful purple hair
-                                        lady</span>
-                                    <!--end::Text-->
-                                    <!--begin::Stats-->
-                                    <div class="d-flex">
-                                        <!--begin::Stat-->
-                                        <div
-                                            class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 me-6 mb-3">
-                                            <!--begin::Date-->
-                                            <span class="fs-6 text-gray-700 fw-bold">Feb 6, 2021</span>
-                                            <!--end::Date-->
-                                            <!--begin::Label-->
-                                            <div class="fw-semibold text-gray-400">Due Date</div>
-                                            <!--end::Label-->
+                                <!--end::Col-->
+                                <!--begin::Col-->
+                                <div class="col-xl-4">
+                                    <div class="d-flex h-100 align-items-center">
+                                        <!--begin::Option-->
+                                        <div class="w-100 d-flex flex-column flex-center rounded-3 bg-body py-15 px-10">
+                                            <!--begin::Heading-->
+                                            <div class="mb-7 text-center">
+                                                <!--begin::Title-->
+                                                <h1 class="text-dark mb-5 fw-boldest">Enterprise</h1>
+                                                <!--end::Title-->
+                                                <!--begin::Description-->
+                                                <div class="text-gray-400 fw-semibold mb-5">Best Settings for Enterprise
+                                                </div>
+                                                <!--end::Description-->
+                                                <!--begin::Price-->
+                                                <div class="text-center">
+                                                    <span class="mb-2 text-primary">$</span>
+                                                    <span class="fs-3x fw-bold text-primary"
+                                                        data-kt-plan-price-month="999"
+                                                        data-kt-plan-price-annual="9999">999</span>
+                                                    <span class="fs-7 fw-semibold opacity-50"
+                                                        data-kt-plan-price-month="/ Mon"
+                                                        data-kt-plan-price-annual="/ Ann">/ Mon</span>
+                                                </div>
+                                                <!--end::Price-->
+                                            </div>
+                                            <!--end::Heading-->
+                                            <!--begin::Features-->
+                                            <div class="w-100 mb-10">
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Up to
+                                                        10 Active Users</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Up to
+                                                        30 Project Integrations</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Keen
+                                                        Analytics Platform</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack mb-5">
+                                                    <span class="fw-semibold fs-6 text-gray-800 text-start pe-3">Targets
+                                                        Timelines & Files</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                                <!--begin::Item-->
+                                                <div class="d-flex flex-stack">
+                                                    <span
+                                                        class="fw-semibold fs-6 text-gray-800 text-start pe-3">Unlimited
+                                                        Projects</span>
+                                                    <i class="ki-duotone ki-check-circle fs-1 text-success">
+                                                        <span class="path1"></span>
+                                                        <span class="path2"></span>
+                                                    </i>
+                                                </div>
+                                                <!--end::Item-->
+                                            </div>
+                                            <!--end::Features-->
+                                            <!--begin::Select-->
+                                            <a href="#" class="btn btn-primary">Select</a>
+                                            <!--end::Select-->
                                         </div>
-                                        <!--end::Stat-->
-                                        <!--begin::Stat-->
-                                        <div
-                                            class="border border-gray-300 border-dashed rounded min-w-100px w-100 py-2 px-4 mb-3">
-                                            <!--begin::Number-->
-                                            <span class="fs-6 text-gray-700 fw-bold">$
-                                                <span class="ms-n1" data-kt-countup="true"
-                                                    data-kt-countup-value="284,900.00">0</span></span>
-                                            <!--end::Number-->
-                                            <!--begin::Label-->
-                                            <div class="fw-semibold text-gray-400">Budget</div>
-                                            <!--end::Label-->
-                                        </div>
-                                        <!--end::Stat-->
+                                        <!--end::Option-->
                                     </div>
-                                    <!--end::Stats-->
                                 </div>
-                                <!--end::Body-->
-                                <!--begin::Footer-->
-                                <div class="d-flex flex-stack mt-auto bd-highlight">
-                                    <!--begin::Users group-->
-                                    <div class="symbol-group symbol-hover flex-nowrap">
-                                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                            title="Melody Macy">
-                                            <img alt="Pic" src="assets/media/avatars/300-2.jpg" />
-                                        </div>
-                                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                            title="Michael Eberon">
-                                            <img alt="Pic" src="assets/media/avatars/300-3.jpg" />
-                                        </div>
-                                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip"
-                                            title="Susan Redwood">
-                                            <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
-                                        </div>
+                                <!--end::Col-->
+                            </div>
+                            <!--end::Row-->
+                        </div>
+                        <!--end::Pricing-->
+                    </div>
+                    <!--end::Plans-->
+                </div>
+                <!--end::Container-->
+            </div>
+            <!--end::Wrapper-->
+            <!--begin::Curve bottom-->
+            <div class="landing-curve landing-dark-color">
+                <svg viewBox="15 12 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M0 11C3.93573 11.3356 7.85984 11.6689 11.7725 12H1488.16C1492.1 11.6689 1496.04 11.3356 1500 11V12H1488.16C913.668 60.3476 586.282 60.6117 11.7725 12H0V11Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <!--end::Curve bottom-->
+        </div>
+        <!--end::Pricing Section-->
+        <!--begin::Testimonials Section-->
+        <div class="mt-20 mb-n20 position-relative z-index-2">
+            <!--begin::Container-->
+            <div class="container">
+                <!--begin::Heading-->
+                <div class="text-center mb-17">
+                    <!--begin::Title-->
+                    <h3 class="fs-2hx text-dark mb-5" id="clients" data-kt-scroll-offset="{default: 125, lg: 150}">What
+                        Our Clients Say</h3>
+                    <!--end::Title-->
+                    <!--begin::Description-->
+                    <div class="fs-5 text-muted fw-bold">Save thousands to millions of bucks by using single tool
+                        <br />for different amazing and great useful admin
+                    </div>
+                    <!--end::Description-->
+                </div>
+                <!--end::Heading-->
+                <!--begin::Row-->
+                <div class="row g-lg-10 mb-10 mb-lg-20">
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <!--begin::Testimonial-->
+                        <div
+                            class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
+                            <!--begin::Wrapper-->
+                            <div class="mb-7">
+                                <!--begin::Rating-->
+                                <div class="rating mb-6">
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
                                     </div>
-                                    <!--end::Users group-->
-                                    <!--begin::Actions-->
-                                    <a href="../../demo1/dist/apps/projects/project.html"
-                                        class="d-flex align-items-center text-primary opacity-75-hover fs-6 fw-semibold">View
-                                        Project
-                                        <i class="ki-duotone ki-exit-right-corner fs-4 ms-1">
-                                            <span class="path1"></span>
-                                            <span class="path2"></span>
-                                        </i></a>
-                                    <!--end::Actions-->
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
                                 </div>
-                                <!--end::Footer-->
+                                <!--end::Rating-->
+                                <!--begin::Title-->
+                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
+                                    <br />and the most well structured
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Feedback-->
+                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
+                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
+                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <!--end::Feedback-->
                             </div>
                             <!--end::Wrapper-->
-                        </div>
-                        <!--end::Col-->
-                    </div>
-                    <!--end::Row-->
-                </div>
-                <!--end::Body-->
-            </div>
-            <!--end::Card widget 18-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xxl-6">
-            <!--begin::Engage widget 8-->
-            <div class="card border-0 h-md-100" data-bs-theme="light"
-                style="background: linear-gradient(112.14deg, #00D2FF 0%, #3A7BD5 100%)">
-                <!--begin::Body-->
-                <div class="card-body">
-                    <!--begin::Row-->
-                    <div class="row align-items-center h-100">
-                        <!--begin::Col-->
-                        <div class="col-7 ps-xl-13">
-                            <!--begin::Title-->
-                            <div class="text-white mb-6 pt-6">
-                                <span class="fs-4 fw-semibold me-2 d-block lh-1 pb-2 opacity-75">Get best offer</span>
-                                <span class="fs-2qx fw-bold">Upgrade Your Plan</span>
-                            </div>
-                            <!--end::Title-->
-                            <!--begin::Text-->
-                            <span class="fw-semibold text-white fs-6 mb-8 d-block opacity-75">Flat cartoony and
-                                illustrations with vivid unblended purple hair lady</span>
-                            <!--end::Text-->
-                            <!--begin::Items-->
-                            <div class="d-flex align-items-center flex-wrap d-grid gap-2 mb-10 mb-xl-20">
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center me-5 me-xl-13">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-30px symbol-circle me-3">
-                                        <span class="symbol-label" style="background: #35C7FF">
-                                            <i class="ki-duotone ki-abstract-41 fs-5 text-white">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Info-->
-                                    <div class="text-white">
-                                        <span class="fw-semibold d-block fs-8 opacity-75">Projects</span>
-                                        <span class="fw-bold fs-7">Up to 500</span>
-                                    </div>
-                                    <!--end::Info-->
+                            <!--begin::Author-->
+                            <div class="d-flex align-items-center">
+                                <!--begin::Avatar-->
+                                <div class="symbol symbol-circle symbol-50px me-5">
+                                    <img src="/admin/assets/media/avatars/300-1.jpg" class="" alt="" />
                                 </div>
-                                <!--end::Item-->
-                                <!--begin::Item-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Symbol-->
-                                    <div class="symbol symbol-30px symbol-circle me-3">
-                                        <span class="symbol-label" style="background: #35C7FF">
-                                            <i class="ki-duotone ki-abstract-26 fs-5 text-white">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>
-                                        </span>
-                                    </div>
-                                    <!--end::Symbol-->
-                                    <!--begin::Info-->
-                                    <div class="text-white">
-                                        <span class="fw-semibold opacity-75 d-block fs-8">Tasks</span>
-                                        <span class="fw-bold fs-7">Unlimited</span>
-                                    </div>
-                                    <!--end::Info-->
+                                <!--end::Avatar-->
+                                <!--begin::Name-->
+                                <div class="flex-grow-1">
+                                    <a href="#" class="text-dark fw-bold text-hover-primary fs-6">Paul Miles</a>
+                                    <span class="text-muted d-block fw-bold">Development Lead</span>
                                 </div>
-                                <!--end::Item-->
+                                <!--end::Name-->
                             </div>
-                            <!--end::Items-->
-                            <!--begin::Action-->
-                            <div class="d-flex flex-column flex-sm-row d-grid gap-2">
-                                <a href="#" class="btn btn-success flex-shrink-0 me-lg-2" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_upgrade_plan">Upgrade Plan</a>
-                                <a href="#" class="btn btn-primary flex-shrink-0"
-                                    style="background: rgba(255, 255, 255, 0.2)" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_app">Read Guides</a>
-                            </div>
-                            <!--end::Action-->
+                            <!--end::Author-->
                         </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-5 pt-10">
-                            <!--begin::Illustration-->
-                            <div class="bgi-no-repeat bgi-size-contain bgi-position-x-end h-225px"
-                                style="background-image:url('assets/media/svg/illustrations/easy/5.svg"></div>
-                            <!--end::Illustration-->
-                        </div>
-                        <!--end::Col-->
+                        <!--end::Testimonial-->
                     </div>
-                    <!--end::Row-->
-                </div>
-                <!--end::Body-->
-            </div>
-            <!--end::Engage widget 8-->
-        </div>
-        <!--end::Col-->
-    </div>
-    <!--end::Row-->
-    <!--begin::Row-->
-    <div class="row g-5 g-xl-10 mb-5 mb-xl-10">
-        <!--begin::Col-->
-        <div class="col-xl-4">
-            <!--begin::Chart Widget 35-->
-            <div class="card card-flush h-md-100">
-                <!--begin::Header-->
-                <div class="card-header pt-5 mb-6">
-                    <!--begin::Title-->
-                    <h3 class="card-title align-items-start flex-column">
-                        <!--begin::Statistics-->
-                        <div class="d-flex align-items-center mb-2">
-                            <!--begin::Currency-->
-                            <span class="fs-3 fw-semibold text-gray-400 align-self-start me-1">$</span>
-                            <!--end::Currency-->
-                            <!--begin::Value-->
-                            <span class="fs-2hx fw-bold text-gray-800 me-2 lh-1 ls-n2">3,274.94</span>
-                            <!--end::Value-->
-                            <!--begin::Label-->
-                            <span class="badge badge-light-success fs-base">
-                                <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                </i>9.2%</span>
-                            <!--end::Label-->
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <!--begin::Testimonial-->
+                        <div
+                            class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
+                            <!--begin::Wrapper-->
+                            <div class="mb-7">
+                                <!--begin::Rating-->
+                                <div class="rating mb-6">
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                </div>
+                                <!--end::Rating-->
+                                <!--begin::Title-->
+                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
+                                    <br />and the most well structured
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Feedback-->
+                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
+                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
+                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <!--end::Feedback-->
+                            </div>
+                            <!--end::Wrapper-->
+                            <!--begin::Author-->
+                            <div class="d-flex align-items-center">
+                                <!--begin::Avatar-->
+                                <div class="symbol symbol-circle symbol-50px me-5">
+                                    <img src="/admin/assets/media/avatars/300-2.jpg" class="" alt="" />
+                                </div>
+                                <!--end::Avatar-->
+                                <!--begin::Name-->
+                                <div class="flex-grow-1">
+                                    <a href="#" class="text-dark fw-bold text-hover-primary fs-6">Janya Clebert</a>
+                                    <span class="text-muted d-block fw-bold">Development Lead</span>
+                                </div>
+                                <!--end::Name-->
+                            </div>
+                            <!--end::Author-->
                         </div>
-                        <!--end::Statistics-->
+                        <!--end::Testimonial-->
+                    </div>
+                    <!--end::Col-->
+                    <!--begin::Col-->
+                    <div class="col-lg-4">
+                        <!--begin::Testimonial-->
+                        <div
+                            class="d-flex flex-column justify-content-between h-lg-100 px-10 px-lg-0 pe-lg-10 mb-15 mb-lg-0">
+                            <!--begin::Wrapper-->
+                            <div class="mb-7">
+                                <!--begin::Rating-->
+                                <div class="rating mb-6">
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                    <div class="rating-label me-2 checked">
+                                        <i class="ki-duotone ki-star fs-5"></i>
+                                    </div>
+                                </div>
+                                <!--end::Rating-->
+                                <!--begin::Title-->
+                                <div class="fs-2 fw-bold text-dark mb-3">This is by far the cleanest template
+                                    <br />and the most well structured
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Feedback-->
+                                <div class="text-gray-500 fw-semibold fs-4">The most well thought out design theme I
+                                    have ever used. The codes are up to tandard. The css styles are very clean. In fact
+                                    the cleanest and the most up to standard I have ever seen.</div>
+                                <!--end::Feedback-->
+                            </div>
+                            <!--end::Wrapper-->
+                            <!--begin::Author-->
+                            <div class="d-flex align-items-center">
+                                <!--begin::Avatar-->
+                                <div class="symbol symbol-circle symbol-50px me-5">
+                                    <img src="/admin/assets/media/avatars/300-16.jpg" class="" alt="" />
+                                </div>
+                                <!--end::Avatar-->
+                                <!--begin::Name-->
+                                <div class="flex-grow-1">
+                                    <a href="#" class="text-dark fw-bold text-hover-primary fs-6">Steave Brown</a>
+                                    <span class="text-muted d-block fw-bold">Development Lead</span>
+                                </div>
+                                <!--end::Name-->
+                            </div>
+                            <!--end::Author-->
+                        </div>
+                        <!--end::Testimonial-->
+                    </div>
+                    <!--end::Col-->
+                </div>
+                <!--end::Row-->
+                <!--begin::Highlight-->
+                <div class="d-flex flex-stack flex-wrap flex-md-nowrap card-rounded shadow p-8 p-lg-12 mb-n5 mb-lg-n13"
+                    style="background: linear-gradient(90deg, #20AA3E 0%, #03A588 100%);">
+                    <!--begin::Content-->
+                    <div class="my-2 me-5">
+                        <!--begin::Title-->
+                        <div class="fs-1 fs-lg-2qx fw-bold text-white mb-2">Start With Metronic Today,
+                            <span class="fw-normal">Speed Up Development!</span>
+                        </div>
+                        <!--end::Title-->
                         <!--begin::Description-->
-                        <span class="fs-6 fw-semibold text-gray-400">Avg. Agent Earnings</span>
+                        <div class="fs-6 fs-lg-5 text-white fw-semibold opacity-75">Join over 100,000 Professionals
+                            Community to Stay Ahead</div>
                         <!--end::Description-->
-                    </h3>
-                    <!--end::Title-->
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar">
-                        <!--begin::Menu-->
-                        <button class="btn btn-icon btn-color-gray-400 btn-active-color-primary justify-content-end"
-                            data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end"
-                            data-kt-menu-overflow="true">
-                            <i class="ki-duotone ki-dots-square fs-1 text-gray-400 me-n1">
-                                <span class="path1"></span>
-                                <span class="path2"></span>
-                                <span class="path3"></span>
-                                <span class="path4"></span>
-                            </i>
-                        </button>
-                        <!--begin::Menu 2-->
-                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
-                            data-kt-menu="true">
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">Quick Actions</div>
+                    </div>
+                    <!--end::Content-->
+                    <!--begin::Link-->
+                    <a href="https://1.envato.market/EA4JP"
+                        class="btn btn-lg btn-outline border-2 btn-outline-white flex-shrink-0 my-2">Purchase on
+                        Themeforest</a>
+                    <!--end::Link-->
+                </div>
+                <!--end::Highlight-->
+            </div>
+            <!--end::Container-->
+        </div>
+        <!--end::Testimonials Section-->
+        <!--begin::Footer Section-->
+        <div class="mb-0">
+            <!--begin::Curve top-->
+            <div class="landing-curve landing-dark-color">
+                <svg viewBox="15 -1 1470 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M1 48C4.93573 47.6644 8.85984 47.3311 12.7725 47H1489.16C1493.1 47.3311 1497.04 47.6644 1501 48V47H1489.16C914.668 -1.34764 587.282 -1.61174 12.7725 47H1V48Z"
+                        fill="currentColor"></path>
+                </svg>
+            </div>
+            <!--end::Curve top-->
+            <!--begin::Wrapper-->
+            <div class="landing-dark-bg pt-20">
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Row-->
+                    <div class="row py-10 py-lg-20">
+                        <!--begin::Col-->
+                        <div class="col-lg-6 pe-lg-16 mb-10 mb-lg-0">
+                            <!--begin::Block-->
+                            <div class="rounded landing-dark-border p-9 mb-10">
+                                <!--begin::Title-->
+                                <h2 class="text-white">Would you need a Custom License?</h2>
+                                <!--end::Title-->
+                                <!--begin::Text-->
+                                <span class="fw-normal fs-4 text-gray-700">Email us to
+                                    <a href="https://keenthemes.com/support"
+                                        class="text-white opacity-50 text-hover-primary">support@keenthemes.com</a></span>
+                                <!--end::Text-->
                             </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu separator-->
-                            <div class="separator mb-3 opacity-75"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3">New Ticket</a>
+                            <!--end::Block-->
+                            <!--begin::Block-->
+                            <div class="rounded landing-dark-border p-9">
+                                <!--begin::Title-->
+                                <h2 class="text-white">How About a Custom Project?</h2>
+                                <!--end::Title-->
+                                <!--begin::Text-->
+                                <span class="fw-normal fs-4 text-gray-700">Use Our Custom Development Service.
+                                    <a href="../../demo1/dist/pages/user-profile/overview.html"
+                                        class="text-white opacity-50 text-hover-primary">Click to Get a Quote</a></span>
+                                <!--end::Text-->
                             </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3">New Customer</a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3" data-kt-menu-trigger="hover"
-                                data-kt-menu-placement="right-start">
-                                <!--begin::Menu item-->
-                                <a href="#" class="menu-link px-3">
-                                    <span class="menu-title">New Group</span>
-                                    <span class="menu-arrow"></span>
-                                </a>
-                                <!--end::Menu item-->
-                                <!--begin::Menu sub-->
-                                <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Admin Group</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Staff Group</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Member Group</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu sub-->
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <a href="#" class="menu-link px-3">New Contact</a>
-                            </div>
-                            <!--end::Menu item-->
-                            <!--begin::Menu separator-->
-                            <div class="separator mt-3 opacity-75"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Menu item-->
-                            <div class="menu-item px-3">
-                                <div class="menu-content px-3 py-3">
-                                    <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                </div>
-                            </div>
-                            <!--end::Menu item-->
+                            <!--end::Block-->
                         </div>
-                        <!--end::Menu 2-->
+                        <!--end::Col-->
+                        <!--begin::Col-->
+                        <div class="col-lg-6 ps-lg-16">
+                            <!--begin::Navs-->
+                            <div class="d-flex justify-content-center">
+                                <!--begin::Links-->
+                                <div class="d-flex fw-semibold flex-column me-20">
+                                    <!--begin::Subtitle-->
+                                    <h4 class="fw-bold text-gray-400 mb-6">More for Metronic</h4>
+                                    <!--end::Subtitle-->
+                                    <!--begin::Link-->
+                                    <a href="https://keenthemes.com/faqs"
+                                        class="text-white opacity-50 text-hover-primary fs-5 mb-6">FAQ</a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://preview.keenthemes.com/html/metronic/docs"
+                                        class="text-white opacity-50 text-hover-primary fs-5 mb-6">Documentaions</a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://www.youtube.com/c/KeenThemesTuts/videos"
+                                        class="text-white opacity-50 text-hover-primary fs-5 mb-6">Video Tuts</a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://preview.keenthemes.com/html/metronic/docs/getting-started/changelog"
+                                        class="text-white opacity-50 text-hover-primary fs-5 mb-6">Changelog</a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://devs.keenthemes.com/"
+                                        class="text-white opacity-50 text-hover-primary fs-5 mb-6">Support Forum</a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://keenthemes.com/blog"
+                                        class="text-white opacity-50 text-hover-primary fs-5">Blog</a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Links-->
+                                <!--begin::Links-->
+                                <div class="d-flex fw-semibold flex-column ms-lg-20">
+                                    <!--begin::Subtitle-->
+                                    <h4 class="fw-bold text-gray-400 mb-6">Stay Connected</h4>
+                                    <!--end::Subtitle-->
+                                    <!--begin::Link-->
+                                    <a href="https://www.facebook.com/keenthemes" class="mb-6">
+                                        <img src="/admin/assets/media/svg/brand-logos/facebook-4.svg"
+                                            class="h-20px me-2" alt="" />
+                                        <span class="text-white opacity-50 text-hover-primary fs-5 mb-6">Facebook</span>
+                                    </a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://github.com/KeenthemesHub" class="mb-6">
+                                        <img src="/admin/assets/media/svg/brand-logos/github.svg" class="h-20px me-2"
+                                            alt="" />
+                                        <span class="text-white opacity-50 text-hover-primary fs-5 mb-6">Github</span>
+                                    </a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://twitter.com/keenthemes" class="mb-6">
+                                        <img src="/admin/assets/media/svg/brand-logos/twitter.svg" class="h-20px me-2"
+                                            alt="" />
+                                        <span class="text-white opacity-50 text-hover-primary fs-5 mb-6">Twitter</span>
+                                    </a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://dribbble.com/keenthemes" class="mb-6">
+                                        <img src="/admin/assets/media/svg/brand-logos/dribbble-icon-1.svg"
+                                            class="h-20px me-2" alt="" />
+                                        <span class="text-white opacity-50 text-hover-primary fs-5 mb-6">Dribbble</span>
+                                    </a>
+                                    <!--end::Link-->
+                                    <!--begin::Link-->
+                                    <a href="https://www.instagram.com/keenthemes" class="mb-6">
+                                        <img src="/admin/assets/media/svg/brand-logos/instagram-2-1.svg"
+                                            class="h-20px me-2" alt="" />
+                                        <span
+                                            class="text-white opacity-50 text-hover-primary fs-5 mb-6">Instagram</span>
+                                    </a>
+                                    <!--end::Link-->
+                                </div>
+                                <!--end::Links-->
+                            </div>
+                            <!--end::Navs-->
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Row-->
+                </div>
+                <!--end::Container-->
+                <!--begin::Separator-->
+                <div class="landing-dark-separator"></div>
+                <!--end::Separator-->
+                <!--begin::Container-->
+                <div class="container">
+                    <!--begin::Wrapper-->
+                    <div class="d-flex flex-column flex-md-row flex-stack py-7 py-lg-10">
+                        <!--begin::Copyright-->
+                        <div class="d-flex align-items-center order-2 order-md-1">
+                            <!--begin::Logo-->
+                            <a href="../../demo1/dist/landing.html">
+                                <img alt="Logo" src="/admin/assets/media/logos/landing.svg" class="h-15px h-md-20px" />
+                            </a>
+                            <!--end::Logo image-->
+                            <!--begin::Logo image-->
+                            <span class="mx-5 fs-6 fw-semibold text-gray-600 pt-1" href="https://keenthemes.com">&copy;
+                                2023 Keenthemes Inc.</span>
+                            <!--end::Logo image-->
+                        </div>
+                        <!--end::Copyright-->
+                        <!--begin::Menu-->
+                        <ul class="menu menu-gray-600 menu-hover-primary fw-semibold fs-6 fs-md-5 order-1 mb-5 mb-md-0">
+                            <li class="menu-item">
+                                <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                            </li>
+                            <li class="menu-item mx-5">
+                                <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="" target="_blank" class="menu-link px-2">Purchase</a>
+                            </li>
+                        </ul>
                         <!--end::Menu-->
                     </div>
-                    <!--end::Toolbar-->
+                    <!--end::Wrapper-->
                 </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body py-0 px-0">
-                    <!--begin::Nav-->
-                    <ul class="nav d-flex justify-content-between mb-3 mx-9">
-                        <!--begin::Item-->
-                        <li class="nav-item mb-3">
-                            <!--begin::Link-->
-                            <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px active"
-                                data-bs-toggle="tab" id="kt_charts_widget_35_tab_1"
-                                href="#kt_charts_widget_35_tab_content_1">1d</a>
-                            <!--end::Link-->
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="nav-item mb-3">
-                            <!--begin::Link-->
-                            <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px"
-                                data-bs-toggle="tab" id="kt_charts_widget_35_tab_2"
-                                href="#kt_charts_widget_35_tab_content_2">5d</a>
-                            <!--end::Link-->
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="nav-item mb-3">
-                            <!--begin::Link-->
-                            <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px"
-                                data-bs-toggle="tab" id="kt_charts_widget_35_tab_3"
-                                href="#kt_charts_widget_35_tab_content_3">1m</a>
-                            <!--end::Link-->
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="nav-item mb-3">
-                            <!--begin::Link-->
-                            <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px"
-                                data-bs-toggle="tab" id="kt_charts_widget_35_tab_4"
-                                href="#kt_charts_widget_35_tab_content_4">6m</a>
-                            <!--end::Link-->
-                        </li>
-                        <!--end::Item-->
-                        <!--begin::Item-->
-                        <li class="nav-item mb-3">
-                            <!--begin::Link-->
-                            <a class="nav-link btn btn-flex flex-center btn-active-danger btn-color-gray-600 btn-active-color-white rounded-2 w-45px h-35px"
-                                data-bs-toggle="tab" id="kt_charts_widget_35_tab_5"
-                                href="#kt_charts_widget_35_tab_content_5">1y</a>
-                            <!--end::Link-->
-                        </li>
-                        <!--end::Item-->
-                    </ul>
-                    <!--end::Nav-->
-                    <!--begin::Tab Content-->
-                    <div class="tab-content mt-n6">
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade active show" id="kt_charts_widget_35_tab_content_1">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_35_chart_1" data-kt-chart-color="primary"
-                                class="min-h-auto h-200px ps-3 pe-6"></div>
-                            <!--end::Chart-->
-                            <!--begin::Table container-->
-                            <div class="table-responsive mx-9 mt-n6">
-                                <!--begin::Table-->
-                                <table class="table align-middle gs-0 gy-4">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th class="min-w-100px"></th>
-                                            <th class="min-w-100px text-end pe-0"></th>
-                                            <th class="text-end min-w-50px"></th>
-                                        </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-danger">-139.34</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">3:10 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$3,207.03</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-success">+576.24</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">3:55 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$3,274.94</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-success">+124.03</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table container-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_2">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_35_chart_2" data-kt-chart-color="primary"
-                                class="min-h-auto h-200px ps-3 pe-6"></div>
-                            <!--end::Chart-->
-                            <!--begin::Table container-->
-                            <div class="table-responsive mx-9 mt-n6">
-                                <!--begin::Table-->
-                                <table class="table align-middle gs-0 gy-4">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th class="min-w-100px"></th>
-                                            <th class="min-w-100px text-end pe-0"></th>
-                                            <th class="text-end min-w-50px"></th>
-                                        </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,345.45</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-success">+134.02</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">11:35 AM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-primary">-124.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">3:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$1,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-danger">+144.04</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table container-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_3">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_35_chart_3" data-kt-chart-color="primary"
-                                class="min-h-auto h-200px ps-3 pe-6"></div>
-                            <!--end::Chart-->
-                            <!--begin::Table container-->
-                            <div class="table-responsive mx-9 mt-n6">
-                                <!--begin::Table-->
-                                <table class="table align-middle gs-0 gy-4">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th class="min-w-100px"></th>
-                                            <th class="min-w-100px text-end pe-0"></th>
-                                            <th class="text-end min-w-50px"></th>
-                                        </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">3:20 AM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$3,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-primary">+185.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">12:30 AM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-danger">+124.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-success">-154.03</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table container-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_4">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_35_chart_4" data-kt-chart-color="primary"
-                                class="min-h-auto h-200px ps-3 pe-6"></div>
-                            <!--end::Chart-->
-                            <!--begin::Table container-->
-                            <div class="table-responsive mx-9 mt-n6">
-                                <!--begin::Table-->
-                                <table class="table align-middle gs-0 gy-4">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th class="min-w-100px"></th>
-                                            <th class="min-w-100px text-end pe-0"></th>
-                                            <th class="text-end min-w-50px"></th>
-                                        </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-warning">+124.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">5:30 AM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$1,756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-info">+144.65</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">4:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,085.25</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-primary">+154.06</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table container-->
-                        </div>
-                        <!--end::Tap pane-->
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_35_tab_content_5">
-                            <!--begin::Chart-->
-                            <div id="kt_charts_widget_35_chart_5" data-kt-chart-color="primary"
-                                class="min-h-auto h-200px ps-3 pe-6"></div>
-                            <!--end::Chart-->
-                            <!--begin::Table container-->
-                            <div class="table-responsive mx-9 mt-n6">
-                                <!--begin::Table-->
-                                <table class="table align-middle gs-0 gy-4">
-                                    <!--begin::Table head-->
-                                    <thead>
-                                        <tr>
-                                            <th class="min-w-100px"></th>
-                                            <th class="min-w-100px text-end pe-0"></th>
-                                            <th class="text-end min-w-50px"></th>
-                                        </tr>
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">2:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$2,045.04</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-warning">+114.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">3:30 AM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-primary">-124.03</span>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a href="#" class="text-gray-600 fw-bold fs-6">10:30 PM</a>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="text-gray-800 fw-bold fs-6 me-1">$1.756.26</span>
-                                            </td>
-                                            <td class="pe-0 text-end">
-                                                <span class="fw-bold fs-6 text-info">+165.86</span>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table container-->
-                        </div>
-                        <!--end::Tap pane-->
-                    </div>
-                    <!--end::Tab Content-->
-                </div>
-                <!--end::Body-->
+                <!--end::Container-->
             </div>
-            <!--end::Chart Widget 35-->
+            <!--end::Wrapper-->
         </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xl-8">
-            <!--begin::Table widget 14-->
-            <div class="card card-flush h-md-100">
-                <!--begin::Header-->
-                <div class="card-header pt-7">
-                    <!--begin::Title-->
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bold text-gray-800">Projects Stats</span>
-                        <span class="text-gray-400 mt-1 fw-semibold fs-6">Updated 37 minutes ago</span>
-                    </h3>
-                    <!--end::Title-->
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar">
-                        <a href="../../demo1/dist/apps/ecommerce/catalog/add-product.html"
-                            class="btn btn-sm btn-light">History</a>
-                    </div>
-                    <!--end::Toolbar-->
-                </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body pt-6">
-                    <!--begin::Table container-->
-                    <div class="table-responsive">
-                        <!--begin::Table-->
-                        <table class="table table-row-dashed align-middle gs-0 gy-3 my-0">
-                            <!--begin::Table head-->
-                            <thead>
-                                <tr class="fs-7 fw-bold text-gray-400 border-bottom-0">
-                                    <th class="p-0 pb-3 min-w-175px text-start">ITEM</th>
-                                    <th class="p-0 pb-3 min-w-100px text-end">BUDGET</th>
-                                    <th class="p-0 pb-3 min-w-100px text-end">PROGRESS</th>
-                                    <th class="p-0 pb-3 min-w-175px text-end pe-12">STATUS</th>
-                                    <th class="p-0 pb-3 w-125px text-end pe-7">CHART</th>
-                                    <th class="p-0 pb-3 w-50px text-end">VIEW</th>
-                                </tr>
-                            </thead>
-                            <!--end::Table head-->
-                            <!--begin::Table body-->
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-50px me-3">
-                                                <img src="assets/media/stock/600x600/img-49.jpg" class="" alt="" />
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#"
-                                                    class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Mivy
-                                                    App</a>
-                                                <span class="text-gray-400 fw-semibold d-block fs-7">Jane Cooper</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <span class="text-gray-600 fw-bold fs-6">$32,400</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light-success fs-base">
-                                            <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>9.2%</span>
-                                        <!--end::Label-->
-                                    </td>
-                                    <td class="text-end pe-12">
-                                        <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div id="kt_table_widget_14_chart_1" class="h-50px mt-n8 pe-7"
-                                            data-kt-chart-color="success"></div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                            <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-50px me-3">
-                                                <img src="assets/media/stock/600x600/img-40.jpg" class="" alt="" />
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#"
-                                                    class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Avionica</a>
-                                                <span class="text-gray-400 fw-semibold d-block fs-7">Esther
-                                                    Howard</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <span class="text-gray-600 fw-bold fs-6">$256,910</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light-danger fs-base">
-                                            <i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>0.4%</span>
-                                        <!--end::Label-->
-                                    </td>
-                                    <td class="text-end pe-12">
-                                        <span class="badge py-3 px-4 fs-7 badge-light-warning">On Hold</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div id="kt_table_widget_14_chart_2" class="h-50px mt-n8 pe-7"
-                                            data-kt-chart-color="danger"></div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                            <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-50px me-3">
-                                                <img src="assets/media/stock/600x600/img-39.jpg" class="" alt="" />
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#"
-                                                    class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Charto
-                                                    CRM</a>
-                                                <span class="text-gray-400 fw-semibold d-block fs-7">Jenny Wilson</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <span class="text-gray-600 fw-bold fs-6">$8,220</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light-success fs-base">
-                                            <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>9.2%</span>
-                                        <!--end::Label-->
-                                    </td>
-                                    <td class="text-end pe-12">
-                                        <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div id="kt_table_widget_14_chart_3" class="h-50px mt-n8 pe-7"
-                                            data-kt-chart-color="success"></div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                            <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-50px me-3">
-                                                <img src="assets/media/stock/600x600/img-47.jpg" class="" alt="" />
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#"
-                                                    class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">Tower
-                                                    Hill</a>
-                                                <span class="text-gray-400 fw-semibold d-block fs-7">Cody Fisher</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <span class="text-gray-600 fw-bold fs-6">$74,000</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light-success fs-base">
-                                            <i class="ki-duotone ki-arrow-up fs-5 text-success ms-n1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>9.2%</span>
-                                        <!--end::Label-->
-                                    </td>
-                                    <td class="text-end pe-12">
-                                        <span class="badge py-3 px-4 fs-7 badge-light-success">Complated</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div id="kt_table_widget_14_chart_4" class="h-50px mt-n8 pe-7"
-                                            data-kt-chart-color="success"></div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                            <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <div class="symbol symbol-50px me-3">
-                                                <img src="assets/media/stock/600x600/img-48.jpg" class="" alt="" />
-                                            </div>
-                                            <div class="d-flex justify-content-start flex-column">
-                                                <a href="#" class="text-gray-800 fw-bold text-hover-primary mb-1 fs-6">9
-                                                    Degree</a>
-                                                <span class="text-gray-400 fw-semibold d-block fs-7">Savannah
-                                                    Nguyen</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <span class="text-gray-600 fw-bold fs-6">$183,300</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <!--begin::Label-->
-                                        <span class="badge badge-light-danger fs-base">
-                                            <i class="ki-duotone ki-arrow-down fs-5 text-danger ms-n1">
-                                                <span class="path1"></span>
-                                                <span class="path2"></span>
-                                            </i>0.4%</span>
-                                        <!--end::Label-->
-                                    </td>
-                                    <td class="text-end pe-12">
-                                        <span class="badge py-3 px-4 fs-7 badge-light-primary">In Process</span>
-                                    </td>
-                                    <td class="text-end pe-0">
-                                        <div id="kt_table_widget_14_chart_5" class="h-50px mt-n8 pe-7"
-                                            data-kt-chart-color="danger"></div>
-                                    </td>
-                                    <td class="text-end">
-                                        <a href="#"
-                                            class="btn btn-sm btn-icon btn-bg-light btn-active-color-primary w-30px h-30px">
-                                            <i class="ki-duotone ki-black-right fs-2 text-gray-500"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                            <!--end::Table body-->
-                        </table>
-                    </div>
-                    <!--end::Table-->
-                </div>
-                <!--end: Card Body-->
-            </div>
-            <!--end::Table widget 14-->
+        <!--end::Footer Section-->
+        <!--begin::Scrolltop-->
+        <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+            <i class="ki-duotone ki-arrow-up">
+                <span class="path1"></span>
+                <span class="path2"></span>
+            </i>
         </div>
-        <!--end::Col-->
+        <!--end::Scrolltop-->
     </div>
-    <!--end::Row-->
-    <!--begin::Row-->
-    <div class="row g-5 g-xl-10">
-        <!--begin::Col-->
-        <div class="col-xl-4">
-            <!--begin::Engage widget 1-->
-            <div class="card h-md-100" dir="ltr">
-                <!--begin::Body-->
-                <div class="card-body d-flex flex-column flex-center">
-                    <!--begin::Heading-->
-                    <div class="mb-2">
-                        <!--begin::Title-->
-                        <h1 class="fw-semibold text-gray-800 text-center lh-lg">Have your tried
-                            <br />new
-                            <span class="fw-bolder">Invoice Manager?</span>
-                        </h1>
-                        <!--end::Title-->
-                        <!--begin::Illustration-->
-                        <div class="py-10 text-center">
-                            <img src="assets/media/svg/illustrations/easy/2.svg" class="theme-light-show w-200px"
-                                alt="" />
-                            <img src="assets/media/svg/illustrations/easy/2-dark.svg" class="theme-dark-show w-200px"
-                                alt="" />
-                        </div>
-                        <!--end::Illustration-->
-                    </div>
-                    <!--end::Heading-->
-                    <!--begin::Links-->
-                    <div class="text-center mb-1">
-                        <!--begin::Link-->
-                        <a class="btn btn-sm btn-primary me-2" data-bs-target="#kt_modal_new_address"
-                            data-bs-toggle="modal">Try Now</a>
-                        <!--end::Link-->
-                        <!--begin::Link-->
-                        <a class="btn btn-sm btn-light"
-                            href="../../demo1/dist/apps/user-management/users/view.html">Learn More</a>
-                        <!--end::Link-->
-                    </div>
-                    <!--end::Links-->
-                </div>
-                <!--end::Body-->
-            </div>
-            <!--end::Engage widget 1-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xl-8">
-            <!--begin::Timeline Widget 4-->
-            <div class="card h-md-100">
-                <!--begin::Card header-->
-                <div class="card-header position-relative py-0 border-bottom-1">
-                    <!--begin::Card title-->
-                    <h3 class="card-title text-gray-800 fw-bold">Active Tasks</h3>
-                    <!--end::Card title-->
-                    <!--begin::Tabs-->
-                    <ul class="nav nav-stretch nav-pills nav-pills-custom d-flex mt-4">
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <a class="nav-link btn btn-color-gray-400 flex-center px-3 active"
-                                data-kt-timeline-widget-4="tab" data-bs-toggle="tab"
-                                href="#kt_timeline_widget_4_tab_day">
-                                <!--begin::Title-->
-                                <span class="nav-text fw-semibold fs-4 mb-3">Day</span>
-                                <!--end::Title-->
-                                <!--begin::Bullet-->
-                                <span
-                                    class="bullet-custom position-absolute z-index-2 w-100 h-1px top-100 bottom-n100 bg-primary rounded"></span>
-                                <!--end::Bullet-->
-                            </a>
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <a class="nav-link btn btn-color-gray-400 flex-center px-3" data-kt-timeline-widget-4="tab"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_4_tab_week">
-                                <!--begin::Title-->
-                                <span class="nav-text fw-semibold fs-4 mb-3">Week</span>
-                                <!--end::Title-->
-                                <!--begin::Bullet-->
-                                <span
-                                    class="bullet-custom position-absolute z-index-2 w-100 h-1px top-100 bottom-n100 bg-primary rounded"></span>
-                                <!--end::Bullet-->
-                            </a>
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <a class="nav-link btn btn-color-gray-400 flex-center px-3" data-kt-timeline-widget-4="tab"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_4_tab_month">
-                                <!--begin::Title-->
-                                <span class="nav-text fw-semibold fs-4 mb-3">Month</span>
-                                <!--end::Title-->
-                                <!--begin::Bullet-->
-                                <span
-                                    class="bullet-custom position-absolute z-index-2 w-100 h-1px top-100 bottom-n100 bg-primary rounded"></span>
-                                <!--end::Bullet-->
-                            </a>
-                        </li>
-                        <!--end::Nav item-->
-                        <!--begin::Nav item-->
-                        <li class="nav-item p-0 ms-0">
-                            <a class="nav-link btn btn-color-gray-400 flex-center px-3" data-kt-timeline-widget-4="tab"
-                                data-bs-toggle="tab" href="#kt_timeline_widget_4_tab_2022">
-                                <!--begin::Title-->
-                                <span class="nav-text fw-semibold fs-4 mb-3">2022</span>
-                                <!--end::Title-->
-                                <!--begin::Bullet-->
-                                <span
-                                    class="bullet-custom position-absolute z-index-2 w-100 h-1px top-100 bottom-n100 bg-primary rounded"></span>
-                                <!--end::Bullet-->
-                            </a>
-                        </li>
-                        <!--end::Nav item-->
-                    </ul>
-                    <!--end::Tabs-->
-                </div>
-                <!--end::Card header-->
-                <!--begin::Card body-->
-                <div class="card-body pb-0">
-                    <!--begin::Tab content-->
-                    <div class="tab-content">
-                        <!--begin::Tab pane-->
-                        <div class="tab-pane active" id="kt_timeline_widget_4_tab_day" role="tabpanel"
-                            aria-labelledby="day-tab" data-kt-timeline-widget-4-blockui="true">
-                            <div class="table-responsive pb-10">
-                                <!--begin::Timeline-->
-                                <div id="kt_timeline_widget_4_1" class="vis-timeline-custom h-350px min-w-700px"
-                                    data-kt-timeline-widget-4-image-root="assets/media/"></div>
-                                <!--end::Timeline-->
-                            </div>
-                        </div>
-                        <!--end::Tab pane-->
-                        <!--begin::Tab pane-->
-                        <div class="tab-pane" id="kt_timeline_widget_4_tab_week" role="tabpanel"
-                            aria-labelledby="week-tab" data-kt-timeline-widget-4-blockui="true">
-                            <div class="table-responsive pb-10">
-                                <!--begin::Timeline-->
-                                <div id="kt_timeline_widget_4_2" class="vis-timeline-custom h-350px min-w-700px"
-                                    data-kt-timeline-widget-4-image-root="assets/media/"></div>
-                                <!--end::Timeline-->
-                            </div>
-                        </div>
-                        <!--end::Tab pane-->
-                        <!--begin::Tab pane-->
-                        <div class="tab-pane" id="kt_timeline_widget_4_tab_month" role="tabpanel"
-                            aria-labelledby="month-tab" data-kt-timeline-widget-4-blockui="true">
-                            <div class="table-responsive pb-10">
-                                <!--begin::Timeline-->
-                                <div id="kt_timeline_widget_4_3" class="vis-timeline-custom h-350px min-w-700px"
-                                    data-kt-timeline-widget-4-image-root="assets/media/"></div>
-                                <!--end::Timeline-->
-                            </div>
-                        </div>
-                        <!--end::Tab pane-->
-                        <!--begin::Tab pane-->
-                        <div class="tab-pane" id="kt_timeline_widget_4_tab_2022" role="tabpanel"
-                            aria-labelledby="week-tab" data-kt-timeline-widget-4-blockui="true">
-                            <div class="table-responsive pb-10">
-                                <!--begin::Timeline-->
-                                <div id="kt_timeline_widget_4_4" class="vis-timeline-custom h-350px min-w-700px"
-                                    data-kt-timeline-widget-4-image-root="assets/media/"></div>
-                                <!--end::Timeline-->
-                            </div>
-                        </div>
-                        <!--end::Tab pane-->
-                    </div>
-                    <!--end::Tab content-->
-                </div>
-                <!--end::Card body-->
-            </div>
-            <!--end::Timeline Widget 1-->
-        </div>
-        <!--end::Col-->
+    <!--end::Root-->
+    <!--begin::Scrolltop-->
+    <div id="kt_scrolltop" class="scrolltop" data-kt-scrolltop="true">
+        <i class="ki-duotone ki-arrow-up">
+            <span class="path1"></span>
+            <span class="path2"></span>
+        </i>
     </div>
-    <!--end::Row-->
-</div>
-@endsection
+    <!--end::Scrolltop-->
+    <!--begin::Javascript-->
+    <script>
+    var hostUrl = "/admin/assets/";
+    </script>
+    <!--begin::Global Javascript Bundle(mandatory for all pages)-->
+    <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="/admin/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+    <!--begin::Vendors Javascript(used for this page only)-->
+    <script src="/admin/assets/plugins/custom/fslightbox/fslightbox.bundle.js"></script>
+    <script src="/admin/assets/plugins/custom/typedjs/typedjs.bundle.js"></script>
+    <!--end::Vendors Javascript-->
+    <!--begin::Custom Javascript(used for this page only)-->
+    <script src="/admin/assets/js/custom/landing.js"></script>
+    <script src="/admin/assets/js/custom/pages/pricing/general.js"></script>
+    <!--end::Custom Javascript-->
+    <!--end::Javascript-->
+</body>
+<!--end::Body-->
+
+</html>
