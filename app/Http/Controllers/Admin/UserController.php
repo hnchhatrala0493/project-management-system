@@ -213,6 +213,50 @@ class UserController extends Controller {
         return redirect()->back();
     }
 
+    public function SendOTPByPhone( Request $request ) {
+        $token  = env( 'TWILLO_TOKEN' );
+        $account_sid = env( 'TWILLO_ACCOUNT_SID' );
+        $phone = decrypt( $request->get( 'phone' ) );
+        // Recipient and sender numbers
+        $to = '+91'.$phone;
+        $from = '+17013944819';
+
+        $OTP = rand( 11111111, 99999999 );
+        $otpData = [
+            'type'=>'phone',
+            'otp'=> $OTP,
+            'user_id' => Auth::id(),
+            'otp_status'=> 'Not Verify'
+        ];
+        VerificationOTP::InsertGetId( $otpData );
+        // Message body
+        $body = 'Your Verification Code is : '. $OTP;
+
+        // Twilio API endpoint
+        $url = env( 'TWILLO_URL' ) . $account_sid . '/Messages.json';
+
+        // Data to be sent in POST request
+        $data = array(
+            'To' => $to,
+            'From' => $from,
+            'Body' => $body
+        );
+
+        // Initialize cURL
+        $ch = curl_init();
+        // Set cURL options
+        curl_setopt( $ch, CURLOPT_URL, $url );
+        curl_setopt( $ch, CURLOPT_POST, true );
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $data ) );
+        curl_setopt( $ch, CURLOPT_USERPWD, $account_sid . ':' . $token );
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+        // Execute cURL request
+        $response = curl_exec( $ch );
+        // Check for errors
+        return $response;
+    }
+
     public function VerificationCodeByPhone( Request $request ) {
         $code = $request->code;
         $verified = VerificationOTP::where( [ 'user_id'=> Auth::user()->id, 'otp'=> $code ] )->update( [ 'otp_status'=>'Verified' ] );
