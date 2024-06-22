@@ -8,11 +8,11 @@ use App\Models\EmailLog;
 use App\Models\Role;
 use App\Models\StaffMembers;
 use App\Models\User;
+use App\Models\VerificationOTP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
-use SimonMarcelLinden\Toast\Facades\Toast;
+use Twilio\Rest\Client;
 
 class UserController extends Controller {
     /**
@@ -173,7 +173,7 @@ class UserController extends Controller {
         EmailLog::create( [
             'subject' => env( 'APP_NAME' ).' - '. $subject,
             'to' => $email,
-            'from'=>env( 'MAIL_FROM_ADDRESS' ),
+            'from'=> env( 'MAIL_FROM_ADDRESS' ),
             'date'=>date( 'Y-m-d', strtotime( 'now' ) )
         ] );
 
@@ -185,6 +185,94 @@ class UserController extends Controller {
         $email = $request->get( 'email' );
         $name = $request->get( 'name' );
         return view( 'admin.user.newPassword', compact( 'email', 'name' ) );
+    }
+
+    public function SendOTPByEmail( Request $request ) {
+        $subject = 'Your Email OTP';
+        $email = decrypt( $request->email );
+        $emailTemplate = 'admin.email_template.email_otp';
+        $OTP = rand( 11111111, 99999999 );
+        $data = [
+            'emailOTP' => $OTP,
+            'name' => 'User'
+        ];
+        $otpData = [
+            'type'=>'email',
+            'otp'=>$OTP,
+            'user_id' =>Auth::id(),
+            'otp_status'=> 'Not Verify'
+        ];
+        VerificationOTP::InsertGetId( $otpData );
+        SendEmail::sendEmail( $emailTemplate, $data, $email, 'User', $subject );
+        EmailLog::create( [
+            'subject' => env( 'APP_NAME' ).' - '. $subject,
+            'to' => $email,
+            'from'=>env( 'MAIL_FROM_ADDRESS' ),
+            'date'=>date( 'Y-m-d', strtotime( 'now' ) )
+        ] );
+        return redirect()->back();
+    }
+
+    public function SendOTPByPhone( Request $request ) {
+        $token  = 'e722d0ffadb1a8d2922aabc0feeacd5f';
+        $account_sid = 'AC679fffa8ae08ea7bbce466518eb28526';
+        $phone = decrypt( $request->get( 'phone' ) );
+        // Recipient and sender numbers
+        $to = '+91'.$phone;
+        $from = '+17013944819';
+
+        $OTP = rand( 11111111, 99999999 );
+        $otpData = [
+            'type'=>'phone',
+            'otp'=> $OTP,
+            'user_id' => Auth::id(),
+            'otp_status'=> 'Not Verify'
+        ];
+        VerificationOTP::InsertGetId( $otpData );
+        // Message body
+        $body = 'Your Verification Code is : '. $OTP;
+
+        // Twilio API endpoint
+        $url = 'https://api.twilio.com/2010-04-01/Accounts/' . $account_sid . '/Messages.json';
+
+        // Data to be sent in POST request
+        $data = array(
+            'To' => $to,
+            'From' => $from,
+            'Body' => $body
+        );
+
+        // Initialize cURL
+        $ch = curl_init();
+        // Set cURL options
+        curl_setopt( $ch, CURLOPT_URL, $url );
+        curl_setopt( $ch, CURLOPT_POST, true );
+        curl_setopt( $ch, CURLOPT_POSTFIELDS, http_build_query( $data ) );
+        curl_setopt( $ch, CURLOPT_USERPWD, $account_sid . ':' . $token );
+        curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+
+        // Execute cURL request
+        $response = curl_exec( $ch );
+        // Check for errors
+        return $response;
+    }
+
+    public function VerificationCodeByPhone( Request $request ) {
+        $code = $request->code;
+        $verified = VerificationOTP::where( [ 'user_id'=> Auth::user()->id, 'otp'=> $code ] )->update( [ 'otp_status'=>'Verified' ] );
+        if ( $verified ) {
+            User::where( 'id', Auth::id() )->update( [ 'phone_verified_at'=>date( 'Y-m-d h:i:s' ) ] );
+        }
+        return redirect()->back();
+    }
+
+    public function VerificationCodeByEmail( Request $request ) {
+        $code = $request->code;
+        $verified = VerificationOTP::where( [ 'user_id'=> Auth::user()->id, 'otp'=> $code ] )->update( [ 'otp_status'=>'Verified' ] );
+        if ( $verified ) {
+            User::where( 'id', Auth::id() )->update( [ 'email_verified_at'=>date( 'Y-m-d h:i:s' ) ] );
+        }
+        return redirect()->back();
     }
 
     public function UpdatePassword( Request $request ) {

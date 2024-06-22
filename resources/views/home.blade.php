@@ -170,9 +170,15 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <!--end::Menu wrapper-->
                             <!--begin::Toolbar-->
+                            @if(Auth::user() && !Auth::user()->id)
                             <div class="flex-equal text-end ms-1">
                                 <a href="{{route('login')}}" class="btn btn-success">Sign In</a>
                             </div>
+                            @else
+                            <div class="flex-equal text-end ms-1">
+                                <a href="{{route('logout')}}" class="btn btn-success">Sign Out</a>
+                            </div>
+                            @endif
                             <!--end::Toolbar-->
                         </div>
                         <!--end::Wrapper-->

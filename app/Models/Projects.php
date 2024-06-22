@@ -12,10 +12,15 @@ class Projects extends Model {
     protected $fillable = [ 'project_name', 'project_status', 'project_category' ];
 
     public static function getRecordList() {
-        return self::orderBy( 'id', 'desc' )->get();
+        return self::orderBy( 'id', 'desc' )->with( 'category' )->get();
     }
 
     public static function getProjectListByAssigned() {
         return self::orderBy( 'id', 'desc' )->get();
     }
+
+    public function category() {
+        return $this->belongsTo( Category::class, 'project_category' );
+    }
+
 }

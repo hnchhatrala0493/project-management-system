@@ -13,4 +13,8 @@ class Language extends Model {
     public static function getRecordList() {
         return self::orderBy( 'id', 'desc' )->get();
     }
+
+    public function teamMember() {
+        return $this->hasOne( TeamMember::class );
+    }
 }

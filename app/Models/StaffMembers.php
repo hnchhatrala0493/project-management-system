@@ -8,8 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class StaffMembers extends Model {
     use HasFactory;
+
     protected $table = 'staff_members';
-    protected $fillable = [ 'profile_id', 'full_name', 'father_name', 'mother_name', 'isBrotherOrSister', 'date_of_birth', 'date_of_anniversary', 'date_of_joining', 'salary', 'blood_group', 'history_of_previous_company', 'status' ];
+    protected $fillable = [ 'profile_id', 'full_name', 'father_name', 'mother_name', 'isBrotherOrSister', 'date_of_birth', 'date_of_anniversary', 'date_of_joining', 'gender', 'blood_group', 'status' ];
 
     public static function getRecordList() {
         return self::orderBy( 'created_at', 'DESC' )->get();
@@ -25,5 +26,9 @@ class StaffMembers extends Model {
 
     public static function getMemberberIdByFullName( $staffMemberName ) {
         return self::select( 'profile_id' )->where( 'full_name', $staffMemberName )->first();
+    }
+
+    public function teamMember() {
+        return $this->hasOne( TeamMember::class );
     }
 }

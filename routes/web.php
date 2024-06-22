@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RolesController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+// Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
+// Route::post('/login-user', [LoginController::class, 'auth'])->name('auth.login.user');
+
 Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
     Route::group(['prefix'=> 'projects'], function(){
         Route::get('/list', [ProjectController::class,'index'])->name("project.index");
@@ -37,7 +41,6 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/edit/{id}', [ProjectController::class,'edit'])->name("project.edit");
         Route::post('/update', [ProjectController::class,'update'])->name("project.update");
         Route::get('/show/{id}', [ProjectController::class,'show'])->name("project.view");
-        // Route::get('/refund', [ProjectController::class,'cancelAndRefund'])->name("project.refund");
     });
     Route::group(['prefix'=>'task'], function(){
         Route::get('/list', [TaskController::class,'index'])->name("task.index");
@@ -71,8 +74,8 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/list', [TeamController::class,'index'])->name("team.index");
         Route::get('/new', [TeamController::class,'create'])->name("team.create");
         Route::post('/store', [TeamController::class,'store'])->name("team.store");
-        Route::post('/edit', [TeamController::class,'edit'])->name("team.edit");
-        Route::post('/update', [TeamController::class,'update'])->name("team.update");
+        Route::get('/edit/{id}', [TeamController::class,'edit'])->name("team.edit");
+        Route::post('/update/{id}', [TeamController::class,'update'])->name("team.update");
         Route::get('/show/{id}', [TeamController::class,'show'])->name("team.view");
     });
     Route::group(['prefix'=>'user'], function(){
@@ -88,6 +91,10 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/send/{email}/{name}/password', [UserController::class,'sendEmailForChangePassword'])->name("user.sendemail.password");
         Route::get('/new/password', [UserController::class,'ChangePassword'])->name("user.new.password");
         Route::post('/new/password/change', [UserController::class,'UpdatePassword'])->name("user.update.password");
+        Route::post('/send/email/otp', [UserController::class,'SendOTPByEmail'])->name("profile.sendOTP.email");
+        Route::post('/send/phone/otp', [UserController::class,'SendOTPByPhone'])->name("profile.sendOTP.phone");
+        Route::post('/verify/email/otp', [UserController::class,'VerificationCodeByEmail'])->name("profile.sendOTP.verification.email");
+        Route::post('/verify/phone/otp', [UserController::class,'VerificationCodeByPhone'])->name("profile.sendOTP.verification.phone");
     });
     Route::group(['prefix'=>'roles'], function(){
         Route::get('/list', [RolesController::class,'index'])->name("roles.index");
@@ -113,5 +120,5 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::post('/update', [ModulesController::class,'update'])->name("module.update");
         Route::get('/show/{id}', [ModulesController::class,'show'])->name("module.view");
     });
-    //Route::get( 'dashboard', [DashboardController::class, 'index' ] )->name( 'home' );
+    Route::get( '/dashboard', [DashboardController::class, 'index' ] )->name( 'admin.dashboard' );
 });

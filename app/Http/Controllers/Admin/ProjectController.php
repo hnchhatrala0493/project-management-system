@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Projects;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class ProjectController extends Controller {
     /**
@@ -15,9 +16,11 @@ class ProjectController extends Controller {
     */
 
     public function index() {
-        $title = 'Projects';
+        $title = 'Manage Projects';
+        $addtitle = 'Project';
         $projects = Projects::getRecordList();
-        return view( 'admin.project.index', compact( 'title', 'projects' ) );
+        $categorys = Category::get();
+        return view( 'admin.project.index', compact( 'title', 'projects', 'addtitle', 'categorys' ) );
     }
 
     /**
@@ -40,10 +43,10 @@ class ProjectController extends Controller {
     */
 
     public function store( Request $request ) {
-
-        $project = Projects::create( $request->all() );
-        if ( $project ) {
-            return redirect()->route( 'project.index' );
+        $projects = array_column( $request->get( 'projects' ), 'value', 'name' );
+        $addproject = Projects::create( $projects );
+        if ( $addproject ) {
+            return response()->json( [ 'status_code' => 200, 'result'=>'1', 'messages' => 'Record Added Successfully' ] );
         }
     }
 
@@ -70,9 +73,10 @@ class ProjectController extends Controller {
 
     public function edit( $id ) {
         $title = 'Projects';
+        $addtitle = 'Edit Project';
         $projectDetail = Projects::find( $id );
         $categorys = Category::get();
-        return view( 'admin.project.edit', compact( 'title', 'projectDetail', 'categorys' ) );
+        return view( 'admin.project.edit', compact( 'title', 'projectDetail', 'categorys', 'addtitle' ) );
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -68,6 +69,6 @@ class User extends Authenticatable {
     }
 
     public static function UpdatePasswordByEmail( $email, $password ) {
-        return self::where( 'email', $email )->update( [ 'password'=>$password ] );
+        return self::where( 'email', $email )->update( [ 'password'=> Hash::make( $password ) ] );
     }
 }

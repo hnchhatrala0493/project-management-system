@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tasks;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller {
@@ -13,7 +14,10 @@ class TaskController extends Controller {
     */
 
     public function index() {
-        return view( 'admin.task.index' );
+        $title = 'Manage Tasks';
+        $addtitle = 'Task';
+        $taskList = Tasks::getRecordList();
+        return view( 'admin.task.index', compact( 'taskList', 'title', 'addtitle' ) );
     }
 
     /**

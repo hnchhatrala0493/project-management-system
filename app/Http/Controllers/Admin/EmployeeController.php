@@ -51,12 +51,10 @@ class EmployeeController extends Controller {
             'date_of_birth'=>$request->get( 'date_of_birth' ),
             'marital_status'=>$request->get( 'marital_status' ),
             'date_of_anniversary'=>$request->get( 'date_of_anniversary' ),
-            'salary'=>$request->get( 'salary' ),
+            'gender'=>$request->get( 'gender' ),
             'date_of_joining'=>$request->get( 'date_of_joining' ),
             'blood_group'=>$request->get( 'blood_group' ),
-            'status'=>$request->get( 'status' ),
-            'educationalDetails'=>json_encode( $request->get( 'educationalDetails' ) ),
-            'history_of_previous_company'=>json_encode( $request->get( 'history_of_previous_company' ) ),
+            'status'=>$request->get( 'status' )
         ] );
         if ( $staff ) {
             return redirect()->route( 'employee.index' );

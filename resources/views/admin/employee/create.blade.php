@@ -62,8 +62,13 @@
                 <div class="row mb-9 col-12">
                     <div class="row col-6">
                         <div class="form-group">
-                            <label class="fs-6 fw-semibold required mb-2">Salary</label>
-                            <input type="text" class="form-control" name="salary" id="salary" />
+                            <label class="fs-6 fw-semibold required mb-2">Gender</label>
+                            <!-- <input type="text" class="form-control" name="salary" id="salary" /> -->
+                            <select name="gender" id="gener" class="form-select" data-control="select2">
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row col-6">

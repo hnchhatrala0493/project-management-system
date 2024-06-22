@@ -18,7 +18,8 @@
                         </th>
                         <th class="min-w-125px">Team Leader Name</th>
                         <th class="min-w-125px">Team Member Name</th>
-                        <th class="min-w-125px">Date</th>
+                        <th class="min-w-125px">Language Name</th>
+                        <th class="min-w-125px">Create Date</th>
                         <th class="text-end min-w-100px">Actions</th>
                     </tr>
                 </thead>
@@ -32,9 +33,10 @@
                         </td>
                         <td>{{ $team->team_member_name }}</td>
                         <td>
-                            <div class="badge badge-light fw-bold">{{ $team->team_member_id }}</div>
+                            <div>{{ $team->users->full_name   }}</div>
                         </td>
-                        <td>{{ $team->created_at }}</td>
+                        <td>{{ $team->language->language_name }}</td>
+                        <td>{{ date('d-m-Y',strtotime($team->created_at)) }}</td>
                         <td class="text-end">
                             <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
                                 data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
@@ -44,8 +46,7 @@
                                 data-kt-menu="true">
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{route('project.edit',['id'=>$team->id])}}"
-                                        class="menu-link px-3">Edit</a>
+                                    <a href="{{route('team.edit',['id'=>$team->id])}}" class="menu-link px-3">Edit</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->

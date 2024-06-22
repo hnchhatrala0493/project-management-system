@@ -7,11 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class TeamMember extends Model {
     use HasFactory;
+
     protected $table = 'team_members';
-    protected $filled = [ 'team_member_name', 'team_member_id', 'language' ];
+    protected $fillable = [ 'team_member_name', 'team_member_id', 'language_id' ];
 
     public static function getRecordList() {
-        return self::orderBy( 'id', 'desc' )->get();
+        return TeamMember::orderBy( 'id', 'desc' )->with( 'language' )->with( 'users' )->get();
+    }
+
+    public function language() {
+        return $this->belongsTo( Language::class,  'language_id' );
+    }
+
+    public function users() {
+        return $this->belongsTo( StaffMembers::class,  'team_member_id' );
+    }
+
+    public static function getRecordById( $id ) {
+        return self::with( 'language' )->with( 'users' )->where( 'id', $id )->first();
     }
 
 }

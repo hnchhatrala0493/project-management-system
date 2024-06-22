@@ -3,7 +3,6 @@
 <div id="kt_app_content" class="app-content flex-column-fluid">
     <!--begin::Content container-->
     <div id="kt_app_content_container" class="app-container container-xxl">
-
         <!--begin::details View-->
         <div class="card mb-5 mb-xl-10" id="kt_profile_details_view">
             <!--begin::Card header-->
@@ -38,7 +37,13 @@
                     <!--end::Label-->
                     <!--begin::Col-->
                     <div class="col-lg-8">
-                        <span class="fw-bold fs-6 text-gray-800">{{ $getProfileDetail->email }}</span>
+                        <span class="fw-bold fs-6 text-gray-800 me-2">{{ $getProfileDetail->email }}</span>
+                        @if($getProfileDetail->email_verified_at)
+                        <span class="badge badge-success">Verified</span>
+                        @else
+                        <span class="badge badge-danger">Not Verified Yet</span>
+                        <button class="btn btn-link pl-3 verification_email_otp">Please Verify</button>
+                        @endif
                     </div>
                     <!--end::Col-->
                 </div>
@@ -56,17 +61,22 @@
                         </span></label>
                     <!--end::Label-->
                     <!--begin::Col-->
-                    <div class="col-lg-8 d-flex align-items-center">
+                    <div class="col-lg-8">
                         <span
                             class="fw-bold fs-6 text-gray-800 me-2">{{ $getProfileDetail->phone ? $getProfileDetail->phone : 'Not Available'  }}</span>
+                        @if($getProfileDetail->phone_verified_at)
                         <span class="badge badge-success">Verified</span>
+                        @else
+                        <span class="badge badge-danger">Not Verified Yet</span>
+                        <button class="btn btn-link pl-3 verification_phone_otp">Please
+                            Verify</button>
+                        @endif
                     </div>
                     <!--end::Col-->
                 </div>
                 <!--end::Input group-->
             </div>
         </div>
-        {!! Toast::message() !!}
         <div class="card mb-5 mb-xl-10">
             <!--begin::Card header-->
             <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse"
@@ -197,6 +207,156 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="verification_email_otp" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-centered mw-800px">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Form-->
+                <form class="form" method="post" action="{{route('profile.sendOTP.verification.email')}}"
+                    id="verification_otp">
+                    @csrf
+                    <!--begin::Modal header-->
+                    <div class="modal-header" id="kt_modal_add_customer_header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bold">Email OTP Verification</h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div id="kt_modal_add_customer_close" data-bs-dismiss="modal"
+                            class="btn btn-icon btn-sm btn-active-icon-primary">
+                            <i class="ki-duotone ki-cross fs-1">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body py-10 px-lg-17">
+                        <!--begin::Scroll-->
+                        <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true"
+                            data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
+                            data-kt-scroll-dependencies="#kt_modal_add_customer_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+                            <div id="kt_modal_add_customer_billing_info" class="collapse show">
+                                <!--begin::Input group-->
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="row g-9">
+                                    <!--begin::Col-->
+                                    <div class="col-md-10 fv-row">
+                                        <!--begin::Label-->
+                                        <div class="fw-bold text-start text-dark fs-6 mb-1 ms-1">Type your 8 digit
+                                            security code</div>
+                                        <!--end::Label-->
+                                        <!--begin::Input group-->
+                                        <div class="d-flex flex-wrap flex-stack">
+                                            <input type="text" name="code" class="form-control" value="" />
+                                        </div>
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Billing form-->
+                        </div>
+                        <!--end::Scroll-->
+                    </div>
+                    <!--end::Modal body-->
+                    <!--begin::Modal footer-->
+                    <div class="modal-footer flex-center">
+                        <!--begin::Button-->
+                        <button type="reset" class="btn btn-light me-3">Cancel</button>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <button type="submit" class="btn btn-primary">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Modal footer-->
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="verification_phone_otp" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-centered mw-800px">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Form-->
+                <form class="form" method="post" action="{{route('profile.sendOTP.verification.phone')}}"
+                    id="verification_otp_modal">
+                    @csrf
+                    <!--begin::Modal header-->
+                    <div class="modal-header" id="kt_modal_add_customer_header">
+                        <!--begin::Modal title-->
+                        <h2 class="fw-bold">Phone OTP Verification</h2>
+                        <!--end::Modal title-->
+                        <!--begin::Close-->
+                        <div id="kt_modal_add_customer_close" data-bs-dismiss="modal"
+                            class="btn btn-icon btn-sm btn-active-icon-primary">
+                            <i class="ki-duotone ki-cross fs-1">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                            </i>
+                        </div>
+                        <!--end::Close-->
+                    </div>
+                    <!--end::Modal header-->
+                    <!--begin::Modal body-->
+                    <div class="modal-body py-10 px-lg-17">
+                        <!--begin::Scroll-->
+                        <div class="scroll-y me-n7 pe-7" id="kt_modal_add_customer_scroll" data-kt-scroll="true"
+                            data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto"
+                            data-kt-scroll-dependencies="#kt_modal_add_customer_header"
+                            data-kt-scroll-wrappers="#kt_modal_add_customer_scroll" data-kt-scroll-offset="300px">
+                            <div id="kt_modal_add_customer_billing_info" class="collapse show">
+                                <!--begin::Input group-->
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="row g-9">
+                                    <!--begin::Col-->
+                                    <div class="col-md-10 fv-row">
+                                        <!--begin::Label-->
+                                        <div class="fw-bold text-start text-dark fs-6 mb-1 ms-1">Type your 8 digit
+                                            security code</div>
+                                        <!--end::Label-->
+                                        <!--begin::Input group-->
+                                        <div class="d-flex flex-wrap flex-stack">
+                                            <input type="text" name="code" class="form-control" value="" />
+                                        </div>
+                                        <!--end::Input-->
+                                    </div>
+                                </div>
+                            </div>
+                            <!--end::Billing form-->
+                        </div>
+                        <!--end::Scroll-->
+                    </div>
+                    <!--end::Modal body-->
+                    <!--begin::Modal footer-->
+                    <div class="modal-footer flex-center">
+                        <!--begin::Button-->
+                        <button type="reset" class="btn btn-light me-3">Cancel</button>
+                        <!--end::Button-->
+                        <!--begin::Button-->
+                        <button type="submit" class="btn btn-primary">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                        <!--end::Button-->
+                    </div>
+                    <!--end::Modal footer-->
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('script')
@@ -209,6 +369,79 @@ $(document).ready(function() {
     $('#signin_email_button').click(function() {
         $('#signin_email_edit').removeClass('d-none');
         $('#signin_email,#signin_email_button').addClass('d-none');
+    });
+
+    $('.verification_phone_otp').click(function() {
+        var url = "{{route('profile.sendOTP.phone')}}";
+        Swal.fire({
+            title: "Loading....Please wait...!",
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: url,
+            type: "post",
+
+            datatype: 'Json',
+            data: {
+                phone: "{{ encrypt($getProfileDetail->phone) }}"
+            },
+            success: function(result) {
+                if (result) {
+                    swal.close();
+                    $('#verification_phone_otp').modal('show');
+                }
+            }
+
+        });
+    });
+    $('.verification_email_otp').click(function() {
+        var url = "{{route('profile.sendOTP.email')}}";
+        Swal.fire({
+            title: "Loading....Please wait...!",
+            timerProgressBar: true,
+            didOpen: () => {
+                Swal.showLoading();
+            },
+        }).then((result) => {
+            /* Read more about handling dismissals below */
+            if (result.dismiss === Swal.DismissReason.timer) {
+                console.log("I was closed by the timer");
+            }
+        });
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf_token"]').attr('content')
+            }
+        });
+        $.ajax({
+            url: url,
+            type: "post",
+
+            datatype: 'Json',
+            data: {
+                email: "{{ encrypt($getProfileDetail->email) }}"
+            },
+            success: function(result) {
+                if (result) {
+                    swal.close();
+                    $('#verification_email_otp').modal('show');
+                }
+            }
+
+        });
     });
 });
 </script>
