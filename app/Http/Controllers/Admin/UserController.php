@@ -214,8 +214,8 @@ class UserController extends Controller {
     }
 
     public function SendOTPByPhone( Request $request ) {
-        $token  = 'e722d0ffadb1a8d2922aabc0feeacd5f';
-        $account_sid = 'AC679fffa8ae08ea7bbce466518eb28526';
+        $token  = env( 'TWILLO_TOKEN' );
+        $account_sid = env( 'TWILLO_ACCOUNT_SID' );
         $phone = decrypt( $request->get( 'phone' ) );
         // Recipient and sender numbers
         $to = '+91'.$phone;
@@ -233,7 +233,7 @@ class UserController extends Controller {
         $body = 'Your Verification Code is : '. $OTP;
 
         // Twilio API endpoint
-        $url = 'https://api.twilio.com/2010-04-01/Accounts/' . $account_sid . '/Messages.json';
+        $url = env( 'TWILLO_URL' ) . $account_sid . '/Messages.json';
 
         // Data to be sent in POST request
         $data = array(
