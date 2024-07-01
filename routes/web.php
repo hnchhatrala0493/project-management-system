@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ModulesController;
 use App\Http\Controllers\Admin\PermissionModulesController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\RolesController;
+use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\TaskController;
 use App\Http\Controllers\Admin\TeamController;
 use App\Http\Controllers\Admin\UserController;
@@ -121,4 +122,6 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/show/{id}', [ModulesController::class,'show'])->name("module.view");
     });
     Route::get( '/dashboard', [DashboardController::class, 'index' ] )->name( 'admin.dashboard' );
+    Route::get( '/setting', [SettingController::class, 'edit' ] )->name( 'admin.setting.edit' );
+    Route::post( '/setting/update', [SettingController::class, 'update' ] )->name( 'admin.setting.update' );
 });

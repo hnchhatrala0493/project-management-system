@@ -68,6 +68,7 @@ class TeamController extends Controller {
     public function show( $id ) {
         $title = 'View Details';
         $getDetails = TeamMember::find( $id );
+        //dd( $getDetails );
         return view( 'admin.team.view', compact( 'title', 'getDetails' ) );
     }
 

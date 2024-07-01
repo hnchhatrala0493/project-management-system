@@ -26,7 +26,7 @@
                             </span>
                             <!--end::Svg Icon-->
                         </span>
-                        <span class="menu-title"><a href="{{route('home')}}">Dashboards</a></span>
+                        <span class="menu-title"><a href="{{route('admin.dashboard')}}">Dashboards</a></span>
                     </span>
                     <!--end:Menu link-->
                 </div>
@@ -87,56 +87,27 @@
             <div data-kt-menu-trigger="click"
                 class="menu-item {{ Request::segment(2) == 'employee' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
-                <span class="menu-link">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon | path: icons/duotune/abstract/abs040.svg-->
-                        <span class="svg-icon svg-icon-2">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M11.7 8L7.49998 15.3L4.59999 20.3C3.49999 18.4 3.1 17.7 2.3 16.3C1.9 15.7 1.9 14.9 2.3 14.3L8.8 3L11.7 8Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M11.7 8L8.79999 3H13.4C14.1 3 14.8 3.4 15.2 4L20.6 13.3H14.8L11.7 8ZM7.49997 15.2L4.59998 20.2H17.6C18.3 20.2 19 19.8 19.4 19.2C20.2 17.7 20.6 17 21.7 15.2H7.49997Z"
-                                    fill="currentColor" />
-                            </svg>
+                <a href="{{route('employee.index')}}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs040.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M11.7 8L7.49998 15.3L4.59999 20.3C3.49999 18.4 3.1 17.7 2.3 16.3C1.9 15.7 1.9 14.9 2.3 14.3L8.8 3L11.7 8Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3"
+                                        d="M11.7 8L8.79999 3H13.4C14.1 3 14.8 3.4 15.2 4L20.6 13.3H14.8L11.7 8ZM7.49997 15.2L4.59998 20.2H17.6C18.3 20.2 19 19.8 19.4 19.2C20.2 17.7 20.6 17 21.7 15.2H7.49997Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
                         </span>
-                        <!--end::Svg Icon-->
+                        <span class="menu-title">Employee</span>
+                        <!-- <span class="menu-arrow"></span> -->
                     </span>
-                    <span class="menu-title">Employee</span>
-                    <span class="menu-arrow"></span>
-                </span>
-                <!--end:Menu link-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ Request::segment(2) == 'employee' && Request::segment(3) == 'new' ? 'active': '' }}"
-                            href="{{route('employee.create')}}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">New</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ Request::segment(2) == 'employee' && Request::segment(3) == 'list' ? 'active': '' }}"
-                            href="{{route('employee.index')}}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Listing</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
+                </a>
             </div>
             @endif
             <!--end:Menu item-->
@@ -224,75 +195,30 @@
                     <!--begin:Menu item-->
                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion mb-1">
                         <!--begin:Menu link-->
-                        <span class="menu-link {{ Request::segment(2) == 'user'  ? 'active': '' }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
+                        <a href="{{route('user.index')}}">
+                            <span class="menu-link {{ Request::segment(2) == 'user'  ? 'active': '' }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Users</span>
+                                <!-- <span class="menu-arrow"></span> -->
                             </span>
-                            <span class="menu-title">Users</span>
-                            <span class="menu-arrow"></span>
-                        </span>
+                        </a>
                         <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion {{ Request::segment(2) == 'user' ? 'show': '' }}">
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link {{ Request::segment(2) == 'user' && Request::segment(3) == 'list'  ? 'active': '' }}"
-                                    href="{{route('user.index')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Users List</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link {{ Request::segment(2) == 'user' && Request::segment(3) == 'new'  ? 'active': '' }}"
-                                    href="{{route('user.create')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">New User</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                        </div>
-                        <!--end:Menu sub-->
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
-                    <div data-kt-menu-trigger="click"
-                        class="menu-item menu-accordion {{ Request::segment(2) == 'roles' ? 'show': '' }}">
+                    <div class="menu-item menu-accordion {{ Request::segment(2) == 'roles' ? 'show': '' }}">
                         <!--begin:Menu link-->
-                        <span class="menu-link {{ Request::segment(2) == 'roles' ? 'active': '' }}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
+                        <a href="{{route('roles.index')}}">
+                            <span class="menu-link {{ Request::segment(2) == 'roles' ? 'active': '' }}">
+                                <span class="menu-bullet">
+                                    <span class="bullet bullet-dot"></span>
+                                </span>
+                                <span class="menu-title">Roles</span>
+                                <!-- <span class="menu-arrow"></span> -->
                             </span>
-                            <span class="menu-title">Roles</span>
-                            <span class="menu-arrow"></span>
-                        </span>
-                        <!--end:Menu link-->
-                        <!--begin:Menu sub-->
-                        <div class="menu-sub menu-sub-accordion {{ Request::segment(2) == 'roles' ? 'show': '' }}">
-                            <!--begin:Menu item-->
-                            <div class="menu-item">
-                                <!--begin:Menu link-->
-                                <a class="menu-link {{ Request::segment(2) == 'roles' && Request::segment(3) == 'list' ? 'active': '' }}"
-                                    href="{{route('roles.index')}}">
-                                    <span class="menu-bullet">
-                                        <span class="bullet bullet-dot"></span>
-                                    </span>
-                                    <span class="menu-title">Roles List</span>
-                                </a>
-                                <!--end:Menu link-->
-                            </div>
-                            <!--end:Menu item-->
-                        </div>
-                        <!--end:Menu sub-->
+                        </a>
                     </div>
                     <!--end:Menu item-->
                     <!--begin:Menu item-->
@@ -311,66 +237,39 @@
                 </div>
                 <!--end:Menu sub-->
             </div>
-            <div data-kt-menu-trigger="click"
-                class="menu-item {{ Request::segment(2) == 'customer' ? 'show': '' }} menu-accordion">
+            <div class="menu-item {{ Request::segment(2) == 'task' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
-                <span class="menu-link">
-                    <span class="menu-icon">
-                        <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
-                        <span class="svg-icon svg-icon-2">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M8.7 4.19995L4 6.30005V18.8999L8.7 16.8V19L3.1 21.5C2.6 21.7 2 21.4 2 20.8V6C2 5.4 2.3 4.89995 2.9 4.69995L8.7 2.09998V4.19995Z"
-                                    fill="currentColor" />
-                                <path
-                                    d="M15.3 19.8L20 17.6999V5.09992L15.3 7.19989V4.99994L20.9 2.49994C21.4 2.29994 22 2.59989 22 3.19989V17.9999C22 18.5999 21.7 19.1 21.1 19.3L15.3 21.8998V19.8Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3" d="M15.3 7.19995L20 5.09998V17.7L15.3 19.8V7.19995Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3"
-                                    d="M8.70001 4.19995V2L15.4 5V7.19995L8.70001 4.19995ZM8.70001 16.8V19L15.4 22V19.8L8.70001 16.8Z"
-                                    fill="currentColor" />
-                                <path opacity="0.3" d="M8.7 16.8L4 18.8999V6.30005L8.7 4.19995V16.8Z"
-                                    fill="currentColor" />
-                            </svg>
+                <a href="{{route('task.index')}}">
+                    <span class="menu-link">
+                        <span class="menu-icon">
+                            <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
+                            <span class="svg-icon svg-icon-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.7 4.19995L4 6.30005V18.8999L8.7 16.8V19L3.1 21.5C2.6 21.7 2 21.4 2 20.8V6C2 5.4 2.3 4.89995 2.9 4.69995L8.7 2.09998V4.19995Z"
+                                        fill="currentColor" />
+                                    <path
+                                        d="M15.3 19.8L20 17.6999V5.09992L15.3 7.19989V4.99994L20.9 2.49994C21.4 2.29994 22 2.59989 22 3.19989V17.9999C22 18.5999 21.7 19.1 21.1 19.3L15.3 21.8998V19.8Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3" d="M15.3 7.19995L20 5.09998V17.7L15.3 19.8V7.19995Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3"
+                                        d="M8.70001 4.19995V2L15.4 5V7.19995L8.70001 4.19995ZM8.70001 16.8V19L15.4 22V19.8L8.70001 16.8Z"
+                                        fill="currentColor" />
+                                    <path opacity="0.3" d="M8.7 16.8L4 18.8999V6.30005L8.7 4.19995V16.8Z"
+                                        fill="currentColor" />
+                                </svg>
+                            </span>
+                            <!--end::Svg Icon-->
                         </span>
-                        <!--end::Svg Icon-->
+                        <span class="menu-title">Task</span>
+                        <!-- <span class="menu-arrow"></span> -->
                     </span>
-                    <span class="menu-title">Users</span>
-                    <span class="menu-arrow"></span>
-                </span>
+                </a>
                 <!--end:Menu link-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link" href="{{route('task.create')}}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">New</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ Request::segment(2) == 'task' && Request::segment(3) == 'list' ? 'active': '' }}"
-                            href="">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">List</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <!--end:Menu item-->
-                </div>
-                <!--end:Menu sub-->
             </div>
+            @if(Auth::user()->role == 'Project Manager')
             <div data-kt-menu-trigger="click"
                 class="menu-item {{ Request::segment(2) == 'team' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
@@ -433,7 +332,6 @@
                 <!--end:Menu sub-->
             </div>
             @endif
+            @endif
         </div>
-        <!--end::Menu-->
     </div>
-    <!--end::Menu wrapper-->

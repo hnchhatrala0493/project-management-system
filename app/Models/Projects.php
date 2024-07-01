@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Permission\Traits\HasRoles;
 
 class Projects extends Model {
 
-    use HasFactory;
+    use HasFactory, HasRoles;
     protected $table = 'projects';
     protected $fillable = [ 'project_name', 'project_status', 'project_category' ];
 

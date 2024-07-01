@@ -30,13 +30,20 @@
             </div>
             <!--end::Page title-->
             <!--begin::Actions-->
-            @if(isset($addtitle) && Request::segment(2) != 'dashboard')
+            @isset($addtitle)
+            @if(Request::segment(2) != 'dashboard')
             <div class="d-flex align-items-center gap-lg-3">
-                <a href="javascript:void(0)" class="btn btn-sm fw-bold btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#modal_create_{{ strtolower($addtitle) }}">Add
+                <a href="javascript:void(0)" class="btn btn-light-primary" data-bs-toggle="modal"
+                    data-bs-target="#modal_create_{{ strtolower($addtitle) }}"><i
+                        class="ki-duotone ki-plus-square fs-3">
+                        <span class="path1"></span>
+                        <span class="path2"></span>
+                        <span class="path3"></span>
+                    </i>Add
                     {{ isset($addtitle) && $addtitle ? $addtitle : 'Add'}}</a>
             </div>
             @endif
+            @endisset
             <!--end::Actions-->
         </div>
         <!--end::Toolbar container-->

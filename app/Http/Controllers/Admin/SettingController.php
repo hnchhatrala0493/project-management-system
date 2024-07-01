@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Permission;
 use Illuminate\Http\Request;
 
-class PermissionModulesController extends Controller {
+class SettingController extends Controller {
     /**
     * Display a listing of the resource.
     *
@@ -14,10 +13,7 @@ class PermissionModulesController extends Controller {
     */
 
     public function index() {
-        $title = 'Manage Permission';
-        $addtitle = 'Permission';
-        $permissionList = Permission::getRecordList();
-        return view( 'admin.permission.index', compact( 'title', 'permissionList', 'addtitle' ) );
+        //
     }
 
     /**
@@ -60,7 +56,7 @@ class PermissionModulesController extends Controller {
     */
 
     public function edit( $id ) {
-        //
+        return view( '' );
     }
 
     /**

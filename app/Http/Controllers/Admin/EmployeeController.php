@@ -18,8 +18,9 @@ class EmployeeController extends Controller {
 
     public function index() {
         $title = 'Manage Employee';
+        $addtitle = 'Employee';
         $employees = StaffMembers::getRecordList();
-        return view( 'admin.employee.index', compact( 'employees', 'title' ) );
+        return view( 'admin.employee.index', compact( 'employees', 'title', 'addtitle' ) );
     }
 
     /**

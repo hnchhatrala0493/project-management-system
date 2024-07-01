@@ -55,8 +55,7 @@
                                         data-kt-users-table-filter="delete_row">Delete</a>
                                 </div>
                                 <div class="menu-item px-3">
-                                    <a href="{{route('project.view',['id'=>$team->id])}}"
-                                        class="menu-link px-3">View</a>
+                                    <a href="{{route('team.view',['id'=>$team->id])}}" class="menu-link px-3">View</a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>

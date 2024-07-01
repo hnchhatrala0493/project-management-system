@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Projects;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller {
     /**
@@ -15,11 +15,22 @@ class ProjectController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
+    function __construct() {
+        // $this->middleware( [ 'permission:project-list|project-create|project-edit|project-delete' ], [ 'only' => [ 'index', 'show' ] ] );
+        // $this->middleware( [ 'permission:project-create' ], [ 'only' => [ 'create', 'store' ] ] );
+        // $this->middleware( [ 'permission:project-edit' ], [ 'only' => [ 'edit', 'update' ] ] );
+        // $this->middleware( [ 'permission:project-delete' ], [ 'only' => [ 'destroy' ] ] );
+    }
+
     public function index() {
         $title = 'Manage Projects';
         $addtitle = 'Project';
         $projects = Projects::getRecordList();
         $categorys = Category::get();
+        $getPermisson = DB::table( 'role_has_permissions' )->select( 'p.name as permission_name', 'r.name as role_name' )
+        ->join( 'permissions as p', 'role_has_permissions.permission_id', 'p.id' )
+        ->join( 'roles as r', 'role_has_permissions.role_id', 'r.id' )
+        ->get()->toArray();
         return view( 'admin.project.index', compact( 'title', 'projects', 'addtitle', 'categorys' ) );
     }
 

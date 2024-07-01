@@ -12,7 +12,6 @@ use App\Models\VerificationOTP;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Twilio\Rest\Client;
 
 class UserController extends Controller {
     /**
@@ -23,8 +22,11 @@ class UserController extends Controller {
 
     public function index() {
         $title = 'Manage User';
+        $addtitle = 'User';
         $userList = User::getRecordList();
-        return view( 'admin.user.index', compact( 'title', 'userList' ) );
+        $roles = Role::getRecordList();
+        $staffMember = StaffMembers::getRecordList();
+        return view( 'admin.user.index', compact( 'title', 'userList', 'addtitle', 'roles', 'staffMember' ) );
     }
 
     /**
@@ -48,17 +50,18 @@ class UserController extends Controller {
     */
 
     public function store( Request $request ) {
-        $getMemberId = StaffMembers::getMemberberIdByFullName( $request->get( 'name' ) );
+        $users = array_column( $request->get( 'users' ), 'value', 'name' );
+        $getMemberId = StaffMembers::getMemberberIdByFullName( $users[ 'name' ] );
         $user = User::create( [
             'member_id' => $getMemberId->profile_id,
-            'name' => $request->get( 'name' ),
-            'email' => $request->get( 'email' ),
-            'phone' => $request->get( 'phone' ),
+            'name' => $users[ 'name' ],
+            'email' => $users[ 'email' ],
+            'phone' => $users[ 'phone' ],
             'password' => Hash::make( 'Admin@123' ),
-            'role' => $request->get( 'role' ),
+            'role' => $users[ 'role' ],
         ] );
         if ( $user ) {
-            return redirect()->route( 'user.index' );
+            return response()->json( [ 'status_code' => 200, 'result'=>'1', 'messages' => 'Record Added Successfully' ] );
         }
     }
 
@@ -83,11 +86,11 @@ class UserController extends Controller {
     */
 
     public function edit( $id ) {
-        $title = 'Add User';
+        $title = 'Edit User';
         $roles = Role::getRecordList();
         $staffMember = StaffMembers::getRecordList();
         $getUser = User::getRecordById( $id );
-        return view( 'admin.user.edit', compact( 'title', 'roles', 'staffMember', 'getUser' ) );
+        return response()->json( [ 'data'=> [ 'getUser'=>$getUser, 'staffMember'=> $staffMember, 'roles'=> $roles, 'title'=>$title ], 'status_code'=>200, 'result'=>'pass' ] );
     }
 
     /**
@@ -99,16 +102,19 @@ class UserController extends Controller {
     */
 
     public function update( Request $request, $id ) {
-        $user = User::where( 'id', $id )->update( [
-            'member_id'=> $request->get( 'member_id' ),
-            'name'=>$request->get( 'name' ),
-            'email'=>$request->get( 'email' ),
-            'phone'=>$request->get( 'phone' ),
-            'role'=>$request->get( 'role' ),
-            'password'=>Hash::make( 'Admin@123' )
+        $users = array_column( $request->get( 'users' ), 'value', 'name' );
+        $userUpdate = User::where( 'id', $users[ 'userId' ] )->update( [
+            'member_id'=> $users[ 'memberId' ],
+            'name'=> $users[ 'name' ],
+            'email'=> $users[ 'email' ],
+            'phone'=> $users[ 'phone' ],
+            'role'=> $users[ 'role' ],
+            'password'=> Hash::make( 'Admin@123' )
         ] );
-        if ( $user ) {
-            return redirect()->route( 'user.index' );
+        if ( $userUpdate ) {
+            return response()->json( [ 'result'=>'pass', 'status'=> 200 ] );
+        } else {
+            return response()->json( [ 'result'=>'fail', 'status'=> 500 ] );
         }
     }
 

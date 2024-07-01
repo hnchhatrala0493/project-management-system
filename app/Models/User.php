@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +21,7 @@ class User extends Authenticatable {
         'member_id',
         'name',
         'email',
+        'phone',
         'password',
     ];
 
@@ -70,5 +70,9 @@ class User extends Authenticatable {
 
     public static function UpdatePasswordByEmail( $email, $password ) {
         return self::where( 'email', $email )->update( [ 'password'=> Hash::make( $password ) ] );
+    }
+
+    public function staffMember() {
+        return $this->belongsTo( StaffMembers::class );
     }
 }

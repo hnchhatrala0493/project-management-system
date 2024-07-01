@@ -90,5 +90,173 @@
         <!--end::Card body-->
     </div>
     <!--end::Card-->
+    <div class="modal fade" id="modal_create_employee" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-centered mw-950px">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Modal header-->
+                <div class="modal-header" id="kt_modal_add_user_header">
+                    <!--begin::Modal title-->
+                    <h2 class="fw-bold">Add Employee</h2>
+                    <!--end::Modal title-->
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
+                        <i class="ki-duotone ki-cross fs-1">
+                            <span class="path1"></span>
+                            <span class="path2"></span>
+                        </i>
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <!--begin::Modal body-->
+                <div class="modal-body">
+                    <!--begin::Form-->
+                    <form class="form" action="{{route('employee.store')}}" method="post" id="createEmployee">
+                        @csrf
+                        <input type="hidden" name="profile_id" value="{{ rand(111111,999999)}}">
+                        <div class="row mb-5 col-14">
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Full Name</label>
+                                    <input type="text" class="form-control" name="full_name" id="full_name" />
+                                </div>
+                            </div>
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Father Name</label>
+                                    <input type="text" class="form-control" name="father_name" id="father_name" />
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Input group-->
+                        <div class="row mb-5 col-14">
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Mother Name</label>
+                                    <input type="text" class="form-control" name="mother_name" id="mother_name" />
+                                </div>
+                            </div>
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Birth Date</label>
+                                    <input type="text" class="form-control" name="date_of_birth" id="date_of_birth" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5 col-14">
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Marital Status</label>
+                                    <!-- <input type="text" class="form-control" name="mother_name" /> -->
+                                    <select class="form-select" data-control="select2" name="marital_status"
+                                        id="marital_status">
+                                        <option value="Single">Single</option>
+                                        <option value="Married">Married</option>
+                                        <option value="Divorce">Divorce</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Annivarsary Date</label>
+                                    <input type="text" class="form-control" name="date_of_anniversary"
+                                        id="date_of_anniversary" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5 col-14">
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Gender</label>
+                                    <!-- <input type="text" class="form-control" name="salary" id="salary" /> -->
+                                    <select name="gender" id="gener" class="form-select" data-control="select2">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Joining Date</label>
+                                    <input type="text" class="form-control" name="date_of_joining"
+                                        id="date_of_joining" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-5 col-14">
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Blood Group</label>
+                                    <!-- <input type="text" class="form-control" name="salary" id="salary" /> -->
+                                    <select class="form-select" data-control="select2" name="blood_group"
+                                        id="blood_group">
+                                        <option value="A">A</option>
+                                        <option value="A+">A+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="B">B</option>
+                                        <option value="B+">B+</option>
+                                        <option value="B-">B-</option>
+                                        <option value="O">O</option>
+                                        <option value="O+">O+</option>
+                                        <option value="O-">O-</option>
+                                        <option value="AB">AB</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row col-6">
+                                <div class="form-group">
+                                    <label class="fs-6 fw-semibold required mb-2">Status</label>
+                                    <!-- <input type="text" class="form-control" name="date_of_joining" id="date_of_joining" /> -->
+                                    <select class="form-select" data-control="select2" name="status" id="status">
+                                        <option value="Active">Active</option>
+                                        <option value="Deactive">Deactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-15">
+                            <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Cancel</button>
+                            <button type="submit" class="btn btn-primary" data-kt-users-modal-action="submit">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
 </div>
+@endsection
+@section('script')
+<script src="{{url('js/jquery.validate.js')}}"></script>
+<script src="{{url('js/validation/employee_validation.js')}}"></script>
+<script>
+var maxBirthdayDate = new Date();
+maxBirthdayDate.setFullYear(maxBirthdayDate.getFullYear() - 18);
+$("#date_of_birth").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false,
+    maxDate: maxBirthdayDate
+});
+$("#date_of_anniversary").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false,
+    maxDate: "today"
+});
+$("#date_of_joining").flatpickr({
+    dateFormat: "Y-m-d",
+    enableTime: false
+});
+</script>
 @endsection

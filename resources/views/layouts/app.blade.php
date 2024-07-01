@@ -22,14 +22,10 @@
     <link rel="shortcut icon" href="/admin/assets/media/logos/favicon.ico" />
     <!--begin::Fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <!--end::Fonts-->
-    <!--begin::Vendor Stylesheets(used by this page)-->
     <link href="/admin/assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Vendor Stylesheets-->
-    <!--begin::Global Stylesheets Bundle(used by all pages)-->
     <link href="/admin/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
     <link href="/admin/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-    <!--end::Global Stylesheets Bundle-->
+    <link href="/admin/assets/css/style.css" rel="stylesheet" type="text/css" />
 </head>
 <!--end::Head-->
 <!--begin::Body-->
@@ -148,7 +144,8 @@
                                     </div>
                                     @if(Auth::user()->role != 'Developer')
                                     <div class="menu-item px-5 my-1">
-                                        <a href="" class="menu-link px-5">Account
+                                        <a href="" data-bs-toggle="modal" data-bs-target="#kt_modal_create_account"
+                                            class="menu-link px-5">Account
                                             Settings</a>
                                     </div>
                                     @endif
@@ -241,7 +238,7 @@
                 <div class="app-main flex-column flex-row-fluid">
                     <div class="d-flex flex-column flex-column-fluid">
                         <!--begin::Content wrapper-->
-                        <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
+                        <div class="app-toolbar py-3 py-lg-6">
                             @include('layouts.breadcrumb')
                         </div>
                         <div class="d-flex flex-column flex-column-fluid">
@@ -287,15 +284,287 @@
                 <!--end:::Main-->
             </div>
             <!--end::Wrapper-->
+            <div class="modal fade" id="kt_modal_create_account" data-bs-backdrop="static" data-bs-keyboard="false"
+                tabindex="-1" aria-hidden="true">
+                <!--begin::Modal dialog-->
+                <div class="modal-dialog mw-1000px">
+                    <!--begin::Modal content-->
+                    <div class="modal-content">
+                        <!--begin::Modal header-->
+                        <div class="modal-header">
+                            <!--begin::Title-->
+                            <h2>Setting</h2>
+                            <!--end::Title-->
+                            <!--begin::Close-->
+                            <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                                <i class="ki-duotone ki-cross fs-1">
+                                    <span class="path1"></span>
+                                    <span class="path2"></span>
+                                </i>
+                            </div>
+                            <!--end::Close-->
+                        </div>
+                        <!--end::Modal header-->
+                        <!--begin::Modal body-->
+                        <div class="modal-body scroll-y">
+                            <!--begin::Stepper-->
+                            <div class="d-flex flex-column flex-row-fluid gap-7 gap-lg-10">
+                                <form method="post" class="form">
+                                    <div class="tab-content">
+                                        <!--begin::Tab pane-->
+                                        <div class="tab-pane fade show active" role="tab-panel">
+                                            <div class="d-flex flex-column gap-7 gap-lg-10">
+                                                <!--begin::General options-->
+                                                <div class="card card-flush py-4">
+                                                    <div class="card-body pt-0">
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-5 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Date Format</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <select class="form-select" data-control="select2"
+                                                                name="date_format">
+                                                                <option value="January,01 2024">January,01 2024</option>
+                                                                <option value="01/01/2024">01/01/2024</option>
+                                                                <option value="01-01-2024">01-01-2024</option>
+                                                                <option value="Jan, 01 2024">Jan, 01 2024</option>
+                                                                <option value="01 Jan 2024">01 Jan 2024</option>
+                                                                <option value="2024-01-01">2024-01-01</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="mb-5 col-md-6">
+                                                                <label class="form-label">App Name Key</label>
+                                                                <input type="text" value="" name="app_name"
+                                                                    id="app_name" class="form-control">
+                                                            </div>
+                                                            <div class="mb-5 col-md-6">
+                                                                <label class="form-label">App Name Value</label>
+                                                                <input type="text" value="" name="app_name"
+                                                                    id="app_name" class="form-control">
+                                                            </div>
+                                                            <div id="addMoreView"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Tab pane-->
+                                        <!--begin::Tab pane-->
+                                        <div class="tab-pane fade" id="twillo" role="tab-panel">
+                                            <div class="d-flex flex-column gap-7 gap-lg-10">
+                                                <!--begin::Inventory-->
+                                                <div class="card card-flush py-4">
+                                                    <!--begin::Card header-->
+
+                                                    <!--end::Card header-->
+                                                    <!--begin::Card body-->
+                                                    <div class="card-body pt-0">
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-5 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Token</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" name="token" class="form-control mb-2"
+                                                                placeholder="" value="" />
+                                                            <!--end::Input-->
+                                                            <!--begin::Description-->
+
+                                                            <!--end::Description-->
+                                                        </div>
+                                                        <!--end::Input group-->
+                                                        <!--begin::Input group-->
+                                                        <div class="mb-5 fv-row">
+                                                            <!--begin::Label-->
+                                                            <label class="required form-label">Account Id</label>
+                                                            <!--end::Label-->
+                                                            <!--begin::Input-->
+                                                            <input type="text" name="account_id"
+                                                                class="form-control mb-2" placeholder="" value="" />
+                                                            <!--end::Input-->
+                                                            <!--begin::Description-->
+                                                            <!--end::Description-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--end::Tab pane-->
+                                        <!--begin::Tab pane-->
+                                        <div class="tab-pane fade" id="email" role="tab-panel">
+                                            <div class="d-flex flex-column gap-7 gap-lg-10">
+                                                <!--begin::Reviews-->
+                                                <div class="card card-flush py-4">
+                                                    <!--begin::Card header-->
+                                                    <!--end::Card header-->
+                                                    <!--begin::Card body-->
+                                                    <div class="card-body pt-0">
+                                                        <!--begin::Table-->
+                                                        <form class="form">
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Mailer</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8">
+                                                                    <!--begin::Row-->
+                                                                    <div class="row">
+                                                                        <!--begin::Col-->
+                                                                        <div class="col-lg-14 fv-row">
+                                                                            <input type="text" name="fname"
+                                                                                class="form-control form-control-lg mb-3 mb-lg-0"
+                                                                                value="" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--end::Row-->
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Host</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="text" name="company"
+                                                                        class="form-control form-control-lg" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">User
+                                                                    Name</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="text" name="company"
+                                                                        class="form-control form-control-lg"
+                                                                        placeholder="" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Password</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="password" name="password"
+                                                                        class="form-control form-control-lg"
+                                                                        placeholder="" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Port</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="password" name="password"
+                                                                        class="form-control form-control-lg"
+                                                                        placeholder="" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Encryption</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="password" name="password"
+                                                                        class="form-control form-control-lg"
+                                                                        placeholder="" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                            <div class="row mb-6">
+                                                                <!--begin::Label-->
+                                                                <label
+                                                                    class="col-lg-4 col-form-label required fw-semibold fs-6">Address</label>
+                                                                <!--end::Label-->
+                                                                <!--begin::Col-->
+                                                                <div class="col-lg-8 fv-row">
+                                                                    <input type="text" name="address"
+                                                                        class="form-control form-control-lg"
+                                                                        placeholder="" value="" />
+                                                                </div>
+                                                                <!--end::Col-->
+                                                            </div>
+                                                        </form>
+                                                        <!--end::Table-->
+                                                    </div>
+                                                    <!--end::Card body-->
+                                                </div>
+                                                <!--end::Reviews-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--end::Tab content-->
+                                    <div class="d-flex justify-content-end">
+                                        <!--begin::Button-->
+                                        <a href="#" data-bs-dismiss="modal" class="btn btn-light me-5">Cancel</a>
+                                        <!--end::Button-->
+                                        <!--begin::Button-->
+                                        <button class="btn btn-success me-5" onclick="addMore()"><i
+                                                class="fa fa-plus"></i>More</button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <span class="indicator-label">Save Changes</span>
+                                            <span class="indicator-progress">Please wait...
+                                                <span
+                                                    class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                        </button>
+                                        <!--end::Button-->
+                                    </div>
+                                </form>
+                            </div>
+                            <!--end::Stepper-->
+                        </div>
+                        <!--end::Modal body-->
+                    </div>
+                    <!--end::Modal content-->
+                </div>
+                <!--end::Modal dialog-->
+            </div>
         </div>
         <!--end::Page-->
     </div>
     <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/admin/assets/js/scripts.bundle.js"></script>
+    <script src="{{url('js/jquery.validate.js')}}"></script>
     <script src="/admin/assets/plugins/custom/datatables/datatables.bundle.js"></script>
     <script>
     function SelectProject(projectId) {
 
+    }
+
+    var a = 1;
+
+    function addMore() {
+        var html = '';
+        html += "<div class='row'>";
+        html += "<div class='mb-5 col-md-6'>";
+        html += "<label class='form-label'>App Name Key</label>";
+        html += "<input type='text' value='' name='app_name_key' class='form-control app_name_" +
+            a + "'>";
+        html += "</div>";
+        html += "<div class='mb-5 col-md-6'>";
+        html += "<label class='form-label'>App Name Value</label>";
+        html += "<input type='text' value='' name='app_name_value' class='form-control app_name_" + a + "'>";
+        html += "</div>";
+        html += "</div>";
+        a++;
+        return document.getElementById('addMoreView').innerHTML += html;
     }
     $(document).ready(function() {
         $.ajaxSetup({

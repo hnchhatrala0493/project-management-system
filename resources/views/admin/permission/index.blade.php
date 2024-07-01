@@ -20,19 +20,6 @@
                 <!--end::Search-->
             </div>
             <!--end::Card title-->
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Button-->
-                <button type="button" class="btn btn-light-primary" data-bs-toggle="modal"
-                    data-bs-target="#kt_modal_add_permission">
-                    <i class="ki-duotone ki-plus-square fs-3">
-                        <span class="path1"></span>
-                        <span class="path2"></span>
-                        <span class="path3"></span>
-                    </i>Add Permission</button>
-                <!--end::Button-->
-            </div>
-            <!--end::Card toolbar-->
         </div>
         <!--end::Card header-->
         <!--begin::Card body-->
@@ -48,13 +35,14 @@
                     </tr>
                 </thead>
                 <tbody class="fw-semibold text-gray-600">
+                    @foreach($permissionList as $permission)
                     <tr>
-                        <td>User Management</td>
+                        <td>{{$permission->title}}</td>
                         <td>
                             <a href="../../demo1/dist/apps/user-management/roles/view.html"
                                 class="badge badge-light-primary fs-7 m-1">Administrator</a>
                         </td>
-                        <td>21 Feb 2023, 5:30 pm</td>
+                        <td>{{$permission->created_at}}</td>
                         <td class="text-end">
                             <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
                                 data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
@@ -78,270 +66,7 @@
                             </button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Content Management</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-danger fs-7 m-1">Developer</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-success fs-7 m-1">Analyst</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-info fs-7 m-1">Support</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-warning fs-7 m-1">Trial</a>
-                        </td>
-                        <td>10 Nov 2023, 11:30 am</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Financial Management</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-success fs-7 m-1">Analyst</a>
-                        </td>
-                        <td>25 Oct 2023, 5:20 pm</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Reporting</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-success fs-7 m-1">Analyst</a>
-                        </td>
-                        <td>20 Jun 2023, 11:30 am</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Payroll</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-success fs-7 m-1">Analyst</a>
-                        </td>
-                        <td>05 May 2023, 2:40 pm</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Disputes Management</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-danger fs-7 m-1">Developer</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-info fs-7 m-1">Support</a>
-                        </td>
-                        <td>15 Apr 2023, 6:05 pm</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>API Controls</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-danger fs-7 m-1">Developer</a>
-                        </td>
-                        <td>20 Dec 2023, 5:30 pm</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Database Management</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-danger fs-7 m-1">Developer</a>
-                        </td>
-                        <td>20 Jun 2023, 9:23 pm</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Repository Management</td>
-                        <td>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-primary fs-7 m-1">Administrator</a>
-                            <a href="../../demo1/dist/apps/user-management/roles/view.html"
-                                class="badge badge-light-danger fs-7 m-1">Developer</a>
-                        </td>
-                        <td>20 Dec 2023, 6:43 am</td>
-                        <td class="text-end">
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px me-3"
-                                data-bs-toggle="modal" data-bs-target="#kt_modal_update_permission">
-                                <i class="ki-duotone ki-setting-3 fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                            <button class="btn btn-icon btn-active-light-primary w-30px h-30px"
-                                data-kt-permissions-table-filter="delete_row">
-                                <i class="ki-duotone ki-trash fs-3">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                    <span class="path5"></span>
-                                </i>
-                            </button>
-                        </td>
-                    </tr>
+                    @endforeach
                 </tbody>
             </table>
             <!--end::Table-->
@@ -351,7 +76,7 @@
     <!--end::Card-->
     <!--begin::Modals-->
     <!--begin::Modal - Add permissions-->
-    <div class="modal fade" id="kt_modal_add_permission" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="modal_create_permission" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
         <div class="modal-dialog modal-dialog-centered mw-650px">
             <!--begin::Modal content-->
@@ -362,7 +87,7 @@
                     <h2 class="fw-bold">Add a Permission</h2>
                     <!--end::Modal title-->
                     <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-kt-permissions-modal-action="close">
+                    <div class="btn btn-icon btn-sm btn-active-icon-primary" data-bs-dismiss="modal">
                         <i class="ki-duotone ki-cross fs-1">
                             <span class="path1"></span>
                             <span class="path2"></span>
@@ -415,8 +140,7 @@
                         <!--end::Disclaimer-->
                         <!--begin::Actions-->
                         <div class="text-center pt-15">
-                            <button type="reset" class="btn btn-light me-3"
-                                data-kt-permissions-modal-action="cancel">Discard</button>
+                            <button type="reset" class="btn btn-light me-3" data-bs-dismiss="modal">Discard</button>
                             <button type="submit" class="btn btn-primary" data-kt-permissions-modal-action="submit">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...

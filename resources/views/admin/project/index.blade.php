@@ -34,7 +34,17 @@
                         <td>{{ $project->project_name }}</td>
                         <td>{{ $project->category->categorie_name }}</td>
                         <td>
-                            <div class="badge badge-light fw-bold">{{ $project->project_status }}</div>
+                            @if($project->project_status == 'Completed')
+                            <div class="badge badge-light-success fw-bold px-4 py-3">{{ $project->project_status }}
+                            </div>
+                            @elseif($project->project_status == 'Pending')
+                            <div class="badge badge-light-warning fw-bold px-4 py-3">{{ $project->project_status }}
+                            </div>
+                            @elseif($project->project_status == 'Other')
+                            <div class="badge badge-light-info fw-bold px-4 py-3">{{ $project->project_status }}</div>
+                            @else
+                            <div class="badge badge-light-info fw-bold px-4 py-3">{{ $project->project_status }}</div>
+                            @endif
                         </td>
                         <td>{{ $project->created_at }}</td>
                         <td class="text-end">

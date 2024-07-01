@@ -31,4 +31,8 @@ class StaffMembers extends Model {
     public function teamMember() {
         return $this->hasOne( TeamMember::class );
     }
+
+    public function staffMember() {
+        return $this->hasOne( User::class );
+    }
 }
