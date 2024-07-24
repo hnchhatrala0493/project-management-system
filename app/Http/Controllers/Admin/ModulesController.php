@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Module;
+use App\Models\Permission;
 use Illuminate\Http\Request;
 
 class ModulesController extends Controller {
@@ -15,7 +16,9 @@ class ModulesController extends Controller {
 
     public function index() {
         $title = 'Manage Module';
-        return view( 'admin.module.index', compact( 'title' ) );
+        $addtitle = 'Module';
+        $getModuleList = Module::getRecordList();
+        return view( 'admin.module.index', compact( 'title', 'addtitle', 'getModuleList' ) );
     }
 
     /**
@@ -37,7 +40,25 @@ class ModulesController extends Controller {
     */
 
     public function store( Request $request ) {
-        $module = Module::create( $request->all() );
+        $module = Module::create(
+            [
+                'title'=>$request->get( 'title' ),
+                'menu_name'=>$request->get( 'menu_name' ),
+                'controller_name'=>$request->get( 'controller_name' ),
+                'model_name'=>$request->get( 'model_name' ),
+                'view_name'=>$request->get( 'view_name' ),
+                'table_name'=>$request->get( 'table_name' ),
+                'route_name'=>$request->get( 'route_name' ),
+            ]
+        );
+        foreach ( $request->get( 'permission' ) as $permissionValue ) {
+            Permission::InsertGetId( [
+                'module_id'=>$module->id,
+                'can_permission_name'=> $permissionValue,
+                'name'=> $permissionValue. ' '. strtolower( $request->get( 'title' ) ),
+                'guard_name'=>'web'
+            ] );
+        }
         if ( $module ) {
             return redirect()->route( 'module.index' );
         }
@@ -50,8 +71,8 @@ class ModulesController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function show( $id ) {
-        //
+    public function getPermissionList( Request $request ) {
+        dd( $request );
     }
 
     /**

@@ -170,13 +170,20 @@ License: For each use you must have a valid license purchased only from above li
                             </div>
                             <!--end::Menu wrapper-->
                             <!--begin::Toolbar-->
-                            @if(Auth::user() && !Auth::user()->id)
+                            @if(Auth::check())
                             <div class="flex-equal text-end ms-1">
-                                <a href="{{route('login')}}" class="btn btn-success">Sign In</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                    style="display: none;">
+                                    @csrf
+                                </form>
+                                <a href="#" class="btn btn-success"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    Sign Out
+                                </a>
                             </div>
                             @else
                             <div class="flex-equal text-end ms-1">
-                                <a href="{{route('logout')}}" class="btn btn-success">Sign Out</a>
+                                <a href="{{ route('login') }}" class="btn btn-success">Sign In</a>
                             </div>
                             @endif
                             <!--end::Toolbar-->
@@ -1963,9 +1970,6 @@ License: For each use you must have a valid license purchased only from above li
     </div>
     <!--end::Scrolltop-->
     <!--begin::Javascript-->
-    <script>
-    var hostUrl = "/admin/assets/";
-    </script>
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
     <script src="/admin/assets/plugins/global/plugins.bundle.js"></script>
     <script src="/admin/assets/js/scripts.bundle.js"></script>

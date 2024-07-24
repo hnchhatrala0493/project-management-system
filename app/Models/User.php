@@ -75,4 +75,12 @@ class User extends Authenticatable {
     public function staffMember() {
         return $this->belongsTo( StaffMembers::class );
     }
+
+    public static function getRecordByTeam( $role ) {
+        return self::select( 'id', 'name' )->where( 'role', $role )->orderBy( 'id', 'desc' )->get()->toArray();
+    }
+
+    public static function getUserCount() {
+        return self::count();
+    }
 }

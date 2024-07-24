@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Module;
 use App\Models\Permission;
+use App\Models\Role;
 use Illuminate\Http\Request;
 
 class PermissionModulesController extends Controller {
@@ -16,8 +18,13 @@ class PermissionModulesController extends Controller {
     public function index() {
         $title = 'Manage Permission';
         $addtitle = 'Permission';
-        $permissionList = Permission::getRecordList();
-        return view( 'admin.permission.index', compact( 'title', 'permissionList', 'addtitle' ) );
+        $permissionList = Permission::getRecordPermission();
+        $permissions = Permission::getRecordRoleHasPermissions();
+        $modules = Module::getRecordList();
+        $roles = Role::getRecordList();
+        $assignTo = Role::getAssignTo();
+        //dd( $assignTo );
+        return view( 'admin.permission.index', compact( 'title', 'permissionList', 'permissions', 'addtitle', 'modules', 'roles', 'assignTo' ) );
     }
 
     /**
@@ -38,7 +45,7 @@ class PermissionModulesController extends Controller {
     */
 
     public function store( Request $request ) {
-        //
+        return Permission::create( $request->all() );
     }
 
     /**
@@ -59,8 +66,12 @@ class PermissionModulesController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function edit( $id ) {
-        //
+    public function edit( Request $request, $id ) {
+        $title = 'Edit Permission';
+        $modules = Module::getRecordList();
+        $role = Role::getRecordById( $id );
+        // dd( $role );
+        return view( 'admin.permission.edit', compact( 'title', 'modules', 'role' ) );
     }
 
     /**
@@ -84,5 +95,34 @@ class PermissionModulesController extends Controller {
 
     public function destroy( $id ) {
         //
+    }
+
+    /**
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+
+    public function getpermissionbyRole( $id ) {
+        $title = 'Edit Permission';
+        $modules = Module::getRecordList();
+        $role = Role::getRecordById( $id );
+        return view( 'admin.permission.edit', compact( 'title', 'modules', 'role' ) );
+    }
+
+    /**
+    * Remove the specified resource from storage.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
+
+    public function permissionbyRole( $id, Request $request ) {
+        $title = 'Given Permission';
+        // dd( $request->all() );
+        $modules = Module::getRecordList();
+        $role = Role::getRecordById( $id );
+        // return view( 'admin.permission.edit', compact( 'title', 'modules', 'role' ) );
     }
 }

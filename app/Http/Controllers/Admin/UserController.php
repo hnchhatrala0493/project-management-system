@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Mail\SendEmail;
 use App\Models\EmailLog;
+use App\Models\Profile_Image;
 use App\Models\Role;
 use App\Models\StaffMembers;
 use App\Models\User;
@@ -60,6 +61,7 @@ class UserController extends Controller {
             'password' => Hash::make( 'Admin@123' ),
             'role' => $users[ 'role' ],
         ] );
+        $user->syncRoles( $request->role );
         if ( $user ) {
             return response()->json( [ 'status_code' => 200, 'result'=>'1', 'messages' => 'Record Added Successfully' ] );
         }
@@ -101,7 +103,7 @@ class UserController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function update( Request $request, $id ) {
+    public function update( Request $request, User $user ) {
         $users = array_column( $request->get( 'users' ), 'value', 'name' );
         $userUpdate = User::where( 'id', $users[ 'userId' ] )->update( [
             'member_id'=> $users[ 'memberId' ],
@@ -135,7 +137,8 @@ class UserController extends Controller {
     public function getProfile( $id ) {
         $getProfileDetail = User::getRecordById( $id );
         $title = 'User Profile';
-        return view( 'admin.user.profile', compact( 'getProfileDetail', 'title' ) );
+        $getProfileImage = Profile_Image::find( $id );
+        return view( 'admin.user.profile', compact( 'getProfileDetail', 'title', 'getProfileImage' ) );
     }
 
     public function changePasswordOrEmail( Request $request ) {
@@ -301,6 +304,11 @@ class UserController extends Controller {
             SendEmail::sendEmail( $emailTemplate, $data, $email, $name, $subject );
         }
         return redirect()->route( 'logout' );
+    }
+
+    public function getAssignedUser( Request $request ) {
+        $getList = User::getRecordByTeam( $request->role );
+        return response()->json( [ 'data'=>$getList ] );
     }
 
 }

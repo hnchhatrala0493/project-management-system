@@ -26,5 +26,4 @@ class TeamMember extends Model {
     public static function getRecordById( $id ) {
         return self::with( 'language' )->with( 'users' )->where( 'id', $id )->first();
     }
-
 }

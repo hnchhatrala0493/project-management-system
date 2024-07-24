@@ -24,4 +24,12 @@ class Projects extends Model {
         return $this->belongsTo( Category::class, 'project_category' );
     }
 
+    public function project() {
+        return $this->hasOne( Tasks::class, 'project_id' );
+    }
+
+    public static function getProjectsCount() {
+        return self::count();
+    }
+
 }

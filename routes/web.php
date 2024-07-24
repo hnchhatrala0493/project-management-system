@@ -96,6 +96,7 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::post('/send/phone/otp', [UserController::class,'SendOTPByPhone'])->name("profile.sendOTP.phone");
         Route::post('/verify/email/otp', [UserController::class,'VerificationCodeByEmail'])->name("profile.sendOTP.verification.email");
         Route::post('/verify/phone/otp', [UserController::class,'VerificationCodeByPhone'])->name("profile.sendOTP.verification.phone");
+        Route::get('/assign/user', [UserController::class,'getAssignedUser'])->name("assignuser.index");
     });
     Route::group(['prefix'=>'roles'], function(){
         Route::get('/list', [RolesController::class,'index'])->name("roles.index");
@@ -109,9 +110,11 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/list', [PermissionModulesController::class,'index'])->name("permission.index");
         Route::get('/new', [PermissionModulesController::class,'create'])->name("permission.create");
         Route::post('/store', [PermissionModulesController::class,'store'])->name("permission.store");
-        Route::get('/edit', [PermissionModulesController::class,'edit'])->name("permission.edit");
+        Route::get('/edit/{id}', [PermissionModulesController::class,'edit'])->name("permission.edit");
         Route::post('/update', [PermissionModulesController::class,'update'])->name("permission.update");
         Route::get('/show/{id}', [PermissionModulesController::class,'show'])->name("permission.view");
+        Route::get('/role/permission/{id}', [PermissionModulesController::class,'getpermissionbyRole'])->name("role.permission");
+        Route::post('/role/permission/{id}', [PermissionModulesController::class,'permissionbyRole'])->name("role.given.permission");
     });
     Route::group(['prefix'=>'module'], function(){
         Route::get('/list', [ModulesController::class,'index'])->name("module.index");
@@ -120,6 +123,7 @@ Route::group(['middleware'=>['auth','log'],'prefix'=> 'admin'], function(){
         Route::get('/edit', [ModulesController::class,'edit'])->name("module.edit");
         Route::post('/update', [ModulesController::class,'update'])->name("module.update");
         Route::get('/show/{id}', [ModulesController::class,'show'])->name("module.view");
+        Route::get('/module/permission/list', [ModulesController::class,'getPermissionList'])->name("module.role.list");
     });
     Route::get( '/dashboard', [DashboardController::class, 'index' ] )->name( 'admin.dashboard' );
     Route::get( '/setting', [SettingController::class, 'edit' ] )->name( 'admin.setting.edit' );

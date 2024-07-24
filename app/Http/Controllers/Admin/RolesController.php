@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Module;
+use App\Models\Permission;
 use App\Models\Role;
+use App\Models\Roles;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RolesController extends Controller {
     /**
@@ -13,10 +17,19 @@ class RolesController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
+    function __construct()
+ {
+        // $this->middleware( [ 'permission:role-list|role-create|role-edit|role-delete' ], [ 'only' => [ 'index', 'store' ] ] );
+        // $this->middleware( [ 'permission:role-create' ], [ 'only' => [ 'create', 'store' ] ] );
+        // $this->middleware( [ 'permission:role-edit' ], [ 'only' => [ 'edit', 'update' ] ] );
+        // $this->middleware( [ 'permission:role-delete' ], [ 'only' => [ 'destroy' ] ] );
+    }
+
     public function index() {
         $title = 'Manage Role';
+        $addtitle = 'Role';
         $roleList = Role::getRecordList();
-        return view( 'admin.role.index', compact( 'roleList', 'title' ) );
+        return view( 'admin.role.index', compact( 'roleList', 'title', 'addtitle' ) );
     }
 
     /**
@@ -37,7 +50,13 @@ class RolesController extends Controller {
     */
 
     public function store( Request $request ) {
-        //
+        $role = Role::create( [
+            'name'=> $request->role_name,
+            'guard_name'=> 'web'
+        ] );
+        if ( $role ) {
+            return redirect()->back();
+        }
     }
 
     /**
@@ -49,7 +68,16 @@ class RolesController extends Controller {
 
     public function show( $id ) {
         $role = Role::getRecordById( $id );
-        return view( 'admin.role.view', compact( 'role' ) );
+        $modules = Module::getRecordList();
+        $title = 'Edit Role';
+        $rolesHasPermission = DB::table( 'permissions as p' )
+        ->select( 'm.title as  moduleName', DB::raw( 'GROUP_CONCAT(p.id SEPARATOR ", ") as ids' ), DB::raw( 'GROUP_CONCAT(p.can_permission_name SEPARATOR ", ") as can' ) )
+        ->join( 'modules as m', 'p.module_id', 'm.id' )
+        ->groupBy( 'moduleName' )
+        ->get()->toArray();
+        $rolePermission = DB::table( 'role_has_permissions' )->where( 'role_id', $id )->get()->toArray();
+        //dd( $rolePermission );
+        return view( 'admin.role.view', compact( 'role', 'title', 'rolesHasPermission', 'rolePermission' ) );
     }
 
     /**
@@ -60,7 +88,7 @@ class RolesController extends Controller {
     */
 
     public function edit( $id ) {
-        //
+        $role = Permission::getRecordList();
     }
 
     /**
@@ -71,8 +99,17 @@ class RolesController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function update( Request $request, $id ) {
-        //
+    public function update( Request $request ) {
+        Role::where( 'id', $request->role_Id )->update( [
+            'name'=> $request->get( 'role_name' )
+        ] );
+        foreach ( $request->get( 'role' ) as $role ) {
+            DB::table( 'role_has_permissions' )->insertGetId( [
+                'permission_id'=>$role,
+                'role_id'=>$request->get( 'role_Id' ),
+            ] );
+        }
+        return redirect()->back();
     }
 
     /**

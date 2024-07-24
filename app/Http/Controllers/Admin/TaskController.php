@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Tasks;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller {
     /**
@@ -13,11 +15,18 @@ class TaskController extends Controller {
     * @return \Illuminate\Http\Response
     */
 
-    public function index() {
+    public function index( Request $request ) {
         $title = 'Manage Tasks';
         $addtitle = 'Task';
-        $taskList = Tasks::getRecordList();
-        return view( 'admin.task.index', compact( 'taskList', 'title', 'addtitle' ) );
+        $userId = Auth::user()->id;
+        $taskList = Tasks::getRecordList( $userId );
+        if ( !$request->ajax() ) {
+            return view( 'admin.task.index', compact( 'taskList', 'title', 'addtitle' ) );
+        } else {
+            $taskList = Tasks::getRecordByProId( $request->project_id );
+            return response()->json( [ 'status'=> 200, 'messages'=> '', 'result'=> 'pass', 'taskList'=> $taskList ] );
+        }
+
     }
 
     /**
@@ -38,7 +47,18 @@ class TaskController extends Controller {
     */
 
     public function store( Request $request ) {
-        //
+        $task = Tasks::create( [
+            'project_id'=> $request->project_id,
+            'title'=> $request->title,
+            'task_description'=> $request->description,
+            'task_status'=> $request->task_status,
+            'task_start_date_time'=> $request->start_date,
+            'task_end_date_time'=> $request->due_date,
+            'assign_task_member_id'=> $request->user,
+        ] );
+        if ( $task ) {
+            return redirect()->back();
+        }
     }
 
     /**

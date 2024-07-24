@@ -2,82 +2,182 @@
 
 @section('content')
 <div id="kt_app_content_container" class="app-container container-xxl">
-    <!--begin::Card-->
-    <div class="card">
-        <!--begin::Card body-->
-        <div class="card-body py-4">
-            <!--begin::Table-->
-            <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_table_users">
-                <thead>
-                    <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
-                        <th class="w-10px pe-2">
-                            <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                <input class="form-check-input" type="checkbox" data-kt-check="true"
-                                    data-kt-check-target="#kt_table_users .form-check-input" value="1" />
+    <div class="row g-6 g-xl-9" id="taskList">
+        <!--begin::Col-->
+        @foreach($taskList as $task)
+        <div class="col-md-6 col-xl-4">
+            <!--begin::Card-->
+            <a href="../../demo1/dist/apps/projects/project.html" class="card border-hover-primary">
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-9">
+                    <!--begin::Card Title-->
+                    <div class="card-title m-0">
+                        <!--begin::Avatar-->
+                        <div class="symbol symbol-50px w-50px bg-light">
+                            <img src="assets/media/svg/brand-logos/plurk.svg" alt="image" class="p-3" />
+                        </div>
+                        <!--end::Avatar-->
+                    </div>
+                    <!--end::Car Title-->
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        @if($task->task_status == 'In Progress')
+                        <span class="badge badge-light-primary fw-bold me-auto px-4 py-3">In Progress</span>
+                        @elseif($task->task_status == 'Completed')
+                        <span class="badge badge-light-success fw-bold me-auto px-4 py-3">Completed</span>
+                        @elseif($task->task_status == 'Pending')
+                        <span class="badge badge-light fw-bold me-auto px-4 py-3">Pending</span>
+                        @elseif($task->task_status == 'Overdue')
+                        <span class="badge badge-light-danger fw-bold me-auto px-4 py-3">Overdue</span>
+                        @endif
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end:: Card header-->
+                <!--begin:: Card body-->
+                <div class="card-body p-9">
+                    <!--begin::Name-->
+                    <div class="fs-3 fw-bold text-dark">{{ $task->title }}</div>
+                    <!--end::Name-->
+                    <!--begin::Description-->
+                    <p class="text-gray-400 fw-semibold fs-5 mt-1 mb-7">{{ $task->project->project_name }}
+                    </p>
+                    <!--end::Description-->
+                    <!--begin::Info-->
+                    <div class="d-flex flex-wrap mb-5">
+                        <!--begin::Due-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                            <div class="fs-6 text-gray-800 fw-bold">
+                                {{ \App\Models\CommonModal::setDateTime($task->task_start_date_time) }}
                             </div>
-                        </th>
-                        <th class="min-w-125px">Title</th>
-                        <th class="min-w-125px">Start Date/Time</th>
-                        <th class="min-w-125px">End Date/Time</th>
-                        <th class="min-w-125px">Task Status</th>
-                        <th class="min-w-125px">Created Date</th>
-                        <th class="min-w-125px">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="text-gray-600 fw-semibold">
-                    @foreach($taskList as $task)
-                    <tr>
-                        <td>
-                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                <input class="form-check-input" type="checkbox" value="1" />
-                            </div>
-                        </td>
-                        <td>{{ $task->title }}</td>
-                        <td>
-                            <div class="badge badge-light fw-bold">{{ $task->project_status }}</div>
-                        </td>
-                        <td>{{ $task->created_at }}</td>
-                        <td class="text-end">
-                            <a href="#" class="btn btn-light btn-active-light-primary btn-flex btn-center btn-sm"
-                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                <i class="ki-duotone ki-down fs-5 ms-1"></i></a>
-                            <!--begin::Menu-->
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4"
-                                data-kt-menu="true">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="{{route('project.edit',['id'=>$task->id])}}"
-                                        class="menu-link px-3">Edit</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-3"
-                                        data-kt-users-table-filter="delete_row">Delete</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                    <a href="{{route('project.view',['id'=>$task->id])}}" class="menu-link px-3"
-                                        data-kt-users-table-filter="delete_row">View</a>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu-->
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-            <!--end::Table-->
+                            <div class="fw-semibold text-gray-400">Start Date</div>
+                        </div>
+                        <!--end::Due-->
+                        <!--begin::Budget-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                            <div class="fs-6 text-gray-800 fw-bold">
+                                {{ \App\Models\CommonModal::setDateTime($task->task_end_date_time) }}</div>
+                            <div class="fw-semibold text-gray-400">Due Date</div>
+                        </div>
+                        <!--end::Budget-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Progress-->
+                    <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="This project 50% completed">
+                        <div class="bg-primary rounded h-4px" role="progressbar" style="width: 50%" aria-valuenow="50"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <!--end::Progress-->
+                    <!--begin::Users-->
+                    <div class="symbol-group symbol-hover">
+                        <!--begin::User-->
+                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Emma Smith">
+                            <img alt="Pic" src="assets/media/avatars/300-6.jpg" />
+                        </div>
+                        <!--begin::User-->
+                        <!--begin::User-->
+                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Rudy Stone">
+                            <img alt="Pic" src="assets/media/avatars/300-1.jpg" />
+                        </div>
+                        <!--begin::User-->
+                        <!--begin::User-->
+                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Susan Redwood">
+                            <span class="symbol-label bg-primary text-inverse-primary fw-bold">S</span>
+                        </div>
+                        <!--begin::User-->
+                    </div>
+                    <!--end::Users-->
+                </div>
+                <!--end:: Card body-->
+            </a>
+            <!--end::Card-->
         </div>
-        <!--end::Card body-->
+        @endforeach
+        <!--end::Col-->
+    </div>
+    <div class="row g-6 g-xl-9" id="taskFilter">
+        <!--begin::Col-->
+        <div class="col-md-6 col-xl-4">
+            <!--begin::Card-->
+            <a href="../../demo1/dist/apps/projects/project.html" class="card border-hover-primary">
+                <!--begin::Card header-->
+                <div class="card-header border-0 pt-9">
+                    <!--begin::Card Title-->
+                    <div class="card-title m-0">
+                        <!--begin::Avatar-->
+                        <div class="symbol symbol-50px w-50px bg-light">
+                            <img src="assets/media/svg/brand-logos/treva.svg" alt="image" class="p-3" />
+                        </div>
+                        <!--end::Avatar-->
+                    </div>
+                    <!--end::Car Title-->
+                    <!--begin::Card toolbar-->
+                    <div class="card-toolbar">
+                        <span class="badge badge-light-danger fw-bold me-auto px-4 py-3 task_status"></span>
+                    </div>
+                    <!--end::Card toolbar-->
+                </div>
+                <!--end:: Card header-->
+                <!--begin:: Card body-->
+                <div class="card-body p-9">
+                    <!--begin::Name-->
+                    <div class="fs-3 fw-bold text-dark task_name"></div>
+                    <!--end::Name-->
+                    <!--begin::Description-->
+                    <p class="text-gray-400 fw-semibold fs-5 mt-1 mb-7 project_name"></p>
+                    <!--end::Description-->
+                    <!--begin::Info-->
+                    <div class="d-flex flex-wrap mb-5">
+                        <!--begin::Due-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 me-7 mb-3">
+                            <div class="fs-6 text-gray-800 fw-bold start_date"></div>
+                            <div class="fw-semibold text-gray-400">Start Date</div>
+                        </div>
+                        <!--end::Due-->
+                        <!--begin::Budget-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-125px py-3 px-4 mb-3">
+                            <div class="fs-6 text-gray-800 fw-bold due_date"></div>
+                            <div class="fw-semibold text-gray-400">Due Date</div>
+                        </div>
+                        <!--end::Budget-->
+                    </div>
+                    <!--end::Info-->
+                    <!--begin::Progress-->
+                    <div class="h-4px w-100 bg-light mb-5" data-bs-toggle="tooltip" title="This project 10% completed">
+                        <div class="bg-danger rounded h-4px" role="progressbar" style="width: 10%" aria-valuenow="10"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <!--end::Progress-->
+                    <!--begin::Users-->
+                    <div class="symbol-group symbol-hover">
+                        <!--begin::User-->
+                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Alan Warden">
+                            <span class="symbol-label bg-warning text-inverse-warning fw-bold">A</span>
+                        </div>
+                        <!--begin::User-->
+                        <!--begin::User-->
+                        <div class="symbol symbol-35px symbol-circle" data-bs-toggle="tooltip" title="Brian Cox">
+                            <img alt="Pic" src="assets/media/avatars/300-5.jpg" />
+                        </div>
+                        <!--begin::User-->
+                    </div>
+                    <!--end::Users-->
+                </div>
+                <!--end:: Card body-->
+            </a>
+            <!--end::Card-->
+        </div>
+        <!--end::Col-->
     </div>
     <div class="modal fade" id="modal_create_task" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->
-        <div class="modal-dialog modal-dialog-centered mw-650px">
+        <div class="modal-dialog mw-1000px">
             <!--begin::Modal content-->
             <div class="modal-content">
                 <!--begin::Form-->
-                <form class="form" action="#" id="kt_modal_add_customer_form">
+                <form class="form" action="{{route('task.store')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="project_id" id="project_id" class="project_id" value="" />
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_add_customer_header">
                         <!--begin::Modal title-->
@@ -104,11 +204,20 @@
                             <!--begin::Input group-->
                             <div class="fv-row mb-3">
                                 <!--begin::Label-->
+                                <label class="required fs-6 fw-semibold mb-2">Project Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" readonly
+                                    placeholder="Please Select Project" value="" id="proid" />
+
+                            </div>
+                            <div class="fv-row mb-3">
+                                <!--begin::Label-->
                                 <label class="required fs-6 fw-semibold mb-2">Title</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control" placeholder="" name="title" value="" />
-                                <!--end::Input-->
+
                             </div>
                             <div class="fv-row mb-3">
                                 <!--begin::Label-->
@@ -116,7 +225,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <textarea class="form-control" name="description"></textarea>
-                                <!--end::Input-->
+
                             </div>
                         </div>
                         <div class="row g-9 mb-8">
@@ -124,7 +233,7 @@
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Status</label>
                                 <select class="form-select form-select-solid" data-control="select2"
-                                    data-placeholder="Pending" data-hide-search="true">
+                                    data-placeholder="Pending" data-hide-search="true" name="task_status">
                                     <option value=""></option>
                                     <option value="Pending">Pending</option>
                                     <option value="In Progress">In Progress</option>
@@ -149,12 +258,9 @@
                                             </i>
                                         </span>
                                     </div>
-                                    <!--end::Icon-->
-                                    <!--begin::Datepicker-->
-                                    <input class="form-control ps-12" placeholder="Select a date" name="due_date" />
-                                    <!--end::Datepicker-->
+                                    <input class="form-control ps-12" placeholder="Select a Start Date"
+                                        name="start_date" id="start_date" />
                                 </div>
-                                <!--end::Input-->
                             </div>
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Due Date</label>
@@ -173,68 +279,56 @@
                                     </div>
                                     <!--end::Icon-->
                                     <!--begin::Datepicker-->
-                                    <input class="form-control ps-12" placeholder="Select a date" name="due_date" />
+                                    <input class="form-control ps-12" placeholder="Select a End Date" name="due_date"
+                                        id="due_date" />
                                     <!--end::Datepicker-->
                                 </div>
-                                <!--end::Input-->
                             </div>
-                            <!--end::Col-->
-                        </div>
-                        <div class="row g-9">
-                            <!--begin::Col-->
-                            <div class="col-md-6 fv-row">
-                                <label class="required fs-6 fw-semibold mb-2">Product</label>
-                                <select class="form-select form-select-solid" data-control="select2"
-                                    data-hide-search="true" data-placeholder="Select a product" name="product">
-                                    <option value="">Select a product...</option>
-                                    <option value="1">HTML Theme</option>
-                                    <option value="1">Angular App</option>
-                                    <option value="1">Vue App</option>
-                                    <option value="1">React Theme</option>
-                                    <option value="1">Figma UI Kit</option>
-                                    <option value="3">Laravel App</option>
-                                    <option value="4">Blazor App</option>
-                                    <option value="5">Django App</option>
-                                </select>
-                            </div>
-                            <!--end::Col-->
-                            <!--begin::Col-->
                             <div class="col-md-6 fv-row">
                                 <label class="required fs-6 fw-semibold mb-2">Assign</label>
-                                <select class="form-select form-select-solid" data-control="select2"
-                                    data-hide-search="true" data-placeholder="Select a Team Member" name="user">
+                                <select class="form-select form-select-solid" id="assign_user" data-control="select2"
+                                    data-placeholder="Select a Team Member" name="user">
                                     <option value="">Select a user...</option>
-                                    <option value="1">Karina Clark</option>
-                                    <option value="2">Robert Doe</option>
-                                    <option value="3">Niel Owen</option>
-                                    <option value="4">Olivia Wild</option>
-                                    <option value="5">Sean Bean</option>
                                 </select>
                             </div>
                             <!--end::Col-->
                         </div>
                         <!--end::Scroll-->
                     </div>
-                    <!--end::Modal body-->
-                    <!--begin::Modal footer-->
                     <div class="modal-footer flex-center">
                         <!--begin::Button-->
                         <button type="reset" data-bs-dismiss="modal" class="btn btn-light me-3">Discard</button>
-                        <!--end::Button-->
-                        <!--begin::Button-->
                         <button type="submit" id="kt_modal_add_customer_submit" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                         </button>
-                        <!--end::Button-->
                     </div>
-                    <!--end::Modal footer-->
                 </form>
-                <!--end::Form-->
             </div>
         </div>
     </div>
-    <!--end::Card-->
 </div>
+@endsection
+@section('script')
+<script>
+var url = "{{route('assignuser.index')}}";
+$.ajax({
+    url: url,
+    type: "GET",
+    dataType: "JSON",
+    data: {
+        'role': "Developer"
+    },
+    success: function(response) {
+        var html = '';
+        $.each(response.data, function(key, value) {
+            html += "<option value='" + value.id + "'>" + value.name + "</option>";
+        });
+        $('#assign_user').html(html);
+    }
+});
+$("#start_date").flatpickr();
+$("#due_date").flatpickr();
+</script>
 @endsection

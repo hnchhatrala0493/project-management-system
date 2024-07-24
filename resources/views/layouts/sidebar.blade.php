@@ -32,7 +32,7 @@
                 </div>
                 <!--end:Menu sub-->
             </div>
-            @if(Auth::user()->role != 'Developer')
+            @if(Auth::user()->role == 'Project Manager')
             <div class="menu-item  menu-accordion">
                 <!--begin:Menu link-->
                 <a href="{{route('project.index')}}">
@@ -55,34 +55,6 @@
                         <span class="menu-title">Projects</span>
                     </span>
                 </a>
-                <!--end:Menu link-->
-                <!--begin:Menu sub-->
-                <div class="menu-sub menu-sub-accordion">
-                    <!--begin:Menu item-->
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ Request::segment(2) == 'projects' && Request::segment(3) == 'new' ? 'active': ''; }}"
-                            href="{{route('project.create')}}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">New</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                    <div class="menu-item">
-                        <!--begin:Menu link-->
-                        <a class="menu-link {{ Request::segment(2) == 'projects' && Request::segment(3) == 'list' ? 'active': ''; }}"
-                            href="{{route('project.index')}}">
-                            <span class="menu-bullet">
-                                <span class="bullet bullet-dot"></span>
-                            </span>
-                            <span class="menu-title">Listing</span>
-                        </a>
-                        <!--end:Menu link-->
-                    </div>
-                </div>
-                <!--end:Menu sub-->
             </div>
             <div data-kt-menu-trigger="click"
                 class="menu-item {{ Request::segment(2) == 'employee' ? 'show': '' }} menu-accordion">
@@ -175,7 +147,7 @@
                 <!--end:Menu sub-->
             </div>
             @endif
-            @if(Auth::user()->role != 'Developer')
+            @if(Auth::user()->role == 'Project Manager')
             <div data-kt-menu-trigger="click"
                 class="menu-item menu-accordion {{ Request::segment(2) == 'roles' || Request::segment(2) == 'user' || Request::segment(2) == 'permission'  ? 'show': '' }}">
                 <!--begin:Menu link-->
@@ -233,10 +205,22 @@
                         </a>
                         <!--end:Menu link-->
                     </div>
+                    <div class="menu-item">
+                        <!--begin:Menu link-->
+                        <a class="menu-link {{ Request::segment(2) == 'modules' && Request::segment(3) == 'list' ? 'active' : '' }}"
+                            href="{{route('module.index')}}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Modules</span>
+                        </a>
+                        <!--end:Menu link-->
+                    </div>
                     <!--end:Menu item-->
                 </div>
                 <!--end:Menu sub-->
             </div>
+            @endif
             <div class="menu-item {{ Request::segment(2) == 'task' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
                 <a href="{{route('task.index')}}">
@@ -331,7 +315,6 @@
                 </div>
                 <!--end:Menu sub-->
             </div>
-            @endif
             @endif
         </div>
     </div>
