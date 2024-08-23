@@ -23,7 +23,6 @@ class PermissionModulesController extends Controller {
         $modules = Module::getRecordList();
         $roles = Role::getRecordList();
         $assignTo = Role::getAssignTo();
-        //dd( $assignTo );
         return view( 'admin.permission.index', compact( 'title', 'permissionList', 'permissions', 'addtitle', 'modules', 'roles', 'assignTo' ) );
     }
 

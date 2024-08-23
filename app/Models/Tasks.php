@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tasks extends Model {
     use HasFactory;
     protected $table = 'tasks';
-    protected $fillable = [ 'project_id', 'title', 'task_description', 'task_status', 'task_start_date_time', 'task_end_date_time', 'assign_task_member_id' ];
+    protected $fillable = [ 'project_id', 'userId', 'title', 'task_description', 'task_status', 'task_start_date_time', 'task_end_date_time', 'assign_task_member_id' ];
 
     public static function getRecordList( $id ) {
         return self::where( 'userId', $id )->orderBy( 'id', 'desc' )->with( 'project' )->get();

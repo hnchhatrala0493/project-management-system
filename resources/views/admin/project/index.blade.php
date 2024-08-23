@@ -103,7 +103,7 @@
                 <!--begin::Modal body-->
                 <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                     <!--begin::Form-->
-                    <form class="form" action="#" method="post" id="createProject">
+                    <form class="form" action="#" method="post" id="createProject" enctype="multipart/form-data">
                         <!--begin::Scroll-->
                         <div class="d-flex flex-column scroll-y me-n7 pe-7" id="kt_modal_add_user_scroll"
                             data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}"
@@ -119,6 +119,14 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input type="text" class="form-control" name="project_name" />
+                                <!--end::Input-->
+                            </div>
+                            <div class="fv-row mb-9">
+                                <!--begin::Label-->
+                                <label class="fs-6 fw-semibold required mb-2">Project Logo</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="file" class="form-control" name="project_logo" id="project_logo" />
                                 <!--end::Input-->
                             </div>
                             <!--end::Input group-->
@@ -179,10 +187,14 @@
 $("#createProject").submit(function(e) {
     e.preventDefault(); // avoid to execute the actual submit of the form.
     var form = $(this);
+    var file_data = $('#project_logo').prop('files')[0];
+    form.append('p_logo_file', file_data);   
     $.ajax({
         url: "/admin/projects/store",
         type: "POST",
         dataType: "json",
+        contentType: false,
+        processData: false,
         data: {
             'projects': form.serializeArray()
         },

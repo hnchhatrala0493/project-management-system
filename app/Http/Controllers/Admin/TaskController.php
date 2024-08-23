@@ -50,6 +50,7 @@ class TaskController extends Controller {
         $task = Tasks::create( [
             'project_id'=> $request->project_id,
             'title'=> $request->title,
+            'userId'=>Auth::user()->id,
             'task_description'=> $request->description,
             'task_status'=> $request->task_status,
             'task_start_date_time'=> $request->start_date,

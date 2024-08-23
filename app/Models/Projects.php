@@ -10,7 +10,7 @@ class Projects extends Model {
 
     use HasFactory, HasRoles;
     protected $table = 'projects';
-    protected $fillable = [ 'project_name', 'project_status', 'project_category' ];
+    protected $fillable = [ 'project_name', 'project_logo', 'project_status', 'project_category' ];
 
     public static function getRecordList() {
         return self::orderBy( 'id', 'desc' )->with( 'category' )->get();

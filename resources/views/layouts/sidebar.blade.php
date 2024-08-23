@@ -12,22 +12,24 @@
                 <!--begin:Menu item-->
                 <div class="menu-item">
                     <!--begin:Menu link-->
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
-                                    <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
-                                </svg>
+                    <a href="{{route('admin.dashboard')}}">
+                        <span class="menu-link {{ Request::segment(2) == 'dashboard' ? 'active' : '' }}">
+                            <span class="menu-icon">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="2" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                                        <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="currentColor" />
+                                        <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                                        <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="currentColor" />
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
                             </span>
-                            <!--end::Svg Icon-->
+                            <span class="menu-title">Dashboards</span>
                         </span>
-                        <span class="menu-title"><a href="{{route('admin.dashboard')}}">Dashboards</a></span>
-                    </span>
+                    </a>
                     <!--end:Menu link-->
                 </div>
                 <!--end:Menu sub-->
@@ -36,7 +38,7 @@
             <div class="menu-item  menu-accordion">
                 <!--begin:Menu link-->
                 <a href="{{route('project.index')}}">
-                    <span class="menu-link">
+                    <span class="menu-link {{ Request::segment(2) == 'project' ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -60,7 +62,7 @@
                 class="menu-item {{ Request::segment(2) == 'employee' ? 'show': '' }} menu-accordion">
                 <!--begin:Menu link-->
                 <a href="{{route('employee.index')}}">
-                    <span class="menu-link">
+                    <span class="menu-link {{ Request::segment(2) == 'employee' ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/abstract/abs040.svg-->
                             <span class="svg-icon svg-icon-2">
@@ -86,9 +88,9 @@
             <!--begin:Menu item-->
             @if(Auth::user()->role == 'Developer')
             <div data-kt-menu-trigger="click"
-                class="menu-item  {{ Request::segment(2) == 'task' ? 'show': '' }} menu-accordion">
+                class="menu-item">
                 <!--begin:Menu link-->
-                <span class="menu-link">
+                <span class="menu-link {{ Request::segment(2) == 'task' ? 'active' : '' }}">
                     <span class="menu-icon">
                         <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
                         <span class="svg-icon svg-icon-2">
@@ -221,10 +223,10 @@
                 <!--end:Menu sub-->
             </div>
             @endif
-            <div class="menu-item {{ Request::segment(2) == 'task' ? 'show': '' }} menu-accordion">
+            <div class="menu-item">
                 <!--begin:Menu link-->
                 <a href="{{route('task.index')}}">
-                    <span class="menu-link">
+                    <span class="menu-link {{ Request::segment(2) == 'task' ? 'active' : '' }}">
                         <span class="menu-icon">
                             <!--begin::Svg Icon | path: icons/duotune/maps/map002.svg-->
                             <span class="svg-icon svg-icon-2">

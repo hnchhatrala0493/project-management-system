@@ -54,6 +54,7 @@ class ProjectController extends Controller {
     */
 
     public function store( Request $request ) {
+        dd( $request );
         $projects = array_column( $request->get( 'projects' ), 'value', 'name' );
         $addproject = Projects::create( $projects );
         if ( $addproject ) {
